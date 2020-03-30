@@ -2,16 +2,6 @@
 
 ## How to Run
 
-### Sub1
-
-```sh
-cd sub1
-pip install -r requirements.txt
-python parse.py
-python analyse.py
-python visualize.py
-```
-
 ### Sub 2
 
 **Backend**

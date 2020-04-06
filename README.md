@@ -23,6 +23,3 @@ npm install
 npm run serve
 ```
 
-
-
-asdfadsfasdfasdf

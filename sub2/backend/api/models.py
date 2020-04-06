@@ -18,12 +18,12 @@ class Store(models.Model):
 
 class User(models.Model):
     user_id = models.AutoField(primary_key=True)
-    email = models.CharField(max_length=500, null=True)
+    email = models.CharField(max_length=500, null=True, blank=True)
     token = models.CharField(max_length=500, blank=True)
-    name = models.CharField(max_length=50, null=True)
-    password = models.CharField(max_length=100, null=True)
-    gender = models.IntegerField()
-    born_year = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, null=True, blank=True)
+    password = models.CharField(max_length=100, null=True, blank=True)
+    gender = models.CharField(max_length=10, blank=True)
+    age = models.IntegerField(default=0, blank=True)
     profileimg = models.CharField(max_length=500, blank=True)
 
     def __str__(self):

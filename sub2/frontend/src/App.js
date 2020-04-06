@@ -4,12 +4,14 @@ import { createGlobalStyle } from "styled-components";
 
 // Pages
 import MainPage from "./pages/Mainpage";
+import Result from "./pages/Result";
 
 const App = () => {
   return(
     <div>
     <GlobalStyle></GlobalStyle>
       <Switch>
+        <Route path="/result" component={Result} />
         <Route path="/" component={MainPage} />
       </Switch>
     </div>

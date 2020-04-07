@@ -1,55 +1,61 @@
 import React from "react";
 import styled from "styled-components";
-import Login from '../../components/Login';
-import Join from '../../components/Join';
+import temp from '../../pages/Mainpage/temp.png';
+import { Link } from 'react-router-dom';
+import Topbar from "../../components/Top/Topbar";
+import Searching from "../../components/Search";
 
-class Topbar extends React.Component{
-    constructor() {
-        super();
-        this.state = {
-          showLogin: false,
-          showJoin: false
-        };
-      }
-      toggleLogin() {
-        this.setState({
-            showLogin: !this.state.showLogin
-        });
-      }
-      toggleJoin() {
-        this.setState({
-            showJoin: !this.state.showJoin
-        });
-      }
-
+class Top extends React.Component{
     render(){
         return(
             <div>
-                <Button onClick={this.toggleLogin.bind(this)}>로그인</Button>
-                <Button onClick={this.toggleJoin.bind(this)}>회원가입</Button>
-                {this.state.showLogin ? 
-                    <Login
-                        cancelLogin={this.toggleLogin.bind(this)}
-                    />
-                    : null
-                }
-                {this.state.showJoin ? 
-                    <Join
-                        cancelJoin={this.toggleJoin.bind(this)}
-                    />
-                    : null
-                }
+                <TFrame>
+                    <Out><Link to={"/MainPage"} style={{ textDecoration: "none" }}><Img src={temp}></Img></Link></Out>
+                    <Tb><Topbar></Topbar></Tb>
+                </TFrame>
+                <IFrame>
+                    <Searching></Searching>
+                </IFrame>
             </div>
         )
     }
 }
 
-const Button = styled.button`
-    font-size: large;
-    background: none;
-    border: none;
-    outline: none;
-    cursor : pointer;
+const TFrame = styled.div`
+    grid-area: Title;
+    background-color: #ffde96; 
+    height: 100%;
+`
+const Out = styled.div`
+    display: inline-block;
+    float: left;
+    width: 45%;
+    justify-content: Left;
+    height: 100%;
+    padding-left: 1%;
+    object-fit: cover;
+    margin: auto;
+`
+const Img = styled.img`
+    justify-content: Left;
+    object-fit: cover;
+    height: 100%;
+    margin: auto;
 `
 
-export default Topbar;
+const Tb = styled.div`
+    width: 45%;
+    justify-items: center;
+    text-align: right;
+    float: right;
+    padding-top: .5rem;
+    padding-right: 1rem;
+`
+const IFrame = styled.div`
+    grid-area: Search;
+    justify-content: center;
+    text-align: center;
+    padding-top: 1%;
+`
+
+export default Top;

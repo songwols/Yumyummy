@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import Contents from './Contents';
+import Suggest from './Suggest';
 import temp from './temp.png'
 import { Link } from 'react-router-dom';
-import Topbar from "../../components/Top";
+import Topbar from "../../components/Top/Topbar";
 import Searching from "../../components/Search";
 
 class Mainpage extends React.Component{
@@ -21,7 +21,7 @@ class Mainpage extends React.Component{
                     </IFrame>
                 </Searchs>
                 <CFrame>
-                    <Contents></Contents>
+                    <Suggest></Suggest>
                 </CFrame>
             </Frame>
         )
@@ -32,12 +32,13 @@ const Frame = styled.div`
     height: 100vh;
     width: 100%;
     display: grid;
+    align-content: center;
     grid-template-rows: 5% 20% 7% 68%;
     grid-template-areas: "Topb" "Title" "Search" "content";
 `
 
 const Top = styled.div`
-    height: 95%;
+    // height: 95%;
     grid-area: Topb;
     justify-items: center;
     text-align: right;
@@ -62,6 +63,7 @@ const Img = styled.img`
 
 const Searchs = styled.div`
     grid-area: "Search";
+    align-content: center;
 `
 
 const IFrame = styled.div`

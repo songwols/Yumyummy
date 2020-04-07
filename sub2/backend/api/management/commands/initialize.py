@@ -48,6 +48,7 @@ class Command(BaseCommand):
             for store in stores.itertuples()
         ]
         models.Store.objects.bulk_create(stores_bulk)
+
         users = dataframes["users"]
         users_bulk = [
             models.User(

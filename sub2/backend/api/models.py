@@ -25,6 +25,11 @@ class User(models.Model):
     gender = models.CharField(max_length=10, blank=True)
     age = models.IntegerField(default=0, blank=True)
     profileimg = models.CharField(max_length=500, blank=True)
+    category = models.CharField(max_length=200, null=True)
+
+    @property
+    def category_list(self):
+        return self.category.split("|") if self.category else []
 
     def __int__(self):
         return self.user_id

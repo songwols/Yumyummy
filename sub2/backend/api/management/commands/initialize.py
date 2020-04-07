@@ -27,6 +27,11 @@ class Command(BaseCommand):
 
         print("[*] Initializing stores...")
         models.Store.objects.all().delete()
+        models.User.objects.all().delete()
+        models.Menu.objects.all().delete()
+        models.Category.objects.all().delete()
+        models.Bhour.objects.all().delete()
+        models.Review.objects.all().delete()
         stores = dataframes["stores"]
         stores_bulk = [
             models.Store(

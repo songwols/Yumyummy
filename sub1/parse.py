@@ -4,7 +4,6 @@ import os
 import shutil
 import datetime
 
-
 DATA_DIR = "../data"
 DATA_FILE = os.path.join(DATA_DIR, "data.json")
 DUMP_FILE = os.path.join(DATA_DIR, "dump.pkl")
@@ -30,18 +29,16 @@ review_columns = (
     "reg_time",  # 리뷰 등록 시간
 )
 
-# menu
 menu_columns = (
-    "store",  # 음식점 고유 번호
-    "menu_name",  # 메뉴 이름
-    "price",  # 가격
+    "store",  # 음식점 고유번호
+    "menu_name",  # 음식 이름
+    "price"  # 음식 가격
 )
 
-# user
 user_columns = (
-    "id",  # user id
-    "gender",  # 성별
-    "age",  # 나이
+    "id",  # 유저 고유 번호
+    "gender",  # 유저 성별
+    "age"  # 유저 나이
 )
 
 
@@ -59,9 +56,10 @@ def import_data(data_path=DATA_FILE):
 
     stores = []  # 음식점 테이블
     reviews = []  # 리뷰 테이블
+    users = []  # 유저 테이블
     menus = []  # 메뉴 테이블
-    users = []  # user 테이블
     user_set = set()
+    review_set = set()
 
     for d in data:
 
@@ -82,21 +80,25 @@ def import_data(data_path=DATA_FILE):
 
         for review in d["review_list"]:
             r = review["review_info"]
-            u = review["writer_info"]  # user
+            u = review["writer_info"]
 
-            reviews.append(
-                [r["id"], d["id"], u["id"], r["score"], r["content"], r["reg_time"]]
-            )
+            if r["id"] not in review_set:
+                reviews.append(
+                    [r["id"], d["id"], u["id"], r["score"],
+                        r["content"], r["reg_time"]]
+                )
+                review_set.add(r["id"])
 
-        for user in d['review_list']:
-            u = user['writer_info']
-            idn = u["id"]
-            gender = u["gender"]
-            today = int(datetime.datetime.today().year)
-            born = int(u['born_year'][0:5])
-            age = today - born
-            if born != 0:
-                users.append([idn, gender, age])
+            # 중복 데이터제거필요 && 나이 계산
+            if u["id"] not in user_set:
+                age = datetime.datetime.today().year - \
+                    int(u["born_year"]) if int(u["born_year"]) > 0 else 0
+                if age <= 0:
+                    age = 0
+                users.append(
+                    [u["id"], u["gender"], age]
+                )
+                user_set.add(u["id"])
 
         for menu in d["menu_list"]:
             menus.append(
@@ -105,10 +107,10 @@ def import_data(data_path=DATA_FILE):
 
     store_frame = pd.DataFrame(data=stores, columns=store_columns)
     review_frame = pd.DataFrame(data=reviews, columns=review_columns)
-    menu_frame = pd.DataFrame(data=menus, columns=menu_columns)
     user_frame = pd.DataFrame(data=users, columns=user_columns)
+    menu_frame = pd.DataFrame(data=menus, columns=menu_columns)
 
-    return {"stores": store_frame, "reviews": review_frame, "menus": menu_frame, "users": user_frame}
+    return {"stores": store_frame, "reviews": review_frame, "users": user_frame, "menus": menu_frame}
 
 
 def dump_dataframes(dataframes):
@@ -120,6 +122,7 @@ def load_dataframes():
 
 
 def main():
+
     print("[*] Parsing data...")
     data = import_data()
     print("[+] Done")
@@ -143,14 +146,14 @@ def main():
     print(data["reviews"].head())
     print(f"\n{separater}\n\n")
 
+    print("[이용자]")
+    print(f"{separater}\n")
+    print(data["users"].head())
+    print(f"\n{separater}\n\n")
+
     print("[메뉴]")
     print(f"{separater}\n")
     print(data["menus"].head())
-    print(f"\n{separater}\n\n")
-
-    print("[유저]")
-    print(f"{separater}\n")
-    print(data["users"].head())
     print(f"\n{separater}\n\n")
 
 

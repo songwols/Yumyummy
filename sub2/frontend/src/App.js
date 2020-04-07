@@ -4,8 +4,8 @@ import { createGlobalStyle } from "styled-components";
 
 // Pages
 import MainPage from "./pages/Mainpage";
-import Result from "./pages/Result";
-import Detail from "./pages/Detail";
+import Result from "./pages/Resultpage";
+import Detail from "./pages/Detailpage";
 
 const App = () => {
   return(

@@ -23,16 +23,32 @@ class CardLayout extends React.Component{
         const { items } = this.state;
         console.log(this.state)
         return(
-            <Div>
+            <List>
                 {items.map((item, index) => (
                     <Card key={index} post={item}></Card> 
                 ))}
-            </Div>
+            </List>
         )
     }
 }
 
-const Div = styled.div`
+
+const List = styled.div`
+    padding-left: 10%;
+    padding-right: 10%;
+    height: 100vh;
+    grid-area: List;
+    display: grid;
+    grid-column-gap: 3%;
+    grid-row-gap: 3%;
+    grid-template-columns: repeat(auto-fit, 47%);
+    grid-template-rows: repeat(auto-fit, 1fr);
+
+    @media (max-width: 768px) {
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(auto-fit, 1fr);
+        padding: 0;
+    }
 `
 
 export default CardLayout;

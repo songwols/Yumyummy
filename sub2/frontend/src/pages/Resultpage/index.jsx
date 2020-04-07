@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import CardLayout from "../../components/List";
 
 class Result extends React.Component{
-    
     render(){
         return(
             <RFrame>
@@ -20,11 +19,9 @@ class Result extends React.Component{
                     </Categories>
                 </TopLayer>
                 <LFrame>
-                    <List>
-                        <CardLayout></CardLayout>
-                    </List>
+                    <CardLayout></CardLayout>
                     <MFrame>
-                        <Map></Map>
+                        <Map>여기는 지도 자리</Map>
                     </MFrame>
                 </LFrame>
             </RFrame>
@@ -33,7 +30,7 @@ class Result extends React.Component{
 }
 
 const RFrame = styled.div`
-    height: 100vh;
+    height: 100%;
     display: grid;
     grid-template-rows: 20% 80%;
     grid-template-areas: "TopLayer" "Content"
@@ -55,8 +52,10 @@ const Categories = styled.div`
     font-size: large;
 `
 const LFrame = styled.div`
+    height: 100vh;
     grid-area: Content;
     padding-top: 5%;
+    padding-bottom: 5%;
     display: grid;
     grid-template-columns: 70% 30%;
     grid-template-areas: "List MFrame";
@@ -65,21 +64,6 @@ const LFrame = styled.div`
         grid-template-columns: 10% 80% 10%;
         grid-template-areas: ". List .";
 
-    }
-`
-
-const List = styled.div`
-    padding-left: 10%;
-    padding-right: 10%;
-    grid-area: List;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 45%);
-    grid-template-rows: repeat(auto-fit, 50%);
-
-    @media (max-width: 768px) {
-        grid-template-columns: 100%;
-        grid-template-rows: repeat(auto-fit, 50%);
-        padding-left: 0;
     }
 `
 

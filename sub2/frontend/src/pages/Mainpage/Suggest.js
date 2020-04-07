@@ -41,7 +41,7 @@ const Content = styled.div`
 
 `
 const CardLayout = styled.div`
-    border: 1px solid black;
+    border: 1.5px solid black;
 `
 
 export default Suggest;

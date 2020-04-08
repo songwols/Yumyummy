@@ -16,7 +16,7 @@ class StoreSearchViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         name = self.request.query_params.get("store_name", "")
         searchqueryset = (
-            models.Store.objects.all().filter(store_name__contains=name).order_by("id")
+            models.Store.objects.all().filter(store_name__contains=name).order_by("store_id")
         )
         return searchqueryset
 

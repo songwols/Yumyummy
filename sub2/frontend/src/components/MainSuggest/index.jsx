@@ -14,10 +14,8 @@ const Suggest = () => {
 }
 
 const SFrame = styled.div`
-    padding-top: 5%;
-    padding-bottom: 5%;
     width: 100%;
-    height: 90%;
+    height: 100%;
     display: grid;
     grid-template-columns: 10% 80% 10%;
     grid-template-areas: ". content ."

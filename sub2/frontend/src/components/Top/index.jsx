@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import temp from '../../pages/Mainpage/temp.png';
+import title from '../../pages/Mainpage/title.png';
 import { Link } from 'react-router-dom';
 import Topbar from "../../components/Top/Topbar";
 import Searching from "../../components/Search";
@@ -10,7 +10,7 @@ class Top extends React.Component{
         return(
             <div>
                 <TFrame>
-                    <Out><Link to={"/MainPage"} style={{ textDecoration: "none" }}><Img src={temp}></Img></Link></Out>
+                    <Out><Link to={"/"} style={{ textDecoration: "none" }}><Img src={title}></Img></Link></Out>
                     <Tb><Topbar></Topbar></Tb>
                 </TFrame>
                 <IFrame>
@@ -48,8 +48,12 @@ const Tb = styled.div`
     justify-items: center;
     text-align: right;
     float: right;
-    padding-top: .5rem;
+    padding-top: 1.5%;
     padding-right: 1rem;
+
+    @media (max-width: 768px) {
+        padding-top: 4%;
+      }
 `
 const IFrame = styled.div`
     grid-area: Search;

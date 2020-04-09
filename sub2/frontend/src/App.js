@@ -13,7 +13,7 @@ const App = () => {
     <GlobalStyle></GlobalStyle>
       <Switch>
         <Route path="/result" component={Result} />
-        <Route path="/detail" component={Detail} />
+        <Route path="/detail/:id" component={Detail} />
         <Route path="/" component={MainPage} />
       </Switch>
     </div>

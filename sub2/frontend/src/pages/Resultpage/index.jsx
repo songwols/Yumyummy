@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Top from "../../components/Top";
 import { Link } from 'react-router-dom';
-import CardLayout from "../../components/List";
+import CardLayout from "../../components/ResultList";
+import Map from "../../components/Map";
 
 class Result extends React.Component{
     render(){
@@ -21,7 +22,7 @@ class Result extends React.Component{
                 <LFrame>
                     <CardLayout></CardLayout>
                     <MFrame>
-                        <Map>여기는 지도 자리</Map>
+                        <Map></Map>
                     </MFrame>
                 </LFrame>
             </RFrame>
@@ -32,7 +33,7 @@ class Result extends React.Component{
 const RFrame = styled.div`
     height: 100%;
     display: grid;
-    grid-template-rows: 20% 80%;
+    grid-template-rows: 200px;
     grid-template-areas: "TopLayer" "Content"
 `
 
@@ -66,17 +67,12 @@ const LFrame = styled.div`
 
     }
 `
-
 const MFrame = styled.div`
     grid-area: MFrame;
     display: grid;
     grid-template-rows: 50% 50%;
     grid-template-areas: "Map" ".";
-`
-
-const Map = styled.div`
-    background-color: red;
-    @media (max-width: 768px) {
+    @media (max-width: 768px) {      
         display: none;
     }
 `

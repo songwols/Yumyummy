@@ -1,59 +1,61 @@
 import React from "react";
 import styled from "styled-components";
 import Top from "../../components/Top";
+import DetailContent from "../../components/Detail";
+import Map from "../../components/Map";
 
-class Detail extends React.Component{
-    render(){
-        return(
-            <DLayer>
-                <TopLayer>
-                    <Top></Top>
-                </TopLayer>
-                <CFrame>
-                    <Content>
-                        <Info>정보</Info>
-                        <Review>리뷰</Review>
-                    </Content>   
-                </CFrame>
-            </DLayer>
-        )
-    }
+const Detail = ({match}) => {
+    const { id } = match.params;
+
+    return(
+        <DLayer>
+            <TopLayer>
+                <Top></Top>
+            </TopLayer>
+            <CFrame>
+                <DetailContent storeid={id}></DetailContent>
+                <MFrame>
+                    <Map></Map>
+                </MFrame>
+            </CFrame>
+        </DLayer>
+    )
 }
+
 
 const DLayer = styled.div`
     height: 100vh;
     display: grid;
-    grid-template-rows: 20% 80%;
+    grid-template-rows: 140px;
     grid-template-areas: "TopLayer" "CFrame";
 `
 const TopLayer = styled.div`
-    height: 100%;
+    // height: 100%;
     width: 100%;
     grid-area: TopLayer;
     display: grid;
-    grid-template-rows: 30% 40%;
+    grid-template-rows: 60px 80px;
     grid-template-areas: "Title" "Search";
 `
 const CFrame = styled.div`
-    padding-left: 5%;
     grid-area: CFrame;
     display: grid;
-    grid-template-columns: 15% 70% 15%;
-    grid-template-areas: ". content .";
+    grid-template-columns: 70% 30%;
+    grid-template-areas: "content MFrame";
+    
+    @media (max-width: 768px) {      
+        grid-template-columns: 100%;
+    }
 `
-const Content = styled.div`
-    grid-area: content;
+const MFrame = styled.div`
+    grid-area: MFrame;
     display: grid;
-    grid-template-rows: 70% 30%;
-    grid-template-areas: "info" "review";
-`
-const Info = styled.div`
-    grid-area: info;
-    border-bottom: 1px solid #ffde96; 
+    grid-template-rows: 50% 50%;
+    grid-template-areas: "Map" ".";
+    @media (max-width: 768px) {      
+        display: none;
+    }
 `
 
-const Review = styled.div`
-    grid-area: review;
-    padding-top: 1rem;
-`
 export default Detail;
+  

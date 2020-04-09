@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Suggest from './Suggest';
-import temp from './temp.png'
+import Suggest from '../../components/MainSuggest';
+import title from './title.png'
 import { Link } from 'react-router-dom';
 import Topbar from "../../components/Top/Topbar";
 import Searching from "../../components/Search";
@@ -14,7 +14,7 @@ class Mainpage extends React.Component{
                 <Top>
                     <Topbar></Topbar>
                 </Top>
-                <Title><Out><Link to={"/MainPage"} style={{ textDecoration: "none" }}><Img src={temp}></Img></Link></Out></Title>
+                <Title><Out><Link to={"/"} style={{ textDecoration: "none" }}><Img src={title}></Img></Link></Out></Title>
                 <Searchs>
                     <IFrame>
                         <Searching></Searching>

@@ -8,9 +8,8 @@ export const Links = styled(Link)`
 
 const Card = ({ post }) => {
     const { STORE_ID, NAME, ADDRESS, OPEN, CLOSE, TEL, HOLIDAY, LATITUDE, LONGITUDE, AREA } = post;
-    console.log(post)
     return(
-        <Links to="/detail" style={{ textDecoration: "none"}}>
+        <Links to={"/detail/"+STORE_ID} style={{ textDecoration: "none"}}>
         <Div>
             <Title>{NAME}</Title>
             <Address>주소 : {ADDRESS}</Address>

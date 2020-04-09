@@ -38,6 +38,7 @@ const TopLayer = styled.div`
     grid-template-areas: "Title" "Search";
 `
 const CFrame = styled.div`
+    height: 100vh;
     grid-area: CFrame;
     display: grid;
     grid-template-columns: 70% 30%;

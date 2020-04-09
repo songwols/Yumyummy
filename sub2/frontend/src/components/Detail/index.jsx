@@ -23,11 +23,26 @@ const DetailContent = ({storeid, posts}) => {
                     <Frame>
                         <Mapp></Mapp>
                         <RInfo>
-                            <DIV>주소 : {ADDRESS}</DIV>
-                            <DIV>영업시간 : {OPEN} - {CLOSE}</DIV>
-                            <DIV>휴무일 : {HOLIDAY}</DIV>
-                            <DIV>전화번호 : {TEL}</DIV>
-                            <DIV>메뉴</DIV>
+                            <DInfo>
+                                <DIVL>
+                                    <DIV>주소 : {ADDRESS}</DIV>
+                                    <DIV>영업시간 : {OPEN} - {CLOSE}</DIV>
+                                    <DIV>휴무일 : {HOLIDAY}</DIV>
+                                    <DIV>전화번호 : {TEL}</DIV>
+                                </DIVL>
+                                <Graph>
+                                    
+                                </Graph>
+                            </DInfo>
+                            <Menu>
+                                <DIV>메뉴</DIV>
+                                <div>1</div>
+                                <div>1</div>
+                                <div>1</div>
+                                <div>1</div>
+                                <div>1</div>
+                            </Menu>
+                            
                         </RInfo>
                     </Frame>
                 </Info>
@@ -81,7 +96,38 @@ const Frame = styled.div`
 `
 
 const RInfo = styled.div`
+    height: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: "detailinfo menu";
 
+    @media (max-width: 768px) {
+        grid-template-columns: none;
+        grid-template-rows: 50% 50%;
+        grid-template-areas: "detailinfo" "menu";
+    }
+`
+
+const DInfo = styled.div`
+    grid-area: detailinfo;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-areas: "divL" "graph";
+
+    @media (max-width: 768px) {
+        display: block;
+        
+    }
+`
+const DIVL = styled.div`
+    grid-area: divL;
+`
+const Graph = styled.div`
+    grid-area: graph;
+`
+
+const Menu = styled.div`
+    grid-area: menu
 `
 
 const DIV = styled.div`

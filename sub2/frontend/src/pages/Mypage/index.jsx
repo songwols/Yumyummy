@@ -98,11 +98,26 @@ const MyFace = styled.div`
 const MyName = styled.div`
     grid-area: MyName;
     display: grid;
+    margin: 0 auto;
 `
 
 const ProfileEdit = styled.div`
+    margin: 0 auto;
     grid-area: ProfileEdit;
     display: grid;
+
+    text-align: center;
+    line-height: 35px;
+    width: 120px;
+    height: 35px;
+    background-color: #fff;
+    // border: none;
+    border-radius: 45px;
+    background-color: #ffde96;
+    // box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    // transition: all 0.3s ease 0s;
+    cursor: pointer;
+    // outline: none;
 `
 
 const MyDetail = styled.div`
@@ -131,26 +146,31 @@ const DCategory = styled.div`
 const Favorite = styled.div`
     grid-area: Favorite;
     display: grid;
+    margin: 0 auto;
 `
 
 const Review = styled.div`
     grid-area: Review;
     display: grid;
+    margin: 0 auto;
 `
 
 const Like = styled.div`
     grid-area: Like;
     display: grid;
+    margin: 0 auto;
 `
 
 const Recent = styled.div`
     grid-area: Recent;
     display: grid;
+    margin: 0 auto;
 `
 
 const Want = styled.div`
     grid-area: Want;
     display: grid;
+    margin: 0 auto;
 `
 
 const DetailCon = styled.div`

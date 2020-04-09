@@ -134,3 +134,5 @@ PASSWORD_HASHERS = (
     "django.contrib.auth.hashers.MD5PasswordHasher",
     "django.contrib.auth.hashers.CryptPasswordHasher",
 )
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")

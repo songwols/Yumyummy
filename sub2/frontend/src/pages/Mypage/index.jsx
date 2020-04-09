@@ -162,6 +162,8 @@ const Favorite = styled.div`
     grid-area: Favorite;
     display: grid;
     margin: 0 auto;
+    
+    font-weight: bold;
 `
 
 const Review = styled.div`

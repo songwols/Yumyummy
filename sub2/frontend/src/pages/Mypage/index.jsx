@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import Top from "../../components/Top";
 
+import CardLayout from "../../components/ResultList";
+
+
 class My extends React.Component{
     render(){
         return(
@@ -15,7 +18,7 @@ class My extends React.Component{
                             <MyFace>
                                 <img src="https://seolyucode.github.io/imgs/thumb.png"></img>
                             </MyFace>
-                            <MyName>닉네임</MyName>
+                            <MyName>NickName</MyName>
                         {/* </MyFaceName> */}
                         <ProfileEdit>프로필 수정</ProfileEdit>
                     </MyProfile>
@@ -28,7 +31,9 @@ class My extends React.Component{
                             <Want>가고싶다(2)</Want>
                         </DCategory>
             
-                        <DetailCon>내용</DetailCon>
+                        <DetailCon>
+                            <CardLayout></CardLayout>
+                        </DetailCon>
                     </MyDetail>
                 </MyFrame>
             </MyLayer>
@@ -102,7 +107,9 @@ const MyFace = styled.div`
 const MyName = styled.div`
     grid-area: MyName;
     display: grid;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    width: 100px;
+    line-height: 200px;
 `
 
 const ProfileEdit = styled.div`
@@ -122,6 +129,8 @@ const ProfileEdit = styled.div`
     // transition: all 0.3s ease 0s;
     cursor: pointer;
     // outline: none;
+    
+    margin-top: 85px;
 `
 
 const MyDetail = styled.div`
@@ -182,6 +191,9 @@ const Want = styled.div`
 const DetailCon = styled.div`
     grid-area: DetailCon;
     display: grid;
+
+    margin-top: -4rem;
+    margin-left: -8rem;
 `
 
 export default My;

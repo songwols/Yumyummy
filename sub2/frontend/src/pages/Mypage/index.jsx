@@ -11,10 +11,12 @@ class My extends React.Component{
                 </TopLayer>
                 <MyFrame>
                     <MyProfile>
-                        <MyFaceName>
-                            <MyFace>프사</MyFace>
+                        {/* <MyFaceName> */}
+                            <MyFace>
+                                <img src="https://seolyucode.github.io/imgs/thumb.png"></img>
+                            </MyFace>
                             <MyName>닉네임</MyName>
-                        </MyFaceName>
+                        {/* </MyFaceName> */}
                         <ProfileEdit>프로필 수정</ProfileEdit>
                     </MyProfile>
                     <MyDetail>
@@ -49,7 +51,7 @@ const MyLayer = styled.div`
         "MyFrame MyFrame MyFrame"
         "MyFrame MyFrame MyFrame"
         "MyFrame MyFrame MyFrame";
-    background-color: pink;
+    /* background-color: pink; */
 `
 
 const TopLayer = styled.div`
@@ -77,22 +79,24 @@ const MyProfile = styled.div`
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
-        "MyFaceName . ProfileEdit"
+        "MyFace MyName ProfileEdit"
         ;
+    padding-top: 3rem;
 `
 
-const MyFaceName = styled.div`
-    grid-area: MyFaceName;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas:
-        "MyFace MyName"
-        ;
-`
+// const MyFaceName = styled.div`
+//     grid-area: MyFaceName;
+//     display: grid;
+//     grid-template-columns: 1fr 2fr;
+//     grid-template-areas:
+//         "MyFace MyName"
+//         ;
+// `
 
 const MyFace = styled.div`
     grid-area: MyFace;
     display: grid;
+    transform: scale(0.8);
 `
 
 const MyName = styled.div`
@@ -141,6 +145,8 @@ const DCategory = styled.div`
     grid-template-areas:
         "Favorite Review Like Recent Want"
         ;
+    border-top: 1px solid rgba(var(--b38, 219, 219, 219), 1);
+    padding-top: 1rem;
 `
 
 const Favorite = styled.div`

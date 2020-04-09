@@ -4,6 +4,8 @@ from api import views
 
 
 router = DefaultRouter(trailing_slash=False)
-router.register(r"stores", views.StoreViewSet, basename="stores")
-
+router.register(r"search_stores", views.StoreSearchViewSet,
+                basename="search_stores")
+router.register(r"all_stores", views.StoreAllViewSet, basename="all_stores")
+router.register(r"id_stores", views.StoreIdViewSet, basename="id_stores")
 urlpatterns = router.urls

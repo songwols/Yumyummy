@@ -4,10 +4,14 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "mobx-react";
 import "./index.css";
 import App from "./App";
+import RootStore from "./stores";
 import * as serviceWorker from "./serviceWorker";
 
+const root = new RootStore();
+
 ReactDOM.render(
-  <Provider>
+  <Provider {...root}>
+    {}
     <BrowserRouter>
       <App />
     </BrowserRouter>

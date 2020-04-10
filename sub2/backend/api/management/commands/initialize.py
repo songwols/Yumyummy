@@ -27,10 +27,15 @@ class Command(BaseCommand):
 
         print("[*] Initializing stores...")
         models.Store.objects.all().delete()
+        models.User.objects.all().delete()
+        models.Menu.objects.all().delete()
+        # models.Category.objects.all().delete()
+        models.Bhour.objects.all().delete()
+        models.Review.objects.all().delete()
         stores = dataframes["stores"]
         stores_bulk = [
             models.Store(
-                id=store.id,
+                store_id=store.id,
                 store_name=store.store_name,
                 branch=store.branch,
                 area=store.area,
@@ -44,6 +49,39 @@ class Command(BaseCommand):
         ]
         models.Store.objects.bulk_create(stores_bulk)
 
+        users = dataframes["users"]
+        users_bulk = [
+            models.User(
+                user_id=user.id,
+                gender=user.gender,
+                age=user.age
+            )
+            for user in users.itertuples()
+        ]
+        models.User.objects.bulk_create(users_bulk)
+        menus = dataframes["menus"]
+        menus_bulk = [
+            models.Menu(
+                store_id=menu.store,
+                menu=menu.menu_name,
+                price=menu.price
+            )
+            for menu in menus.itertuples()
+        ]
+        models.Menu.objects.bulk_create(menus_bulk)
+        reviews = dataframes["reviews"]
+        reviews_bulk = [
+            models.Review(
+                review_id=review.id,
+                store_id=review.store,
+                user_id=review.user,
+                total_score=review.score,
+                content=review.content,
+                reg_time=review.reg_time
+            )
+            for review in reviews.itertuples()
+        ]
+        models.Review.objects.bulk_create(reviews_bulk)
         print("[+] Done")
 
     def handle(self, *args, **kwargs):

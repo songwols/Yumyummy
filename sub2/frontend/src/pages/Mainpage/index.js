@@ -1,25 +1,27 @@
 import React from "react";
 import styled from "styled-components";
-import Contents from './Contents';
-import temp from './temp.png'
+import Suggest from '../../components/MainSuggest';
+import title from './title.png'
 import { Link } from 'react-router-dom';
-
+import Topbar from "../../components/Top/Topbar";
+import Searching from "../../components/Search";
 
 class Mainpage extends React.Component{
+    
     render(){
-
         return(
             <Frame>
                 <Top>
-                    <Link to={"/a"} style={{ textDecoration: "none" }}>로그인</Link>&nbsp;&nbsp;&nbsp;
-                    <Link to={"/b"} style={{ textDecoration: "none" }}>회원가입</Link>
+                    <Topbar></Topbar>
                 </Top>
-                <Title><Out><Link to={"/MainPage"} style={{ textDecoration: "none" }}><Img src={temp}></Img></Link></Out></Title>
+                <Title><Out><Link to={"/"} style={{ textDecoration: "none" }}><Img src={title}></Img></Link></Out></Title>
                 <Searchs>
-                    <IFrame><InputBox></InputBox></IFrame>
+                    <IFrame>
+                        <Searching></Searching>
+                    </IFrame>
                 </Searchs>
                 <CFrame>
-                    <Contents></Contents>
+                    <Suggest></Suggest>
                 </CFrame>
             </Frame>
         )
@@ -30,14 +32,16 @@ const Frame = styled.div`
     height: 100vh;
     width: 100%;
     display: grid;
+    align-content: center;
     grid-template-rows: 5% 20% 7% 68%;
-    grid-template-areas: "Top" "Title" "Search" "content";
+    grid-template-areas: "Topb" "Title" "Search" "content";
 `
 
 const Top = styled.div`
+    // height: 95%;
+    grid-area: Topb;
     justify-items: center;
     text-align: right;
-    cursor : pointer;
     padding-top: .5rem;
     padding-right: 1rem;
     background-color: #ffde96; 
@@ -59,30 +63,15 @@ const Img = styled.img`
 
 const Searchs = styled.div`
     grid-area: "Search";
+    align-content: center;
 `
 
 const IFrame = styled.div`
     justify-content: center;
     text-align: center;
-    margin-top: .5rem;
+    padding-top: 1%;
+    height: 90%;
 `
-
-const InputBox = styled.input`
-    background: none;
-    width: 50%;
-    border-color: #ffde96;
-    border-style: solid;
-    border-radius: .5rem;
-    outline: none;
-    box-shadow: none;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    font-size: 0.875rem;
-    -ms-flex: 1 1;
-    flex: 1 1;
-    margin-left: 0.5rem;
-    color: inherit;
-`;
 
 const Out = styled.div`
     display: flex;

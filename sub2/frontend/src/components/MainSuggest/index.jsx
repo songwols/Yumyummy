@@ -1,26 +1,31 @@
 import React from "react";
 import styled from "styled-components";
 
-const Contents = () => {
+const Suggest = () => {
     return(
-        <Layout>
-            <Content>test</Content>
-        </Layout>
+        <SFrame>
+            <Content>
+                <CardLayout>
+                    추천추천<br></br>
+                </CardLayout>
+            </Content>
+        </SFrame>
     )
 }
 
-const Layout = styled.div`
-    width: 100vw;
+const SFrame = styled.div`
+    width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: 10% 80% 10%;
     grid-template-areas: ". content ."
 `
 const Content = styled.div`
     grid-area: content;
-    padding: 2%;
     display: grid;
+    align-content: center;
     grid-template-columns: repeat(auto-fit, 33%);
-    grid-template-rows: repeat(auto-fit, 1fr);
+    grid-template-rows: repeat(auto-fit, 50%);
 
     @media (max-width: 768px) {
         grid-template-columns: 100%;
@@ -32,8 +37,9 @@ const Content = styled.div`
         grid-template-rows: repeat(auto-fit, 1fr);
     }
 
-    
-
+`
+const CardLayout = styled.div`
+    border: 1.5px solid black;
 `
 
-export default Contents;
+export default Suggest;

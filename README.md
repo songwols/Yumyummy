@@ -22,3 +22,12 @@ cd sub2/frontend
 npm install
 npm run serve
 ```
+
+**AWS 주소**
+
+```sh
+Frontend 
+http://52.79.156.160/
+Backend
+http://52.79.156.160/api
+```

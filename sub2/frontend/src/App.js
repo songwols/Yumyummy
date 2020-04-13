@@ -6,6 +6,7 @@ import { createGlobalStyle } from "styled-components";
 import MainPage from "./pages/Mainpage";
 import Result from "./pages/Resultpage";
 import Detail from "./pages/Detailpage";
+import My from "./pages/Mypage";
 
 const App = () => {
   return(
@@ -14,6 +15,7 @@ const App = () => {
       <Switch>
         <Route path="/result" component={Result} />
         <Route path="/detail/:id" component={Detail} />
+        <Route path="/my" component={My} />
         <Route path="/" component={MainPage} />
       </Switch>
     </div>

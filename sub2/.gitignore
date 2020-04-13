@@ -435,4 +435,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+#static folder
+.static_root/
+
 # End of https://www.gitignore.io/api/django

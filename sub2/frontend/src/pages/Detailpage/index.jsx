@@ -59,4 +59,3 @@ const MFrame = styled.div`
 `
 
 export default Detail;
-  

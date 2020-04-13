@@ -31,7 +31,8 @@ const DetailContent = ({storeid, posts}) => {
                                     <DIV>전화번호 : {TEL}</DIV>
                                 </DIVL>
                                 <Graph>
-                                    
+                                    그래프
+                                    <div>d</div>
                                 </Graph>
                             </DInfo>
                             <Menu>
@@ -116,6 +117,8 @@ const DInfo = styled.div`
 
     @media (max-width: 768px) {
         display: block;
+        grid-template-rows: 50% 50%;
+        grid-template-areas: "divL" "graph";
         
     }
 `

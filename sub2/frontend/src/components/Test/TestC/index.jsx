@@ -1,13 +1,14 @@
 import React from "react";
 
 const TestC = ({post}) => {
-    const {STORE_ID, NAME, BRANCH} = post;
+    const {store_id, store_name, area, category} = post;
 
     return(
         <div>
-            storeid: {STORE_ID} <br></br>
-            name: {NAME}<br></br>
-            branch: {BRANCH}
+            storeid: {store_id} <br></br>
+            name: {store_name}<br></br>
+            area: {area}<br></br>
+            category: {category}
             <hr></hr>
         </div>
     )

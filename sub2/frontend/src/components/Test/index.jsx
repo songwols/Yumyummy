@@ -7,6 +7,7 @@ import { inject, observer } from "mobx-react";
 class Test extends React.Component{
     componentDidMount() {
         this.props.storeStore.loadPosts();
+        // console.log(this.props.storeStore.loadPosts)
     }
     
     state = {
@@ -27,7 +28,7 @@ class Test extends React.Component{
     render(){
         const { items } = this.state;
         const returns = this.props.storeStore.returnItems;
-
+        console.log(returns)
         return(
             <div>
                 { returns? (returns.map((item, index) => (

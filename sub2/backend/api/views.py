@@ -129,3 +129,17 @@ class UserIdViewSet(viewsets.ModelViewSet):
             models.User.objects.all().filter(user_id=id)
         )
         return queryset
+
+# menu로 store 검색하기
+
+# review 등록하기
+
+# review 삭제하기
+
+# review 수정하기
+
+# user 등록하기
+
+# user 삭제하기
+
+# user 수정하기

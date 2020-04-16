@@ -12,7 +12,7 @@ class SmallPagination(PageNumberPagination):
 
 # 검색하여 store 불러오기
 class StoreSearchViewSet(viewsets.ModelViewSet):
-    serializer_class = serializers.StoreSerializer
+    serializer_class = serializers.MenuSerializer
     pagination_class = SmallPagination
 
     def get_queryset(self):
@@ -21,28 +21,12 @@ class StoreSearchViewSet(viewsets.ModelViewSet):
         menu = self.request.query_params.get("menu", "")
         # score = self.request.query_params.get("score", "")
         # review = self.request.query_params.get("review", "")
-        # queryset = (
-        #     models.Store.objects.filter(store_name__contains=name,
-        #                                 address__contains=address, menu__contains=menu, score__contains=score).select_related('Menu').select_related('Review').order_by("store_id")
-        # )
-        menu_list = (
-            models.Menu.objects.all().filter(menu__contains=menu)
-        )
-        store_list = (
+        queryset = (
             models.Store.objects.all().filter(
                 store_name__contains=name, address__contains=address)
         )
-        query_set = []
-        for mlist in menu_list:
-            for slist in store_list:
-                if slist.store_id == mlist.store_id:
-                    print(slist)
-                    query_set.append(
-                        slist
-                    )
-                    break
 
-        return query_set
+        return queryset
 
 
 # 모든 store 불러오기

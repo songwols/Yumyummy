@@ -1,7 +1,6 @@
 from api import models, serializers
 from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination
-import pandas as pd
 
 
 # 10개씩 불러오도록 paging
@@ -175,15 +174,31 @@ class UserIdViewSet(viewsets.ModelViewSet):
         return queryset
 
 
-# review 등록하기
+# review 등록하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
+class PostReview(viewsets.ModelViewSet):
+    serializer_class = serializers.ReviewSerializer
 
 
-# review 삭제하기
+# review 삭제하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
+class DeleteReview():
+    serializer_class = serializers.ReviewSerializer
 
-# review 수정하기
 
-# user 등록하기
+# review 수정하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
+class UpdateReview():
+    serializer_class = serializers.ReviewSerializer
 
-# user 삭제하기
 
-# user 수정하기
+# user 등록하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
+class PostUser():
+    serializer_class = serializers.UserSerializer
+
+
+# user 삭제하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
+class DeleteUser():
+    serializer_class = serializers.UserSerializer
+
+
+# user 수정하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
+class UpdateUser():
+    serializer_class = serializers.UserSerializer

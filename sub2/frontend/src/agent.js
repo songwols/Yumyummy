@@ -15,8 +15,12 @@ const Data = {
     search: info => 
         requests.get(
             `/search_stores?store_name=${info.store_name}`
-        )
+        ),
     
+    detail: id => 
+        requests.get(
+            `/id_stores?store_id=${id}`
+        ),
 
 
 }

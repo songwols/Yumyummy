@@ -1,38 +1,37 @@
 import React from "react";
 import styled from "styled-components";
-import { inject, observer } from "mobx-react";
 import { withRouter } from "react-router-dom";
+import { inject, observer } from "mobx-react";
 
 @inject("storeStore")
 @withRouter
 @observer
-class CardFrame extends React.Component{
+class Card extends React.Component{
+    componentDidMount(){
+        // console.log(this.props.post)
+    }
+
     render(){
+        const { post } = this.props;
         const DetailBtn  = (e) => {
             e.preventDefault();
-            console.log("여긴 디테일 프레임")
-            // this.props.history.push("/detail");
+            this.props.storeStore.detail(post.store_id);
+            this.props.history.push("/detail/"+post.store_id);
         }
 
         return(
-            <B onClick={DetailBtn}></B>
+            <B onClick={DetailBtn}>
+            <Div>
+                <Title>{post.store_name}</Title>
+                <Address>주소 : {post.address}</Address>
+                <Time>영업시간 : 아직 </Time>
+                <Tel>전화번호 : {post.tel}</Tel>
+            </Div>
+            </B>
         )
     }
 }
 
-const Card = ({ post }) => {
-    const { store_id, store_name, address, tel } = post;
-    return(
-        <B>
-        <Div>
-            <Title>{store_name}</Title>
-            <Address>주소 : {address}</Address>
-            <Time>영업시간 : 아직 </Time>
-            <Tel>전화번호 : {tel}</Tel>
-        </Div>
-        </B>
-    )
-}
 
 const B = styled.button`
     background: none;

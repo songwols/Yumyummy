@@ -26,7 +26,6 @@ class Test extends React.Component{
     
     
     render(){
-        const { items } = this.state;
         const returns = this.props.storeStore.returnItems;
         console.log(returns)
         return(

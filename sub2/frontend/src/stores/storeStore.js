@@ -11,6 +11,7 @@ export default class StoreStore{
     @observable score: "3.0";
     @observable review: "0";
     @observable predicate = {};
+    @observable detailPost = undefined;
 
 
     @computed get posts() {
@@ -35,19 +36,32 @@ export default class StoreStore{
     @action 
     setStoreItems(storeItems) {
         this.storeItems = storeItems;
+        console.log(this.storeItems)
         this.getItems(0,2);
-        // console.log(this.storeItems[0].store_id)
     }
     
     @action 
     loadPosts(){
         return agent.Data.all()
         .then(res => {
-          this.setStoreItems(res.data.results)
+        this.setStoreItems(res.data.results)
         })
-        .catch(err => console.log(err));
-
+        .catch(err => console.log(err));   
     }
+
+    @action loadPost(id) {
+        console.log("로드포스트~~")
+        return agent.Data.get(id).then(
+          action(res => {
+              console.log("여기를 보시오")
+              console.log(res)
+            this.detailPost = res.data.results;
+            this.storeRegistry.set(this.detailPost.id, this.detailPost);
+            return this.detailPost;
+          })
+        );
+      }
+    
 
     @action setInfo(infos){
         this.store_name = infos.store_name;
@@ -65,6 +79,19 @@ export default class StoreStore{
 
         .catch(err => alert("검색 결과가 없습니다."));
     }
+
+    @action detail(id){
+        return agent.Data.detail(id)
+        .then(res => {
+            this.setStoreItems(res.data.results)
+          })
+    }
+
+    @action getPost(id) {
+        console.log(this.storeRegistry)
+        return this.storeRegistry.get(id);
+      }
+    
 
     @action
     getItems = (startIndex, count) => {

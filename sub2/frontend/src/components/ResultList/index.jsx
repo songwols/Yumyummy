@@ -11,7 +11,6 @@ class CardLayout extends React.Component{
       };
 
     componentDidMount() {
-        console.log("결과창")
         this.props.storeStore.loadPosts();
         // const { storeStore } = this.props;
         // console.log(this.props)
@@ -32,7 +31,6 @@ class CardLayout extends React.Component{
     };
 
     render(){
-        const { items } = this.state;
         const returns = this.props.storeStore.returnItems;
 
         return(

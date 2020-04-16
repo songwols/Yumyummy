@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import CheckList from "./check"
+// import CheckList from "./check"
 import { Link } from 'react-router-dom';
 
 class Searching extends React.Component{
@@ -23,12 +23,12 @@ class Searching extends React.Component{
                 <Link to="/result">
                     <SButton>검색</SButton>
                 </Link>
-                {this.state.showSearch ? 
+                {/* {this.state.showSearch ? 
                     <CheckList
                         cancelSearch={this.toggleSearch.bind(this)}
                     />
                     : null
-                }
+                } */}
             </div>
         )
     }

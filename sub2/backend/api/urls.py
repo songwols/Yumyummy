@@ -12,8 +12,11 @@ router.register(r"category_stores",
                 views.StoreCategoryViewSet, basename="category_stores")
 router.register(r"address_stores",
                 views.StoreAddressViewSet, basename="address_stores")
+router.register(r"all_menus", views.MenuAllViewSet, basename="all_menus")
 router.register(r"storeid_menus",
                 views.MenuStoreIdViewSet, basename="storeid_menus")
+router.register(r"menu_menus",
+                views.MenuMenuViewSet, basename="menu_menus")
 router.register(r"id_reviews", views.ReviewIdViewSet, basename="id_reviews")
 router.register(r"all_reviews", views.ReviewAllViewSet, basename="all_reviews")
 router.register(

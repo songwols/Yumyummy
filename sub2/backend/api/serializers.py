@@ -3,7 +3,6 @@ from .models import User
 from .models import Bhour
 from .models import Menu
 from .models import Review
-from .models import StoreMenuReview
 from rest_framework import serializers
 
 
@@ -83,15 +82,3 @@ class ReviewSerializer(serializers.ModelSerializer):
             "reg_time"
         ]
 
-
-class StoreMenuReviewSerializer(serializers.ModelSerializer):
-    storekey = StoreSerializer(read_only=True)
-
-    class Meta:
-        model = Menu  # , Review
-        fields = [
-            "menu_id",
-            "menu",
-            "price",
-            "storekey"
-        ]

@@ -84,12 +84,3 @@ class Review(models.Model):
     def __int__(self):
         return self.review_id
 
-
-class StoreMenuReview(models.Model):
-    menu_id = models.AutoField(primary_key=True)
-    storekey = models.CharField(max_length=1000, null=True)
-    menu = models.CharField(max_length=200, null=True)
-    price = models.FloatField(null=True, default=0)
-
-    def __int__(self):
-        return self.store

@@ -12,7 +12,7 @@ class SmallPagination(PageNumberPagination):
 
 # 검색하여 store 불러오기
 class StoreSearchViewSet(viewsets.ModelViewSet):
-    serializer_class = serializers.MenuSerializer
+    serializer_class = serializers.StoreSerializer
     pagination_class = SmallPagination
 
     def get_queryset(self):
@@ -25,7 +25,7 @@ class StoreSearchViewSet(viewsets.ModelViewSet):
             models.Store.objects.all().filter(
                 store_name__contains=name, address__contains=address)
         )
-
+        print(address)
         return queryset
 
 

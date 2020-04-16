@@ -11,32 +11,30 @@ export const Mapp = styled(Map)`
     }
 `
 
-const DetailContent = ({storeid, posts}) => {
-    const post = posts.get(storeid);
-    const { STORE_ID, NAME, ADDRESS, OPEN, CLOSE, TEL, HOLIDAY, LATITUDE, LONGITUDE, AREA } = post;
+@inject("storeStore")
+@observer
+class DetailContent extends React.Component{
+    componentDidMount(){
+        // console.log(this.state.posts)
+    }
+
+    render(){
+        const { posts } = this.props.storeStore.storeItems;
+        console.log("여기여기")
+        console.log(this.props.storeStore.storeItems.target.store_name)
+        // console.log(this.posts)
+        // console.log(this.state.posts.get(this.props.storeid))
+        // const post = this.state.posts.get(this.props.storeid);
+        // const { store_name, address, tel } = post;
+        // const post = this.props.posts.get(this.state.posts.storeid);
+        // console.log(this.state.posts.storeid)
     
     return(
-        <DCFrame>
-            <IRFrame>
-                <Info>
-                    <Title>{NAME}</Title>
-                    <Frame>
-                        <Mapp></Mapp>
-                        <RInfo>
-                            <DIV>주소 : {ADDRESS}</DIV>
-                            <DIV>영업시간 : {OPEN} - {CLOSE}</DIV>
-                            <DIV>휴무일 : {HOLIDAY}</DIV>
-                            <DIV>전화번호 : {TEL}</DIV>
-                            <DIV>메뉴</DIV>
-                        </RInfo>
-                    </Frame>
-                </Info>
-                <Review>리뷰</Review>
-            </IRFrame>
-        </DCFrame>
-    )
-    
+         <div></div>
+        )
+    }
 }
+
 
 const DCFrame = styled.div`
     grid-area: content;
@@ -81,7 +79,40 @@ const Frame = styled.div`
 `
 
 const RInfo = styled.div`
+    height: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: "detailinfo menu";
 
+    @media (max-width: 768px) {
+        grid-template-columns: none;
+        grid-template-rows: 50% 50%;
+        grid-template-areas: "detailinfo" "menu";
+    }
+`
+
+const DInfo = styled.div`
+    grid-area: detailinfo;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-areas: "divL" "graph";
+
+    @media (max-width: 768px) {
+        display: block;
+        grid-template-rows: 50% 50%;
+        grid-template-areas: "divL" "graph";
+        
+    }
+`
+const DIVL = styled.div`
+    grid-area: divL;
+`
+const Graph = styled.div`
+    grid-area: graph;
+`
+
+const Menu = styled.div`
+    grid-area: menu
 `
 
 const DIV = styled.div`
@@ -97,6 +128,4 @@ const Review = styled.div`
 `
 
 
-export default inject(({ testStore }) => ({
-    posts: testStore.sItems
-  }))(observer(DetailContent));
+export default DetailContent;

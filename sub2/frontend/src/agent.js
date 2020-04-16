@@ -11,6 +11,14 @@ const requests = {
 
 const Data = {
     all: () => requests.get("/all_stores"),
+
+    search: info => 
+        requests.get(
+            `/search_stores?store_name=${info.store_name}`
+        )
+    
+
+
 }
 
 export default {

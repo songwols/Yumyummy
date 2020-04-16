@@ -1,24 +1,47 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
+import { inject, observer } from "mobx-react";
+import { withRouter } from "react-router-dom";
 
-export const Links = styled(Link)`
-    color: black;
-`
+@inject("storeStore")
+@withRouter
+@observer
+class CardFrame extends React.Component{
+    render(){
+        const DetailBtn  = (e) => {
+            e.preventDefault();
+            console.log("여긴 디테일 프레임")
+            // this.props.history.push("/detail");
+        }
+
+        return(
+            <B onClick={DetailBtn}></B>
+        )
+    }
+}
 
 const Card = ({ post }) => {
-    const { STORE_ID, NAME, ADDRESS, OPEN, CLOSE, TEL, HOLIDAY, LATITUDE, LONGITUDE, AREA } = post;
+    const { store_id, store_name, address, tel } = post;
     return(
-        <Links to={"/detail/"+STORE_ID} style={{ textDecoration: "none"}}>
+        <B>
         <Div>
-            <Title>{NAME}</Title>
-            <Address>주소 : {ADDRESS}</Address>
-            <Time>영업시간 : {OPEN} - {CLOSE}</Time>
-            <Tel>전화번호 : {TEL}</Tel>
+            <Title>{store_name}</Title>
+            <Address>주소 : {address}</Address>
+            <Time>영업시간 : 아직 </Time>
+            <Tel>전화번호 : {tel}</Tel>
         </Div>
-        </Links>
+        </B>
     )
 }
+
+const B = styled.button`
+    background: none;
+    height: 100%;
+    border: none;
+    outline: none;
+    border-radius: .5rem;
+    cursor: pointer;
+`
 
 const Div = styled.div`
     width: 100%;

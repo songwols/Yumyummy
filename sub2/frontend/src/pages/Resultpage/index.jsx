@@ -4,6 +4,8 @@ import Top from "../../components/Top";
 import { Link } from 'react-router-dom';
 import CardLayout from "../../components/ResultList";
 import Map from "../../components/Map";
+import StarImag from '../../assets/images/Star.png';
+import ReviewImag from '../../assets/images/Review.png';
 import KoreanImag from '../../assets/images/Korean.png';
 import ChineseImag from '../../assets/images/Chinese.png';
 import JapaneseImag from '../../assets/images/Japanese.png';
@@ -19,8 +21,14 @@ class Result extends React.Component{
                     <Top></Top>
                     <Filter>
                         <GradeReview>
-                            <Grade>평점순</Grade>
-                            <Review>리뷰순</Review>
+                            <Grade>
+                                <img src={StarImag} width='70' height='60'/>
+                                평점순
+                            </Grade>
+                            <Review>
+                                <img src={ReviewImag} width='70' height='60'/>
+                                리뷰순
+                            </Review>
                         </GradeReview>
                         <Menus>
                             <Korean>
@@ -110,41 +118,44 @@ const Filter = styled.div`
 const GradeReview = styled.div`
     grid-area: GradeReview;
     display: grid;
-    padding-bottom: 10px;
-    padding-top: 20px;
+    /* padding-bottom: 10px; */
+    /* padding-top: 20px; */
     /* background: dodgerblue; */
     grid-template-columns: repeat(5, 1fr);
     grid-template-areas:
         ". Grade . Review ."
         ;
+    @media (max-width: 768px) {
+    padding-bottom: 20px;
+    }
 `
 const Grade = styled.div`
     grid-area: Grade;
 
     display: grid;
     border-radius: 45px;
-    background-color: #ffde96;
+    /* background-color: #ffde96; */
     cursor: pointer;
 
-    /* margin: 0 auto; */
+    margin: 0 auto;
     /* text-align: center; */
-    line-height: 35px;
-    width: 100px;
-    height: 35px;
+    /* line-height: 35px; */
+    /* width: 100px; */
+    /* height: 35px; */
 `
 const Review = styled.div`
     grid-area: Review;
 
     display: grid;
     border-radius: 45px;
-    background-color: #ffde96;
+    /* background-color: #ffde96; */
     cursor: pointer;
 
-    /* margin: 0 auto; */
+    margin: 0 auto;
     /* text-align: center; */
-    line-height: 35px;
-    width: 100px;
-    height: 35px;
+    /* line-height: 35px; */
+    /* width: 100px; */
+    /* height: 35px; */
 `
 const Menus = styled.div`
     grid-area: Menus;

@@ -4,6 +4,9 @@ import Top from "../../components/Top";
 import { Link } from 'react-router-dom';
 import CardLayout from "../../components/ResultList";
 import Map from "../../components/Map";
+import WesternImag from '../../assets/images/Western.png';
+import CafeImag from '../../assets/images/Cafe.png';
+import OtherImag from '../../assets/images/Other.png';
 
 class Result extends React.Component{
     render(){
@@ -11,13 +14,36 @@ class Result extends React.Component{
             <RFrame>
                 <TopLayer>
                     <Top></Top>
-                    <Categories>
+                    <Filter>
+                        <GradeReview>
+                            <Grade>평점순</Grade>
+                            <Review>리뷰순</Review>
+                        </GradeReview>
+                        <Menus>
+                            <Korean>한식</Korean>
+                            <Chinese>중식</Chinese>
+                            <Japanese>일식</Japanese>
+                            <Western>
+                                <img src={WesternImag} width='80' height='60'/>
+                                양식
+                            </Western>
+                            <Cafe>
+                                <img src={CafeImag} width='80' height='60'/>
+                                카페
+                            </Cafe>
+                            <Other>
+                                <img src={OtherImag} width='50' height='60'/>
+                                기타
+                            </Other>
+                        </Menus>
+                    </Filter>
+                    {/* <Categories>
                         <Link to="/result">한식</Link>&nbsp;
                         <Link to="/result">중식</Link>&nbsp;
                         <Link to="/result">일식</Link>&nbsp;
                         <Link to="/result">양식</Link>&nbsp;
                         <Link to="/result">카페</Link>&nbsp;
-                    </Categories>
+                    </Categories> */}
                 </TopLayer>
                 <LFrame>
                     <CardLayout></CardLayout>
@@ -33,8 +59,9 @@ class Result extends React.Component{
 const RFrame = styled.div`
     height: 100%;
     display: grid;
-    grid-template-rows: 200px;
-    grid-template-areas: "TopLayer" "Content"
+    /* grid-template-rows: 200px; */
+    grid-template-rows: 200px 100px;
+    grid-template-areas: "TopLayer" "Filter" "Content"
 `
 
 const TopLayer = styled.div`
@@ -42,16 +69,122 @@ const TopLayer = styled.div`
     grid-area: TopLayer;
     display: grid;
     grid-template-rows: 30% 40% 30%;
-    grid-template-areas: "Title" "Search" "Categories";
+    /* grid-template-areas: "Title" "Search" "Categories"; */
+    grid-template-areas: "Title" "Search" "Filter";
 `
 
-const Categories = styled.div`
+const Filter = styled.div`
+    grid-area: Filter;
+    display: grid;
+
+    justify-items: center;
+    text-align: center;
+    
+    /* grid-template-rows: 1fr 4fr 1fr; */
+    grid-template-columns: 1fr 2fr 4fr 1fr;
+    grid-template-areas:
+        ". GradeReview Menus ."
+        ;
+
+    @media (max-width: 768px) {
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+            ". GradeReview GradeReview ."
+            ". Menus Menus ."
+            ;
+    }   
+`
+
+const GradeReview = styled.div`
+    grid-area: GradeReview;
+    display: grid;
+    padding-bottom: 10px;
+    /* background: dodgerblue; */
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas:
+        ". Grade . Review ."
+        ;
+`
+const Grade = styled.div`
+    grid-area: Grade;
+
+    display: grid;
+    border-radius: 45px;
+    background-color: #ffde96;
+    cursor: pointer;
+
+    /* margin: 0 auto; */
+    /* text-align: center; */
+    line-height: 35px;
+    width: 100px;
+    height: 35px;
+`
+const Review = styled.div`
+    grid-area: Review;
+
+    display: grid;
+    border-radius: 45px;
+    background-color: #ffde96;
+    cursor: pointer;
+
+    /* margin: 0 auto; */
+    /* text-align: center; */
+    line-height: 35px;
+    width: 100px;
+    height: 35px;
+`
+const Menus = styled.div`
+    grid-area: Menus;
+    display: grid;
+
+    /* background: pink; */
+
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas:
+        "Korean Chinese Japanese Western Cafe Other"
+        ;
+`
+const Korean = styled.div`
+    grid-area: Korean;
+    display: grid;
+    cursor: pointer;
+`
+const Chinese = styled.div`
+    grid-area: Chinese;
+    display: grid;
+    cursor: pointer;
+`
+const Japanese = styled.div`
+    grid-area: Japanese;
+    display: grid;
+    cursor: pointer;
+`
+const Western = styled.div`
+    grid-area: Western;
+    display: grid;
+    cursor: pointer;
+`
+const Cafe = styled.div`
+    grid-area: Cafe;
+    display: grid;
+    cursor: pointer;
+    margin: 0 auto;
+`
+
+const Other = styled.div`
+    grid-area: Other;
+    display: grid;
+    cursor: pointer;
+    margin: 0 auto;
+`
+
+/* const Categories = styled.div`
     grid-area: Categories;
     padding-top: .5rem;
     justify-items: center;
     text-align: center;
     font-size: large;
-`
+` */
 const LFrame = styled.div`
     height: 100vh;
     grid-area: Content;

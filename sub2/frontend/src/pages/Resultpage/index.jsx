@@ -4,6 +4,9 @@ import Top from "../../components/Top";
 import { Link } from 'react-router-dom';
 import CardLayout from "../../components/ResultList";
 import Map from "../../components/Map";
+import KoreanImag from '../../assets/images/Korean.png';
+import ChineseImag from '../../assets/images/Chinese.png';
+import JapaneseImag from '../../assets/images/Japanese.png';
 import WesternImag from '../../assets/images/Western.png';
 import CafeImag from '../../assets/images/Cafe.png';
 import OtherImag from '../../assets/images/Other.png';
@@ -20,9 +23,18 @@ class Result extends React.Component{
                             <Review>리뷰순</Review>
                         </GradeReview>
                         <Menus>
-                            <Korean>한식</Korean>
-                            <Chinese>중식</Chinese>
-                            <Japanese>일식</Japanese>
+                            <Korean>
+                                <img src={KoreanImag} width='80' height='60'/>
+                                한식
+                            </Korean>
+                            <Chinese>
+                                <img src={ChineseImag} width='80' height='60'/>
+                                중식
+                            </Chinese>
+                            <Japanese>
+                                <img src={JapaneseImag} width='80' height='60'/>
+                                일식
+                            </Japanese>
                             <Western>
                                 <img src={WesternImag} width='80' height='60'/>
                                 양식
@@ -99,6 +111,7 @@ const GradeReview = styled.div`
     grid-area: GradeReview;
     display: grid;
     padding-bottom: 10px;
+    padding-top: 20px;
     /* background: dodgerblue; */
     grid-template-columns: repeat(5, 1fr);
     grid-template-areas:
@@ -148,21 +161,25 @@ const Korean = styled.div`
     grid-area: Korean;
     display: grid;
     cursor: pointer;
+    margin: 0 auto;
 `
 const Chinese = styled.div`
     grid-area: Chinese;
     display: grid;
     cursor: pointer;
+    margin: 0 auto;
 `
 const Japanese = styled.div`
     grid-area: Japanese;
     display: grid;
     cursor: pointer;
+    margin: 0 auto;
 `
 const Western = styled.div`
     grid-area: Western;
     display: grid;
     cursor: pointer;
+    margin: 0 auto;
 `
 const Cafe = styled.div`
     grid-area: Cafe;

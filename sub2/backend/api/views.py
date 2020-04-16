@@ -26,13 +26,13 @@ class StoreSearchViewSet(viewsets.ModelViewSet):
         #     models.Store.objects.filter(store_name__contains=name,
         #                                 address__contains=address, menu__contains=menu, score__contains=score).select_related('Menu').select_related('Review').order_by("store_id")
         # )
-        menu_list = [
+        menu_list = (
             models.Menu.objects.all().filter(menu__contains=menu)
-        ]
-        store_list = [
+        )
+        store_list = (
             models.Store.objects.all().filter(
                 store_name__contains=name, address__contains=address)
-        ]
+        )
         query_set = []
         for mlist in menu_list:
             for slist in store_list:

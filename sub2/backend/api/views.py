@@ -10,16 +10,22 @@ class SmallPagination(PageNumberPagination):
     max_page_size = 50
 
 
-# 이름으로 검색하여 store 불러오기
+# 검색하여 store 불러오기
 class StoreSearchViewSet(viewsets.ModelViewSet):
-    serializer_class = serializers.StoreSerializer
+    serializer_class = serializers.MenuSerializer
     pagination_class = SmallPagination
 
     def get_queryset(self):
         name = self.request.query_params.get("store_name", "")
+        address = self.request.query_params.get("address", "")
+        menu = self.request.query_params.get("menu", "")
+        # score = self.request.query_params.get("score", "")
+        # review = self.request.query_params.get("review", "")
         queryset = (
-            models.Store.objects.all().filter(store_name__contains=name).order_by("store_id")
+            models.Store.objects.all().filter(
+                store_name__contains=name, address__contains=address)
         )
+
         return queryset
 
 
@@ -74,7 +80,17 @@ class StoreAddressViewSet(viewsets.ModelViewSet):
         )
         return queryset
 
-# menu로 store 검색하기
+
+# 모든 menu 불러오기
+class MenuAllViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.MenuSerializer
+    pagination_class = SmallPagination
+
+    def get_queryset(self):
+        queryset = (
+            models.Menu.objects.all()
+        )
+        return queryset
 
 
 # store_id로 menu 불러오기
@@ -89,9 +105,21 @@ class MenuStoreIdViewSet(viewsets.ModelViewSet):
         )
         return queryset
 
+
+# menu 이름으로 menu 불러오기
+class MenuMenuViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.MenuSerializer
+    pagination_class = SmallPagination
+
+    def get_queryset(self):
+        menu = self.request.query_params.get("menu", "")
+        queryset = (
+            models.Menu.objects.all().filter(menu=menu)
+        )
+        return queryset
+
+
 # 모든 review 불러오기
-
-
 class ReviewAllViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ReviewSerializer
     pagination_class = SmallPagination
@@ -102,9 +130,8 @@ class ReviewAllViewSet(viewsets.ModelViewSet):
         )
         return queryset
 
+
 # store_id로 review 불러오기
-
-
 class ReviewIdViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ReviewSerializer
     pagination_class = SmallPagination
@@ -117,9 +144,8 @@ class ReviewIdViewSet(viewsets.ModelViewSet):
         )
         return queryset
 
+
 # user_id로 user 불러오기
-
-
 class UserIdViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.UserSerializer
     pagination_class = SmallPagination
@@ -130,3 +156,33 @@ class UserIdViewSet(viewsets.ModelViewSet):
             models.User.objects.all().filter(user_id=id)
         )
         return queryset
+
+
+# review 등록하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
+class PostReview(viewsets.ModelViewSet):
+    serializer_class = serializers.ReviewSerializer
+
+
+# review 삭제하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
+class DeleteReview():
+    serializer_class = serializers.ReviewSerializer
+
+
+# review 수정하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
+class UpdateReview():
+    serializer_class = serializers.ReviewSerializer
+
+
+# user 등록하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
+class PostUser():
+    serializer_class = serializers.UserSerializer
+
+
+# user 삭제하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
+class DeleteUser():
+    serializer_class = serializers.UserSerializer
+
+
+# user 수정하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
+class UpdateUser():
+    serializer_class = serializers.UserSerializer

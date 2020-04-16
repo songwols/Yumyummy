@@ -62,7 +62,6 @@ class Command(BaseCommand):
         menus = dataframes["menus"]
         menus_bulk = [
             models.Menu(
-                store_id=menu.store,
                 menu=menu.menu_name,
                 price=menu.price
             )

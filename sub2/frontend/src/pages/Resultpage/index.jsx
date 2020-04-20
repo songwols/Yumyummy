@@ -6,12 +6,6 @@ import CardLayout from "../../components/ResultList";
 import Map from "../../components/Map";
 import StarImag from '../../assets/images/Star.png';
 import ReviewImag from '../../assets/images/Review.png';
-import KoreanImag from '../../assets/images/Korean.png';
-import ChineseImag from '../../assets/images/Chinese.png';
-import JapaneseImag from '../../assets/images/Japanese.png';
-import WesternImag from '../../assets/images/Western.png';
-import CafeImag from '../../assets/images/Cafe.png';
-import OtherImag from '../../assets/images/Other.png';
 
 class Result extends React.Component{
     render(){
@@ -30,32 +24,6 @@ class Result extends React.Component{
                                 리뷰순
                             </Review>
                         </GradeReview>
-                        <Menus>
-                            <Korean>
-                                <img src={KoreanImag} width='80' height='60'/>
-                                한식
-                            </Korean>
-                            <Chinese>
-                                <img src={ChineseImag} width='80' height='60'/>
-                                중식
-                            </Chinese>
-                            <Japanese>
-                                <img src={JapaneseImag} width='80' height='60'/>
-                                일식
-                            </Japanese>
-                            <Western>
-                                <img src={WesternImag} width='80' height='60'/>
-                                양식
-                            </Western>
-                            <Cafe>
-                                <img src={CafeImag} width='80' height='60'/>
-                                카페
-                            </Cafe>
-                            <Other>
-                                <img src={OtherImag} width='50' height='60'/>
-                                기타
-                            </Other>
-                        </Menus>
                     </Filter>
                     {/* <Categories>
                         <Link to="/result">한식</Link>&nbsp;
@@ -100,17 +68,15 @@ const Filter = styled.div`
     justify-items: center;
     text-align: center;
     
-    /* grid-template-rows: 1fr 4fr 1fr; */
-    grid-template-columns: 1fr 2fr 4fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
     grid-template-areas:
-        ". GradeReview Menus ."
+        ". GradeReview ."
         ;
 
     @media (max-width: 768px) {
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 1fr;
         grid-template-areas:
-            ". GradeReview GradeReview ."
-            ". Menus Menus ."
+            ". GradeReview ."
             ;
     }   
 `
@@ -118,15 +84,13 @@ const Filter = styled.div`
 const GradeReview = styled.div`
     grid-area: GradeReview;
     display: grid;
-    /* padding-bottom: 10px; */
-    /* padding-top: 20px; */
-    /* background: dodgerblue; */
     grid-template-columns: repeat(5, 1fr);
     grid-template-areas:
         ". Grade . Review ."
         ;
     @media (max-width: 768px) {
     padding-bottom: 20px;
+    margin-left: -20px;
     }
 `
 const Grade = styled.div`
@@ -134,85 +98,28 @@ const Grade = styled.div`
 
     display: grid;
     border-radius: 45px;
-    /* background-color: #ffde96; */
     cursor: pointer;
 
     margin: 0 auto;
-    /* text-align: center; */
-    /* line-height: 35px; */
-    /* width: 100px; */
-    /* height: 35px; */
 `
 const Review = styled.div`
     grid-area: Review;
 
     display: grid;
     border-radius: 45px;
-    /* background-color: #ffde96; */
     cursor: pointer;
 
     margin: 0 auto;
-    /* text-align: center; */
-    /* line-height: 35px; */
-    /* width: 100px; */
-    /* height: 35px; */
 `
 const Menus = styled.div`
     grid-area: Menus;
     display: grid;
-
-    /* background: pink; */
-
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas:
         "Korean Chinese Japanese Western Cafe Other"
         ;
 `
-const Korean = styled.div`
-    grid-area: Korean;
-    display: grid;
-    cursor: pointer;
-    margin: 0 auto;
-`
-const Chinese = styled.div`
-    grid-area: Chinese;
-    display: grid;
-    cursor: pointer;
-    margin: 0 auto;
-`
-const Japanese = styled.div`
-    grid-area: Japanese;
-    display: grid;
-    cursor: pointer;
-    margin: 0 auto;
-`
-const Western = styled.div`
-    grid-area: Western;
-    display: grid;
-    cursor: pointer;
-    margin: 0 auto;
-`
-const Cafe = styled.div`
-    grid-area: Cafe;
-    display: grid;
-    cursor: pointer;
-    margin: 0 auto;
-`
 
-const Other = styled.div`
-    grid-area: Other;
-    display: grid;
-    cursor: pointer;
-    margin: 0 auto;
-`
-
-/* const Categories = styled.div`
-    grid-area: Categories;
-    padding-top: .5rem;
-    justify-items: center;
-    text-align: center;
-    font-size: large;
-` */
 const LFrame = styled.div`
     height: 100vh;
     grid-area: Content;

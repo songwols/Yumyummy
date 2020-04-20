@@ -4,6 +4,8 @@ import Top from "../../components/Top";
 import { Link } from 'react-router-dom';
 import CardLayout from "../../components/ResultList";
 import Map from "../../components/Map";
+import StarImag from '../../assets/images/Star.png';
+import ReviewImag from '../../assets/images/Review.png';
 
 class Result extends React.Component{
     render(){
@@ -11,13 +13,25 @@ class Result extends React.Component{
             <RFrame>
                 <TopLayer>
                     <Top></Top>
-                    <Categories>
+                    <Filter>
+                        <GradeReview>
+                            <Grade>
+                                <img src={StarImag} width='70' height='60'/>
+                                평점순
+                            </Grade>
+                            <Review>
+                                <img src={ReviewImag} width='70' height='60'/>
+                                리뷰순
+                            </Review>
+                        </GradeReview>
+                    </Filter>
+                    {/* <Categories>
                         <Link to="/result">한식</Link>&nbsp;
                         <Link to="/result">중식</Link>&nbsp;
                         <Link to="/result">일식</Link>&nbsp;
                         <Link to="/result">양식</Link>&nbsp;
                         <Link to="/result">카페</Link>&nbsp;
-                    </Categories>
+                    </Categories> */}
                 </TopLayer>
                 <LFrame>
                     <CardLayout></CardLayout>
@@ -33,8 +47,9 @@ class Result extends React.Component{
 const RFrame = styled.div`
     height: 100%;
     display: grid;
-    grid-template-rows: 200px;
-    grid-template-areas: "TopLayer" "Content"
+    /* grid-template-rows: 200px; */
+    grid-template-rows: 200px 100px;
+    grid-template-areas: "TopLayer" "Filter" "Content"
 `
 
 const TopLayer = styled.div`
@@ -42,16 +57,69 @@ const TopLayer = styled.div`
     grid-area: TopLayer;
     display: grid;
     grid-template-rows: 30% 40% 30%;
-    grid-template-areas: "Title" "Search" "Categories";
+    /* grid-template-areas: "Title" "Search" "Categories"; */
+    grid-template-areas: "Title" "Search" "Filter";
 `
 
-const Categories = styled.div`
-    grid-area: Categories;
-    padding-top: .5rem;
+const Filter = styled.div`
+    grid-area: Filter;
+    display: grid;
+
     justify-items: center;
     text-align: center;
-    font-size: large;
+    
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-areas:
+        ". GradeReview ."
+        ;
+
+    @media (max-width: 768px) {
+        grid-template-rows: 1fr;
+        grid-template-areas:
+            ". GradeReview ."
+            ;
+    }   
 `
+
+const GradeReview = styled.div`
+    grid-area: GradeReview;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas:
+        ". Grade . Review ."
+        ;
+    @media (max-width: 768px) {
+    padding-bottom: 20px;
+    margin-left: -20px;
+    }
+`
+const Grade = styled.div`
+    grid-area: Grade;
+
+    display: grid;
+    border-radius: 45px;
+    cursor: pointer;
+
+    margin: 0 auto;
+`
+const Review = styled.div`
+    grid-area: Review;
+
+    display: grid;
+    border-radius: 45px;
+    cursor: pointer;
+
+    margin: 0 auto;
+`
+const Menus = styled.div`
+    grid-area: Menus;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas:
+        "Korean Chinese Japanese Western Cafe Other"
+        ;
+`
+
 const LFrame = styled.div`
     height: 100vh;
     grid-area: Content;

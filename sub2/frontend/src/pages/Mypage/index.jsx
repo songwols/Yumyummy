@@ -122,13 +122,13 @@ const ProfileEdit = styled.div`
     width: 120px;
     height: 35px;
     background-color: #fff;
-    // border: none;
+    /* border: none; */
     border-radius: 45px;
     background-color: #ffde96;
-    // box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    // transition: all 0.3s ease 0s;
+    /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */
+    /* transition: all 0.3s ease 0s; */
     cursor: pointer;
-    // outline: none;
+    /* outline: none; */
     
     margin-top: 85px;
 `

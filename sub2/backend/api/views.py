@@ -25,7 +25,8 @@ class StoreSearchViewSet(viewsets.ModelViewSet):
             models.Store.objects.all().filter(
                 store_name__contains=name, address__contains=address)
         )
-        print(address)
+        print(name + " " + address)
+        print(queryset)
         return queryset
 
 
@@ -36,7 +37,7 @@ class StoreAllViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = (
-            models.Store.objects.all()
+            models.Store.objects.all().order_by("store_id")
         )
         return queryset
 

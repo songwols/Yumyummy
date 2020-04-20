@@ -29,7 +29,6 @@ class Command(BaseCommand):
         models.Store.objects.all().delete()
         models.User.objects.all().delete()
         models.Menu.objects.all().delete()
-        # models.Category.objects.all().delete()
         models.Bhour.objects.all().delete()
         models.Review.objects.all().delete()
         stores = dataframes["stores"]
@@ -62,6 +61,7 @@ class Command(BaseCommand):
         menus = dataframes["menus"]
         menus_bulk = [
             models.Menu(
+                store_id=menu.store,
                 menu=menu.menu_name,
                 price=menu.price
             )

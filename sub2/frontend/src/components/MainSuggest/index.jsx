@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { inject, observer } from "mobx-react";
-import CardL from "./"
+import CardL from "./Card"
 
 @inject("suggestStore")
 @observer
@@ -11,9 +11,9 @@ class Suggest extends React.Component {
         
     }
 
-    componentWillMount() {
+    componentDidMount() {
         const { suggestStore } = this.props;
-        suggestStore.getItems(0, 6);
+        suggestStore.getItems(0, 3);
         this.setState({
             items: suggestStore.returnItems
         });
@@ -43,13 +43,15 @@ class Suggest extends React.Component {
 
     render(){
         const {items} = this.state;
-        console.log(items)
 
         return(
             <SFrame>
                 <Down onClick={this.handleChangeIndexDown}></Down>
                 <Content>
-                
+                {items.map((item, index) => (
+                    <CardL key={index} post={item} />
+                ))}
+
                 </Content>
                 <Up onClick={this.handleChangeIndexUp}></Up>
             </SFrame>

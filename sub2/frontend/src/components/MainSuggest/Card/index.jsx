@@ -64,7 +64,7 @@ const Title = styled.div`
 const T = styled.div`
     position: absolute;
     margin-top: 40%;
-    margin-left: 7%;
+    margin-left: 20%;
     z-index: 10;
 `
 export default CardL;

@@ -84,7 +84,7 @@ export default class StoreStore {
       localStorage.setItem("address", val.address);
       localStorage.setItem("tel", val.tel);
       localStorage.setItem("latitude", val.latitude);
-      localStorage.setItem("longtitude", val.longtitude);
+      localStorage.setItem("longitude", val.longitude);
       localStorage.setItem("category", val.category);
       this.setStoreItems(res.data.results);
     });

@@ -21,7 +21,6 @@ class Suggest extends React.Component {
     }
 
     handleChangeIndexUp = () =>{
-        console.log("up")
         const { start, end} = this.state;
         if(start ===3) return;
         this.setState({
@@ -35,7 +34,6 @@ class Suggest extends React.Component {
     }
 
     handleChangeIndexDown = () => {
-        console.log("down")
         const { start, end} = this.state;
         if(start ===0) return;
         this.setState({

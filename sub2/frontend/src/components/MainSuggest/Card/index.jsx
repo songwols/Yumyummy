@@ -1,15 +1,56 @@
 import React from "react";
 import styled from "styled-components";
+import { inject, observer } from "mobx-react";
+import { withRouter } from "react-router-dom";
 
+@inject("storeStore")
+@withRouter
+@observer
 class CardL extends React.Component{
+    constructor() {
+        super();
+        this.state = {
+            info : [
+                {
+                    address : "",
+                    menu: "",
+                    score: "3.0",
+                    review: "0",
+                }
+            ]
+        };
+      }
+
     render(){
         const { post } = this.props;
+
+        const saveBtn  = (e) => {
+            e.preventDefault();
+            this.setState({
+                info : {
+                    address : post.address,
+                    menu: post.menu,
+                    score: "3.0",
+                    review: "0",
+                }
+            })
+        }
+
+        const SearchBtn  = (e) => {
+            e.preventDefault();
+            this.props.storeStore.setInfo(this.state.info);
+            this.props.storeStore.search(this.state.info);
+            this.props.history.push("/result");
+        }
+
         return(
             <CardLayout>
-                <CardImg src={post.img}/>
-                <Title className="title">
-                    <T>{post.Title}</T>
-                </Title>
+                <BLayout onClick={SearchBtn} onMouseOver={saveBtn}>
+                    <CardImg src={post.img}/>
+                    <Title className="title">
+                        <T>{post.Title}</T>
+                    </Title>
+                </BLayout>
             </CardLayout>
         )
     }
@@ -34,8 +75,10 @@ const CardLayout = styled.div`
         opacity: 0.5;
         z-index: 1;
     }
+`
 
-
+const BLayout = styled.button`
+    cursor: pointer;
 `
 
 const CardImg = styled.img`

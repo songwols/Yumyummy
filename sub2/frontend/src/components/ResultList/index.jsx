@@ -12,13 +12,6 @@ class CardLayout extends React.Component{
 
     componentDidMount() {
         this.props.storeStore.loadPosts();
-        // const { storeStore } = this.props;
-        // console.log(this.props)
-        // storeStore.getItems(0,4);
-        // this.setState({
-        //     items: storeStore.returnItems
-        // });
-        // console.log(this.items)
     }
 
     fetchMoreData = () => {

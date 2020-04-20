@@ -1,6 +1,5 @@
 from .models import Store
 from .models import User
-# from .models import Category
 from .models import Bhour
 from .models import Menu
 from .models import Review
@@ -38,15 +37,6 @@ class UserSerializer(serializers.ModelSerializer):
         ]
 
 
-# class CategorySerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Category
-#         fields = [
-#             "category_id",
-#             "store_id",
-#             "category"
-#         ]
-
 class BhourSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bhour
@@ -68,11 +58,13 @@ class BhourSerializer(serializers.ModelSerializer):
 
 
 class MenuSerializer(serializers.ModelSerializer):
+    store = StoreSerializer(read_only=True)
+
     class Meta:
         model = Menu
         fields = [
             "menu_id",
-            "store_id",
+            "store",
             "menu",
             "price"
         ]
@@ -89,3 +81,4 @@ class ReviewSerializer(serializers.ModelSerializer):
             "content",
             "reg_time"
         ]
+

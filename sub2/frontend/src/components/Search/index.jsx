@@ -99,7 +99,7 @@ const IBO = styled.div`
 
 const InputBox = styled.input`
     background: none;
-    height: 50%;
+    height: 70%;
     width: 25%;
     border-color: #ffde96;
     border-style: solid;
@@ -122,7 +122,7 @@ const InputBox = styled.input`
 const SButton = styled.button`
     background: #ffde96;
     font-size: medium;
-    height: 100%;
+    height: 70%;
     border: 2px solid #ffde96;
     outline: none;
     border-radius: .5rem;

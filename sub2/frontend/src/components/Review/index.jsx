@@ -109,11 +109,12 @@ const ReviewWrite = styled.div`
         border: 1.5px solid #ffde96;
         border-radius: 7px;
         flex-grow: 1;
+        outline: none;
     }
 `;
 const ReviewText = styled.div`
     display: grid;
-    grid-area: ReviewText;
+    grid-area: ReviewText;zz
 `;
 const ReviewSend = styled.div`
     display: grid;

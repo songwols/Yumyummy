@@ -114,7 +114,7 @@ const ReviewWrite = styled.div`
 `;
 const ReviewText = styled.div`
     display: grid;
-    grid-area: ReviewText;zz
+    grid-area: ReviewText;
 `;
 const ReviewSend = styled.div`
     display: grid;

@@ -2,6 +2,7 @@ import React from "react";
 import { inject, observer } from "mobx-react";
 import styled from "styled-components";
 import Map from "../../components/Map";
+import ReviewCon from "../../components/Review"
 
 export const Mapp = styled(Map)`
     display: none !important;
@@ -31,7 +32,9 @@ const DetailContent = ({storeid, posts}) => {
                         </RInfo>
                     </Frame>
                 </Info>
-                <Review>리뷰</Review>
+                <Review>
+                    <ReviewCon></ReviewCon>
+                </Review>
             </IRFrame>
         </DCFrame>
     )

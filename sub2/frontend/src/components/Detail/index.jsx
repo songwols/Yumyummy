@@ -11,30 +11,47 @@ export const Mapp = styled(Map)`
     }
 `
 
-@inject("storeStore")
-@observer
 class DetailContent extends React.Component{
-    componentDidMount(){
-        // console.log(this.state.posts)
-    }
-
     render(){
-        const { posts } = this.props.storeStore.storeItems;
-        console.log("여기여기")
-        console.log(this.props.storeStore.storeItems.target.store_name)
-        // console.log(this.posts)
-        // console.log(this.state.posts.get(this.props.storeid))
-        // const post = this.state.posts.get(this.props.storeid);
-        // const { store_name, address, tel } = post;
-        // const post = this.props.posts.get(this.state.posts.storeid);
-        // console.log(this.state.posts.storeid)
-    
-    return(
-         <div></div>
+        return(
+        <DCFrame>
+        <IRFrame>
+            <Info>
+                <Title>{localStorage.getItem("store_name")}</Title>
+                <Frame>
+                    <Mapp></Mapp>
+                    <RInfo>
+                        <DInfo>
+                            <DIVL>
+                                <DIV>주소 : {localStorage.getItem("address")}</DIV>
+                                <DIV>영업시간 : 몰라</DIV>
+                                <DIV>휴무일 : 미정</DIV>
+                                <DIV>전화번호 : {localStorage.getItem("tel")}</DIV>
+                            </DIVL>
+                            <Graph>
+                                
+                                그래프
+                                <div>d</div>
+                            </Graph>
+                        </DInfo>
+                        <Menu>
+                            <DIV>메뉴</DIV>
+                            <div>1</div>
+                            <div>1</div>
+                            <div>1</div>
+                            <div>1</div>
+                            <div>1</div>
+                        </Menu>
+                        
+                    </RInfo>
+                </Frame>
+            </Info>
+            <Review>리뷰</Review>
+        </IRFrame>
+    </DCFrame>
         )
     }
 }
-
 
 const DCFrame = styled.div`
     grid-area: content;
@@ -128,4 +145,8 @@ const Review = styled.div`
 `
 
 
-export default DetailContent;
+export default inject(({ storeStore }) => ({
+    posts: storeStore.storeItems,
+    test: storeStore,
+  }))(observer(DetailContent));
+  

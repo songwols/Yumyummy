@@ -34,7 +34,6 @@ export default class StoreStore {
   @action
   setStoreItems(storeItems) {
     this.storeItems = storeItems;
-    console.log(this.storeItems);
     this.getItems(0, 2);
   }
 
@@ -80,6 +79,13 @@ export default class StoreStore {
 
   @action detail(id) {
     return agent.Data.detail(id).then((res) => {
+      const val = res.data.results[0];
+      localStorage.setItem("store_name", val.store_name);
+      localStorage.setItem("address", val.address);
+      localStorage.setItem("tel", val.tel);
+      localStorage.setItem("latitude", val.latitude);
+      localStorage.setItem("longtitude", val.longtitude);
+      localStorage.setItem("category", val.category);
       this.setStoreItems(res.data.results);
     });
   }

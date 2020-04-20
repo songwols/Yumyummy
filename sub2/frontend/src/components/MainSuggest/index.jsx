@@ -8,14 +8,12 @@ import CardL from "./"
 class Suggest extends React.Component {
     state={
         items: [],
-        page:1,
-        start:0,
-        end: 3
+        
     }
 
     componentWillMount() {
         const { suggestStore } = this.props;
-        suggestStore.getItems(0, 3);
+        suggestStore.getItems(0, 6);
         this.setState({
             items: suggestStore.returnItems
         });
@@ -44,7 +42,8 @@ class Suggest extends React.Component {
     }
 
     render(){
-        const { items } = this.state;
+        const {items} = this.state;
+        console.log(items)
 
         return(
             <SFrame>

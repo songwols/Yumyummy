@@ -2,11 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const CardL = ({post}) => {
-    const {title, address, menu} = post;
 
     return(
         <CardLayout>
-            {title}
+            
         </CardLayout>
     )
 }

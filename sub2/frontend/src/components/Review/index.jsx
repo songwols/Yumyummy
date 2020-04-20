@@ -1,22 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 import psa from '../../assets/images/psa.png';
+import Button from '../../assets/images/Button.png';
 
 const ReviewCon = () => {
     return(
         <RFrame>
             <Content>
-                <ReviewWrite>
+                <ReviewWriteBox>
                     <ReviewStar>
                         평점 주기
                     </ReviewStar>
-                    <ReviewText>
-                        리뷰 작성하기
-                    </ReviewText>
-                    <ReviewSend>
-                        작성 버튼
-                    </ReviewSend>
-                </ReviewWrite>
+                    <ReviewWrite>
+                        <ReviewText>
+                            <textarea className="ReviewTextInput" placeholder="리뷰 쓰기"></textarea>
+                        </ReviewText>
+                        <ReviewSend>
+                            <img className="SendButton" src={Button} width='50' height='40'/>
+                        </ReviewSend>
+                    </ReviewWrite>
+                </ReviewWriteBox>
                 <ReviewHeader>
                     <ReviewNum>
                         리뷰(3)
@@ -69,47 +72,74 @@ const Content = styled.div`
     grid-area: Content;
     grid-template-rows: 2fr 1fr 5fr;
     grid-template-areas: 
-        "ReviewWrite"
+        "ReviewWriteBox"
         "ReviewHeader"
         "ReviewList"
         ;
 `;
 
-const ReviewWrite = styled.div`
-    background: dodgerblue;
+const ReviewWriteBox = styled.div`
+    /* background: dodgerblue; */
     display: grid;
-    grid-area: ReviewWrite;
-    grid-template-rows: 1fr 2fr 1fr;
+    grid-area: ReviewWriteBox;
+    grid-template-rows: 1fr 2fr;
     grid-template-areas:
         "ReviewStar"
-        "ReviewText"
-        "ReviewSend"
+        "ReviewWrite"
+        /* "ReviewSend" */
         ;
 `;
 const ReviewStar = styled.div`
     display: grid;
     grid-area: ReviewStar;
-    background: red;
+    /* background: red; */
+`;
+const ReviewWrite = styled.div`
+    display: grid;
+    grid-area: ReviewWrite;
+    /* background: black; */
+    grid-template-columns: 9fr 1fr;
+    grid-template-areas:
+        "ReviewText ReviewSend"
+        ;
+    .ReviewTextInput {
+        font-size: 1.2rem;
+        height: 55px;
+        width: 100%;
+        border: 1.5px solid #ffde96;
+        border-radius: 7px;
+        flex-grow: 1;
+    }
 `;
 const ReviewText = styled.div`
     display: grid;
     grid-area: ReviewText;
-    background: black;
 `;
 const ReviewSend = styled.div`
     display: grid;
     grid-area: ReviewSend;
+    cursor: pointer;
+    margin: 0 auto;
+
+    .SendButton {
+        margin: 0 auto;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
 `;
 
 const ReviewHeader = styled.div`
     display: grid;
     grid-area: ReviewHeader;
-    background: pink;
+    /* background: pink; */
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-areas: 
         "ReviewNum ReviewFilter"
         ;
+    align-items: center;
+    padding-left: 8%;
+    border-bottom: 0.5px solid #ffde96;
 `;
 const ReviewNum = styled.div`
     display: grid;
@@ -139,10 +169,11 @@ const ReviewList = styled.div`
     grid-template-areas:
         "ReviewItem"
         ;
+    margin-top: 3%;
 `;
 const ReviewItem = styled.div`
     display: grid;
-    background: orange;
+    /* background: orange; */
     grid-area: ReviewItem;
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-areas: 

@@ -58,13 +58,11 @@ class BhourSerializer(serializers.ModelSerializer):
 
 
 class MenuSerializer(serializers.ModelSerializer):
-    store = StoreSerializer(read_only=True)
-
     class Meta:
         model = Menu
         fields = [
             "menu_id",
-            "store",
+            "store_id",
             "menu",
             "price"
         ]
@@ -81,4 +79,7 @@ class ReviewSerializer(serializers.ModelSerializer):
             "content",
             "reg_time"
         ]
+<<<<<<< HEAD
 
+=======
+>>>>>>> backend

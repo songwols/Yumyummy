@@ -156,16 +156,40 @@ class UserIdViewSet(viewsets.ModelViewSet):
         return queryset
 
 
-# review 등록하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
-class PostReview(viewsets.ModelViewSet):
-    serializer_class = serializers.ReviewSerializer
+# # review 등록하기
+# class PostReview(viewsets.ModelViewSet):
+#     serializer_class = serializers.ReviewSerializer
+
+#     def perform_create(self, serializer):
+#         store_id = self.request.query_params.get("store_id", "")
+#         user_id = self.request.query_params.get("user_id", "")
+#         total_score = self.request.query_params.get("score", "")
+#         content = self.request.query_params.get("content", "")
+#         print("여기여기!!!!!!!!!!!!!!!!!!!!!!")
+#         print(store_id + " " + user_id)
+#         models.Review.objects.create(
+#             store_id=store_id, user_id=user_id, total_score=total_score, content=content)
 
 
-# review 삭제하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
-class DeleteReview():
-    serializer_class = serializers.ReviewSerializer
+# # review 삭제하기
+# class DeleteReview():
+#     serializer_class = serializers.ReviewSerializer
+
+#     def delete(self):
+#         review_id = self.request.query_params.get("review_id", "")
+#         review = models.Review.objects.get(review_id=review_id)
+#         review.delete()
 
 
-# review 수정하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
-class UpdateReview():
-    serializer_class = serializers.ReviewSerializer
+# # review 수정하기
+# class UpdateReview(viewsets.ModelViewSet):
+#     serializer_class = serializers.ReviewSerializer
+
+#     def permform_update(self, request, *args, **kwargs):
+#         review_id = self.request.query_params.get("review_id", "")
+#         total_score = self.request.query_params.get("total_score", "")
+#         content = self.request.query_params.get("content", "")
+#         review = models.Review.objects.get(review_id=review_id)
+#         review.total_score = total_score
+#         review.content = content
+#         review.save()

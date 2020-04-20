@@ -153,3 +153,11 @@ CORS_ORIGIN_WHITELIST = (
     'http://52.79.156.160',
     'http://192.168.99.1:3000'
 )
+CORS_ALLOW_METHODS = (
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS'
+)

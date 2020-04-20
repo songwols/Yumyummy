@@ -21,5 +21,7 @@ router.register(r"id_reviews", views.ReviewIdViewSet, basename="id_reviews")
 router.register(r"all_reviews", views.ReviewAllViewSet, basename="all_reviews")
 router.register(
     r"id_users", views.UserIdViewSet, basename="id_users")
-
+# router.register(r"post_review", views.PostReview, basename="post_review")
+# router.register(r"update_review", views.UpdateReview, basename="update_review")
+# router.register(r"delete_review", views.DeleteReview, basename="delete_review")
 urlpatterns = router.urls

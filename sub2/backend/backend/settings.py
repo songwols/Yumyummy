@@ -26,9 +26,7 @@ SECRET_KEY = "$yg2c-8-8cszt%3k$b=3wwc^j1g%gn)wj%yldz)6jd(ez80u-s"
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    '52.79.156.160',
+    '*'
 ]
 
 
@@ -152,5 +150,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, ".static_root")
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-    'http://52.79.156.160'
+    'http://52.79.156.160',
+    'http://192.168.99.1:3000'
 )

@@ -13,9 +13,9 @@ class Store(models.Model):
     longitude = models.FloatField(max_length=10, null=True)
     category = models.CharField(max_length=200, null=True)
 
-    @property
-    def category_list(self):
-        return self.category.split("|") if self.category else []
+    # @property
+    # def category_list(self):
+    #     return self.category.split("|") if self.category else []
 
     def __str__(self):
         return self.store_name
@@ -65,7 +65,7 @@ class Bhour(models.Model):
 
 class Menu(models.Model):
     menu_id = models.AutoField(primary_key=True)
-    store = models.ForeignKey(Store, on_delete=models.CASCADE, null=True)
+    store = models.ForeignKey(Store, on_delete=models.CASCADE)
     menu = models.CharField(max_length=200, null=True)
     price = models.FloatField(null=True, default=0)
 
@@ -83,13 +83,3 @@ class Review(models.Model):
 
     def __int__(self):
         return self.review_id
-
-
-class StoreMenuReview(models.Model):
-    menu_id = models.AutoField(primary_key=True)
-    storekey = models.CharField(max_length=1000, null=True)
-    menu = models.CharField(max_length=200, null=True)
-    price = models.FloatField(null=True, default=0)
-
-    def __int__(self):
-        return self.store

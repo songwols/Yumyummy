@@ -13,9 +13,9 @@ class Store(models.Model):
     longitude = models.FloatField(max_length=10, null=True)
     category = models.CharField(max_length=200, null=True)
 
-    @property
-    def category_list(self):
-        return self.category.split("|") if self.category else []
+    # @property
+    # def category_list(self):
+    #     return self.category.split("|") if self.category else []
 
     def __str__(self):
         return self.store_name

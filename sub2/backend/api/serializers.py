@@ -1,5 +1,5 @@
 from .models import Store
-from .models import User
+# from .models import User
 from .models import Bhour
 from .models import Menu
 from .models import Review
@@ -22,19 +22,19 @@ class StoreSerializer(serializers.ModelSerializer):
         ]
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = [
-            "user_id",
-            "email",
-            "token",
-            "name",
-            "password",
-            "gender",
-            "age",
-            "profileimg",
-        ]
+# class UserSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = [
+#             "user_id",
+#             "email",
+#             "token",
+#             "name",
+#             "password",
+#             "gender",
+#             "age",
+#             "profileimg",
+#         ]
 
 
 class BhourSerializer(serializers.ModelSerializer):

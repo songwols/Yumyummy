@@ -143,17 +143,17 @@ class ReviewIdViewSet(viewsets.ModelViewSet):
         return queryset
 
 
-# user_id로 user 불러오기
-class UserIdViewSet(viewsets.ModelViewSet):
-    serializer_class = serializers.UserSerializer
-    pagination_class = SmallPagination
+# # user_id로 user 불러오기
+# class UserIdViewSet(viewsets.ModelViewSet):
+#     serializer_class = serializers.UserSerializer
+#     pagination_class = SmallPagination
 
-    def get_queryset(self):
-        id = self.request.query_params.get("user_id", "")
-        queryset = (
-            models.User.objects.all().filter(user_id=id).order_by("user_id")
-        )
-        return queryset
+#     def get_queryset(self):
+#         id = self.request.query_params.get("user_id", "")
+#         queryset = (
+#             models.User.objects.all().filter(user_id=id).order_by("user_id")
+#         )
+#         return queryset
 
 
 # review 등록하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)

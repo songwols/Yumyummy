@@ -79,7 +79,3 @@ class ReviewSerializer(serializers.ModelSerializer):
             "content",
             "reg_time"
         ]
-<<<<<<< HEAD
-
-=======
->>>>>>> backend

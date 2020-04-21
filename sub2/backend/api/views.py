@@ -18,14 +18,15 @@ class StoreSearchViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         name = self.request.query_params.get("store_name", "")
         address = self.request.query_params.get("address", "")
-        menu = self.request.query_params.get("menu", "")
+        # 검색 빈칸일때 예외처리 해야함
+        # menu = self.request.query_params.get("menu", "")
         # score = self.request.query_params.get("score", "")
         # review = self.request.query_params.get("review", "")
         queryset = (
             models.Store.objects.all().filter(
-                store_name__contains=name, address__contains=address)
+                store_name__contains=name, address__contains=address).order_by("store_id")
         )
-        print(address)
+
         return queryset
 
 
@@ -36,7 +37,7 @@ class StoreAllViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = (
-            models.Store.objects.all()
+            models.Store.objects.all().order_by("store_id")
         )
         return queryset
 
@@ -48,9 +49,8 @@ class StoreIdViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         id = self.request.query_params.get("store_id", "")
-        print(id)
         queryset = (
-            models.Store.objects.all().filter(store_id=id)
+            models.Store.objects.all().filter(store_id=id).order_by("store_id")
         )
         return queryset
 
@@ -63,7 +63,7 @@ class StoreCategoryViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         category = self.request.query_params.get("category", "")
         queryset = (
-            models.Store.objects.all().filter(category__contains=category)
+            models.Store.objects.all().filter(category__contains=category).order_by("store_id")
         )
         return queryset
 
@@ -76,7 +76,7 @@ class StoreAddressViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         address = self.request.query_params.get("address", "")
         queryset = (
-            models.Store.objects.all().filter(address__contains=address)
+            models.Store.objects.all().filter(address__contains=address).order_by("store_id")
         )
         return queryset
 
@@ -88,7 +88,7 @@ class MenuAllViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = (
-            models.Menu.objects.all()
+            models.Menu.objects.all().order_by("menu_id")
         )
         return queryset
 
@@ -101,7 +101,7 @@ class MenuStoreIdViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         id = self.request.query_params.get("store_id", "")
         queryset = (
-            models.Menu.objects.all().filter(store_id=id)
+            models.Menu.objects.all().filter(store_id=id).order_by("menu_id")
         )
         return queryset
 
@@ -114,7 +114,7 @@ class MenuMenuViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         menu = self.request.query_params.get("menu", "")
         queryset = (
-            models.Menu.objects.all().filter(menu=menu)
+            models.Menu.objects.all().filter(menu=menu).order_by("menu_id")
         )
         return queryset
 
@@ -126,7 +126,7 @@ class ReviewAllViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = (
-            models.Review.objects.all()
+            models.Review.objects.all().order_by("review_id")
         )
         return queryset
 
@@ -145,44 +145,53 @@ class ReviewIdViewSet(viewsets.ModelViewSet):
         return queryset
 
 
-# user_id로 user 불러오기
-class UserIdViewSet(viewsets.ModelViewSet):
-    serializer_class = serializers.UserSerializer
-    pagination_class = SmallPagination
+# # user_id로 user 불러오기
+# class UserIdViewSet(viewsets.ModelViewSet):
+#     serializer_class = serializers.UserSerializer
+#     pagination_class = SmallPagination
 
-    def get_queryset(self):
-        id = self.request.query_params.get("user_id", "")
-        queryset = (
-            models.User.objects.all().filter(user_id=id)
-        )
-        return queryset
-
-
-# review 등록하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
-class PostReview(viewsets.ModelViewSet):
-    serializer_class = serializers.ReviewSerializer
+#     def get_queryset(self):
+#         id = self.request.query_params.get("user_id", "")
+#         queryset = (
+#             models.User.objects.all().filter(user_id=id).order_by("user_id")
+#         )
+#         return queryset
 
 
-# review 삭제하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
-class DeleteReview():
-    serializer_class = serializers.ReviewSerializer
+# # review 등록하기
+# class PostReview(viewsets.ModelViewSet):
+#     serializer_class = serializers.ReviewSerializer
+
+#     def perform_create(self, serializer):
+#         store_id = self.request.query_params.get("store_id", "")
+#         user_id = self.request.query_params.get("user_id", "")
+#         total_score = self.request.query_params.get("score", "")
+#         content = self.request.query_params.get("content", "")
+#         print("여기여기!!!!!!!!!!!!!!!!!!!!!!")
+#         print(store_id + " " + user_id)
+#         models.Review.objects.create(
+#             store_id=store_id, user_id=user_id, total_score=total_score, content=content)
 
 
-# review 수정하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
-class UpdateReview():
-    serializer_class = serializers.ReviewSerializer
+# # review 삭제하기
+# class DeleteReview():
+#     serializer_class = serializers.ReviewSerializer
+
+#     def delete(self):
+#         review_id = self.request.query_params.get("review_id", "")
+#         review = models.Review.objects.get(review_id=review_id)
+#         review.delete()
 
 
-# user 등록하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
-class PostUser():
-    serializer_class = serializers.UserSerializer
+# # review 수정하기
+# class UpdateReview(viewsets.ModelViewSet):
+#     serializer_class = serializers.ReviewSerializer
 
-
-# user 삭제하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
-class DeleteUser():
-    serializer_class = serializers.UserSerializer
-
-
-# user 수정하기(class 이름만 정해놓으려고 만든거라 내용은 수정해야함)
-class UpdateUser():
-    serializer_class = serializers.UserSerializer
+#     def permform_update(self, request, *args, **kwargs):
+#         review_id = self.request.query_params.get("review_id", "")
+#         total_score = self.request.query_params.get("total_score", "")
+#         content = self.request.query_params.get("content", "")
+#         review = models.Review.objects.get(review_id=review_id)
+#         review.total_score = total_score
+#         review.content = content
+#         review.save()

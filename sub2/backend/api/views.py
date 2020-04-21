@@ -18,13 +18,15 @@ class StoreSearchViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         name = self.request.query_params.get("store_name", "")
         address = self.request.query_params.get("address", "")
-        menu = self.request.query_params.get("menu", "")
+        # 검색 빈칸일때 예외처리 해야함
+        # menu = self.request.query_params.get("menu", "")
         # score = self.request.query_params.get("score", "")
         # review = self.request.query_params.get("review", "")
         queryset = (
             models.Store.objects.all().filter(
                 store_name__contains=name, address__contains=address).order_by("store_id")
         )
+
         return queryset
 
 
@@ -143,17 +145,17 @@ class ReviewIdViewSet(viewsets.ModelViewSet):
         return queryset
 
 
-# user_id로 user 불러오기
-class UserIdViewSet(viewsets.ModelViewSet):
-    serializer_class = serializers.UserSerializer
-    pagination_class = SmallPagination
+# # user_id로 user 불러오기
+# class UserIdViewSet(viewsets.ModelViewSet):
+#     serializer_class = serializers.UserSerializer
+#     pagination_class = SmallPagination
 
-    def get_queryset(self):
-        id = self.request.query_params.get("user_id", "")
-        queryset = (
-            models.User.objects.all().filter(user_id=id).order_by("user_id")
-        )
-        return queryset
+#     def get_queryset(self):
+#         id = self.request.query_params.get("user_id", "")
+#         queryset = (
+#             models.User.objects.all().filter(user_id=id).order_by("user_id")
+#         )
+#         return queryset
 
 
 # # review 등록하기

@@ -42,6 +42,12 @@ INSTALLED_APPS = [
     "rest_framework",
     "api",
     "corsheaders",
+    'rest_framework.authtoken',
+    'rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
 ]
 
 MIDDLEWARE = [
@@ -134,6 +140,9 @@ MEDIA_URL = '/media/'
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "PAGE_SIZE": 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
 }
 
 PASSWORD_HASHERS = (
@@ -153,11 +162,13 @@ CORS_ORIGIN_WHITELIST = (
     'http://52.79.156.160',
     'http://192.168.99.1:3000'
 )
-CORS_ALLOW_METHODS = (
-    'GET',
-    'POST',
-    'PUT',
-    'PATCH',
-    'DELETE',
-    'OPTIONS'
-)
+
+REST_USE_JWT = True
+
+SITE_ID = 1
+
+# django-allauth
+# ------------------------------------------------------------------------------
+
+ACCOUNT_EMAIL_REQUIRED = False
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -27,7 +27,7 @@ class Command(BaseCommand):
 
         print("[*] Initializing stores...")
         models.Store.objects.all().delete()
-        models.User.objects.all().delete()
+        # models.User.objects.all().delete()
         models.Menu.objects.all().delete()
         models.Bhour.objects.all().delete()
         models.Review.objects.all().delete()
@@ -48,16 +48,16 @@ class Command(BaseCommand):
         ]
         models.Store.objects.bulk_create(stores_bulk)
 
-        users = dataframes["users"]
-        users_bulk = [
-            models.User(
-                user_id=user.id,
-                gender=user.gender,
-                age=user.age
-            )
-            for user in users.itertuples()
-        ]
-        models.User.objects.bulk_create(users_bulk)
+        # users = dataframes["users"]
+        # users_bulk = [
+        #     models.User(
+        #         user_id=user.id,
+        #         gender=user.gender,
+        #         age=user.age
+        #     )
+        #     for user in users.itertuples()
+        # ]
+        # models.User.objects.bulk_create(users_bulk)
         menus = dataframes["menus"]
         menus_bulk = [
             models.Menu(
@@ -73,7 +73,7 @@ class Command(BaseCommand):
             models.Review(
                 review_id=review.id,
                 store_id=review.store,
-                user_id=review.user,
+                # user_id=review.user,
                 total_score=review.score,
                 content=review.content,
                 reg_time=review.reg_time

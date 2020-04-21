@@ -6,7 +6,6 @@ import "./index.css";
 import App from "./App";
 import RootStore from "./stores";
 import * as serviceWorker from "./serviceWorker";
-import ReviewCon from "./components/Review"
 
 const root = new RootStore();
 
@@ -15,7 +14,6 @@ ReactDOM.render(
     {}
     <BrowserRouter>
       <App />
-      <ReviewCon></ReviewCon>
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")

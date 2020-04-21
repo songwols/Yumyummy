@@ -18,6 +18,7 @@ class StoreSearchViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         name = self.request.query_params.get("store_name", "")
         address = self.request.query_params.get("address", "")
+        # 검색 빈칸일때 예외처리 해야함
         # menu = self.request.query_params.get("menu", "")
         # score = self.request.query_params.get("score", "")
         # review = self.request.query_params.get("review", "")
@@ -25,7 +26,7 @@ class StoreSearchViewSet(viewsets.ModelViewSet):
             models.Store.objects.all().filter(
                 store_name__contains=name, address__contains=address).order_by("store_id")
         )
-        print(name + " " + address)
+
         return queryset
 
 

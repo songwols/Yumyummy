@@ -74,7 +74,7 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = [
             "review_id",
             "store_id",
-            "user_id",
+            # "user_id",
             "total_score",
             "content",
             "reg_time"

@@ -1,7 +1,7 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 import styled from "styled-components";
-import Map from "../../components/Map";
+import MapContainer from "../../components/Map";
 import ReviewCon from "../../components/Review"
 
 export const Mapp = styled(Map)`
@@ -13,6 +13,10 @@ export const Mapp = styled(Map)`
 `
 
 class DetailContent extends React.Component{
+    componentDidMount(){
+        console.log(this.props)
+    }
+
     render(){
         return(
         <DCFrame>
@@ -20,7 +24,6 @@ class DetailContent extends React.Component{
             <Info>
                 <Title>{localStorage.getItem("store_name")}</Title>
                 <Frame>
-                    <Mapp></Mapp>
                     <RInfo>
                         <DInfo>
                             <DIVL>
@@ -97,7 +100,7 @@ const Frame = styled.div`
 `
 
 const RInfo = styled.div`
-    height: 100%;
+    height: 100vh;
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-areas: "detailinfo menu";

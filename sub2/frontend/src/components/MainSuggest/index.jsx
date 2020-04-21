@@ -18,6 +18,7 @@ class Suggest extends React.Component {
         this.setState({
             items: suggestStore.returnItems
         });
+        
     }
 
     handleChangeIndexUp = () =>{

@@ -14,15 +14,6 @@ class CardLayout extends React.Component{
         this.props.storeStore.loadPosts();
     }
 
-    fetchMoreData = () => {
-        setTimeout(() => {
-            this.props.storeStore.getItems(this.state.items.length, 6);
-            this.setState({
-                items: this.state.items.concat(this.props.storeStore.returnItems)
-            });
-        }, 500);
-    };
-
     render(){
         const returns = this.props.storeStore.returnItems;
 

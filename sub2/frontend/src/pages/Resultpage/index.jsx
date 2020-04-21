@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Top from "../../components/Top";
 import { Link } from 'react-router-dom';
 import CardLayout from "../../components/ResultList";
-import Map from "../../components/Map";
+import MapContainer from "../../components/Map";
 import StarImag from '../../assets/images/Star.png';
 import ReviewImag from '../../assets/images/Review.png';
 
@@ -36,7 +36,7 @@ class Result extends React.Component{
                 <LFrame>
                     <CardLayout></CardLayout>
                     <MFrame>
-                        <Map></Map>
+                        <MapContainer></MapContainer>
                     </MFrame>
                 </LFrame>
             </RFrame>

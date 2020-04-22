@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import psa from '../../assets/images/psa.png';
 import Button from '../../assets/images/Button.png';
+import StarRating from './Star';
 
 const ReviewCon = () => {
     return(
@@ -9,7 +10,7 @@ const ReviewCon = () => {
             <Content>
                 <ReviewWriteBox>
                     <ReviewStar>
-                        평점 주기
+                        <StarRating></StarRating>
                     </ReviewStar>
                     <ReviewWrite>
                         <ReviewText>
@@ -88,6 +89,7 @@ const ReviewWriteBox = styled.div`
         "ReviewWrite"
         /* "ReviewSend" */
         ;
+    margin-left: 30px;
 `;
 const ReviewStar = styled.div`
     display: grid;

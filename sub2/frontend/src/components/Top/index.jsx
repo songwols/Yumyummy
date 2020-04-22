@@ -40,6 +40,7 @@ const Img = styled.img`
     justify-content: Left;
     object-fit: cover;
     height: 100%;
+    width: 10rem;
     margin: auto;
 `
 

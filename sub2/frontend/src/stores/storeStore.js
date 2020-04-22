@@ -69,12 +69,22 @@ export default class StoreStore {
 
   @action search(info) {
     console.log(info);
-    return agent.Data.search(info)
+    if(info.store_name==null && info.address==null && info.menu==null){
+      return agent.Data.all()
+      .then((res) => {
+        this.setStoreItems(res.data.results);
+      })
+      .catch((err) => console.log(err));
+    }
+    else{
+      return agent.Data.search(info)
       .then((res) => {
         this.setStoreItems(res.data.results);
       })
 
       .catch((err) => alert("검색 결과가 없습니다."));
+    }
+    
   }
 
   @action detail(id) {
@@ -86,7 +96,7 @@ export default class StoreStore {
       localStorage.setItem("latitude", val.latitude);
       localStorage.setItem("longitude", val.longitude);
       localStorage.setItem("category", val.category);
-      this.setStoreItems(res.data.results);
+      // this.setStoreItems(res.data.results);
     });
   }
 

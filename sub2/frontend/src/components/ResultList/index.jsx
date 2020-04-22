@@ -6,16 +6,22 @@ import Card from "./Card"
 @inject("storeStore")
 @observer
 class CardLayout extends React.Component{
-    state = {
-        items: [],
-      };
+    constructor(){
+        super();
 
+        this.state = {
+            items: [],
+          };
+    }
+    
     componentDidMount() {
         this.props.storeStore.loadPosts();
     }
 
     render(){
         const returns = this.props.storeStore.returnItems;
+        console.log("업뎃")
+        console.log(this.props.storeStore)
 
         return(
             <List>

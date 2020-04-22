@@ -14,6 +14,7 @@ export const Mapp = styled(Map)`
 
 class DetailContent extends React.Component{
     componentDidMount(){
+        console.log("3")
         console.log(this.props)
     }
 

@@ -13,14 +13,18 @@ class Card extends React.Component{
 
     render(){
         const { post } = this.props;
-        const DetailBtn  = (e) => {
+
+        const saveBtn = (e) => {
             e.preventDefault();
             this.props.storeStore.detail(post.store_id);
+        }
+        const DetailBtn  = (e) => {
+            e.preventDefault();
             this.props.history.push("/detail/"+post.store_id);
         }
 
         return(
-            <B onClick={DetailBtn}>
+            <B onClick={DetailBtn} onMouseOver={saveBtn}>
             <Div>
                 <Title>{post.store_name}</Title>
                 <Address>주소 : {post.address}</Address>

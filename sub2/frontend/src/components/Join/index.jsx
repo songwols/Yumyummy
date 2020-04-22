@@ -46,12 +46,8 @@ class Join extends React.Component {
                     </Gender>여자
                     </label>
                 </GFrame>
-                <BIFrame>생년월일</BIFrame>
-                <Birth>
-                <Calendar
-                    onChange={this.onDateChange} 
-                />
-                </Birth>
+                <BIFrame>생년월일<Birth></Birth></BIFrame>
+                
                 <BFrame>
                     <Confirm onClick={this.props.cancelJoin}>회원가입</Confirm>&nbsp;&nbsp;
                     <Cancel onClick={this.props.cancelJoin}>취소</Cancel>
@@ -64,6 +60,7 @@ class Join extends React.Component {
   }
 
 const Popup = styled.div`
+    z-index: 10;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -79,28 +76,28 @@ const PopupInner = styled.div`
   position: absolute;
   left: 25%;
   right: 25%;
-  top: 10%;
-  bottom: 10%;
+  top: 25%;
+  bottom: 25%;
   margin: auto;
   background: white;
 
   @media (max-width: 768px) {
     left: 10%;
     right: 10%;
-    top: 5%;
-    bottom: 10%;
+    top: 25%;
+    bottom: 25%;
   }
   
   @media (min-width: 768px) and (max-width: 1024px) {  
-    top: 10%;
-    bottom: 10%;
+    top: 25%;
+    bottom: 25%;
   }
 `
 
 const PFrame = styled.div`
     display: grid;
-    grid-template-rows: repeat(13, 1fr);
-    grid-template-areas: "Title" "." "ID" "PW" "Name" "Gender" "Birth" "Cal" "Cal" "Cal" "." "Bu" ".";
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-areas: "Title" "." "ID" "PW" "Name" "Gender" "Birth" "." "Bu" ".";
 `
 
 const Title = styled.div`
@@ -197,12 +194,21 @@ const BIFrame = styled.div`
     justify-items: left;
     text-align: left;
 `
-const Birth = styled.div` 
-    grid-area: Cal;
-    justify-items: center;
-    text-align: center;
-    padding-right: 5%;
-    padding-left: 5%;
+const Birth = styled.input`
+    background: none;
+    width: 70%;
+    border-color: #ffde96;
+    border-style: solid;
+    border-radius: .5rem;
+    outline: none;
+    box-shadow: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 0.875rem;
+    -ms-flex: 1 1;
+    flex: 1 1;
+    margin-left: 0.5rem;
+    color: inherit;
 `
 
 const BFrame = styled.div`

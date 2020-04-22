@@ -19,7 +19,7 @@ const Detail = ({ match }) => {
           <Map></Map>
         </MFrame>
       </CFrame>
-      <ReviewCon></ReviewCon>
+      <ReviewCon storeid={id}></ReviewCon>
     </DLayer>
   );
 };

@@ -102,6 +102,27 @@ const MyFace = styled.div`
     grid-area: MyFace;
     display: grid;
     transform: scale(0.8);
+
+    :hover {
+        animation: psa 1s forwards;
+    }
+
+    @keyframes psa {
+    0% {
+        opacity: 0.8;
+        transform: scale(0.75);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(0.82);
+    }
+}
 `
 
 const MyName = styled.div`
@@ -131,6 +152,26 @@ const ProfileEdit = styled.div`
     /* outline: none; */
     
     margin-top: 85px;
+
+    :hover {
+        animation: edit 1s forwards;
+    }
+
+    @keyframes edit {
+    0% {
+        opacity: 0.8;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 `
 
 const MyDetail = styled.div`

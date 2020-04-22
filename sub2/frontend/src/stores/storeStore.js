@@ -12,6 +12,8 @@ export default class StoreStore {
   @observable review: "0";
   @observable predicate = {};
   @observable detailPost = undefined;
+  @observable pageNumber = 1;
+  @observable info = {};
 
   @computed get posts() {
     return this.storeRegistry.values();
@@ -23,6 +25,26 @@ export default class StoreStore {
 
   @computed get returnLength() {
     return this.returnItems.length;
+  }
+
+  @action pageIncrease() {
+    this.pageNumber = this.pageNumber + 1;
+    return agent.Data.search(this.info, this.pageNumber)
+      .then((res) => {
+        this.setStoreItems(res.data.results);
+      })
+
+      .catch((err) => alert("검색 결과가 없습니다."));
+  }
+
+  @action pageDecrease() {
+    this.pageNumber = this.pageNumber - 1;
+    return agent.Data.search(this.info, this.pageNumber)
+      .then((res) => {
+        this.setStoreItems(res.data.results);
+      })
+
+      .catch((err) => alert("검색 결과가 없습니다."));
   }
 
   @action setPredicate(predicate) {
@@ -39,7 +61,7 @@ export default class StoreStore {
 
   @action
   loadPosts() {
-    return agent.Data.all()
+    return agent.Data.all(this.pageNumber)
       .then((res) => {
         this.setStoreItems(res.data.results);
       })
@@ -69,7 +91,9 @@ export default class StoreStore {
 
   @action search(info) {
     console.log(info);
-    return agent.Data.search(info)
+    this.info = info;
+    this.pageNumber = 1;
+    return agent.Data.search(info, this.pageNumber)
       .then((res) => {
         this.setStoreItems(res.data.results);
       })

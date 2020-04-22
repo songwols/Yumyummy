@@ -36,11 +36,11 @@ class Result extends React.Component {
         </TopLayer>
         <LFrame>
           <CardLayout></CardLayout>
+          <Paging></Paging>
           <MFrame>
             <Map></Map>
           </MFrame>
         </LFrame>
-        <Paging></Paging>
       </RFrame>
     );
   }

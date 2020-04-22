@@ -10,11 +10,11 @@ const requests = {
 };
 
 const Data = {
-  all: () => requests.get("/all_stores"),
+  all: (pageNumber) => requests.get(`/all_stores?page=${pageNumber}`),
 
-  search: (info) =>
+  search: (info, pageNumber) =>
     requests.get(
-      `/search_stores?store_name=${info.store_name}&address=${info.address}`
+      `/search_stores?store_name=${info.store_name}&address=${info.address}&page=${pageNumber}`
     ),
 
   detail: (id) => requests.get(`/id_stores?store_id=${id}`),

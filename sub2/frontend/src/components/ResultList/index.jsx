@@ -6,12 +6,23 @@ import Card from "./Card"
 @inject("storeStore")
 @observer
 class CardLayout extends React.Component{
-    constructor(){
+    constructor(props){
         super();
 
         this.state = {
             items: [],
+            info : [
+                {
+                store_name: localStorage.getItem("S_store_name", this.store_name),
+                address : localStorage.getItem("S_address", this.store_name),
+                menu: localStorage.getItem("S_menu", this.store_name),
+                score: localStorage.getItem("S_score", this.store_name),
+                review: localStorage.getItem("S_review", this.store_name),
+            }
+        ]
           };
+          props.storeStore.setInfo(this.state.info);
+          props.storeStore.search(this.state.info);
     }
     
     componentDidMount() {
@@ -19,9 +30,9 @@ class CardLayout extends React.Component{
     }
 
     render(){
+        console.log("ResultList")
+        console.log(this.state.info)
         const returns = this.props.storeStore.returnItems;
-        console.log("업뎃")
-        console.log(this.props.storeStore)
 
         return(
             <List>

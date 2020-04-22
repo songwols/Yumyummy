@@ -6,18 +6,32 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 @inject("storeStore")
 @observer
 class MapContainer extends React.Component {
-    constructor() {
-      super();        
+    constructor(props) {
+      super();  
       this.state = {
         stores: [
           {
             latitude: localStorage.getItem("latitude"), longitude: localStorage.getItem("longitude")
           },
+        ],
+        info : [
+          {
+          store_name: localStorage.getItem("S_store_name", this.store_name),
+          address : localStorage.getItem("S_address", this.store_name),
+          menu: localStorage.getItem("S_menu", this.store_name),
+          score: localStorage.getItem("S_score", this.store_name),
+          review: localStorage.getItem("S_review", this.store_name),
+          }
         ]
-      }
+      };
+      props.storeStore.setInfo(this.state.info);
+      props.storeStore.search(this.state.info);
+      console.log("cons")     
+      console.log(props.storeStore)
+      console.log(props.storeStore.returnItems) 
     }
 
-    componentWillMount(){
+    componentDidMount(){
       
     }
 
@@ -32,11 +46,8 @@ class MapContainer extends React.Component {
     }
   
     render() {
-      console.log("4")
+        console.log("Map")
         const returns = this.props.storeStore.returnItems;
-        console.log("업뎃?")
-        console.log(this.props.storeStore)
-        console.log(this.props.storeStore.returnItems)
 
         const containerStyle = {
             position: 'absolute',  

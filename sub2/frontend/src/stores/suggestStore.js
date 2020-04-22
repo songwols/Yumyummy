@@ -20,7 +20,7 @@ export default class SuggestStore{
             Title : "이태원 핫한 술집 10",
             address : "이태원",
             menu : "술",
-            img: "https://lh3.googleusercontent.com/proxy/hDHy72gF4oQ-Yb-hGrtX0IMCL4j8rRsV59j_DSVzCfNkjb0Bs2hOMOsIpfeKiDUTq3V4bpiPRu0vr_e3aWmrcLmRu0YhZWkHaD23u1aURHmD6YuRkyorNrf3y0wNQupJHAK5By48jnh6SUt2Tl4kvN6ljoLo9Hv5AHDRezyxzrYVFWWzircn81k447O5kWVER4ilWm4Tngruu2ZOjC7Tolgpph2MgZhAUgodQS5-URJ1wX-Il3LGpVknEbfIkojUeOowRg1eaTlsy8gawJxl2qyhQgBe8bn36L7DNr4RBbmPysGyMxnnm9ckBu5Mu8uiNiV-"
+            img: "https://mblogthumb-phinf.pstatic.net/MjAxNzAxMjRfNzIg/MDAxNDg1MjMzNDEwMDgw.zb9AcldPYAo4-WrlwfwjS5M-vzg5mF4wXNpgpHbGlOkg.t9rOp50WIXjjxTAMi-wPqw_zsF_etF0tQQrVRdHYt4wg.JPEG.han4869/KakaoTalk_20170118_095929248.jpg?type=w800"
         },
         {
             Title : "한강 치킨 맛집 30",

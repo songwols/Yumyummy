@@ -4,11 +4,7 @@ import { Link } from "react-router-dom";
 
 class Paging extends React.Component {
   render() {
-    return (
-      <div>
-        <Button onClick={}></Button>
-      </div>
-    );
+    return <div>{/* <Button onClick={}></Button> */}</div>;
   }
 }
 

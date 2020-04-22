@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { inject, observer } from "mobx-react";
+import dotenv from "dotenv";
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+
+dotenv.config();
 
 @inject("storeStore")
 @observer
@@ -76,6 +79,6 @@ const Maps = styled.div`
 `
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyBcWCIZL_Enpspf0XG5l60wXuMi_fo6dTY',
+    apiKey: process.env.REACT_APP_GOOGLE_API,
     language: 'KOREAN'
-  })(MapContainer)
+})(MapContainer)

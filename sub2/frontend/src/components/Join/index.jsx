@@ -40,21 +40,43 @@ class Join extends React.Component {
                         <img src={logo} width='80' height='80'/>
                     </JoinImage>
                 </Title>
-                <IDFrame>ID<ID></ID></IDFrame>
-                <PWFrame>PW<PW></PW></PWFrame>
-                <NFrame>이름<Name></Name></NFrame>
-                <GFrame>성별
-                    <label>
-                    <Gender type="radio" value="male" name="gender" onChange={() => this.onGenderChange("male")}>
-                    </Gender>남자
-                    </label>
-                    <label>
-                    <Gender type="radio" value="female" name="gender" onChange={() => this.onGenderChange("female")}>
-                    </Gender>여자
-                    </label>
+                <IDFrame>
+                    <IdText>
+                        ID
+                    </IdText>
+                    <ID></ID>
+                </IDFrame>
+                <PWFrame>
+                    <PwText>
+                        PW    
+                    </PwText>
+                    <PW></PW>
+                </PWFrame>
+                <NFrame>
+                    <NText>
+                        이름
+                    </NText>
+                    <Name></Name>
+                </NFrame>
+                <GFrame>
+                    <GText>성별</GText>
+                    <GenderLabel>
+                        <label>
+                        <Gender1 type="radio" value="male" name="gender" onChange={() => this.onGenderChange("male")}>
+                        </Gender1>남자
+                        </label>
+                        <label>
+                        <Gender2 type="radio" value="female" name="gender" onChange={() => this.onGenderChange("female")}>
+                        </Gender2>여자
+                        </label>
+                    </GenderLabel>
                 </GFrame>
-                <BIFrame>생년월일<Birth></Birth></BIFrame>
-                
+                <BIFrame>
+                    <BText>
+                        생년월일
+                    </BText>
+                    <Birth></Birth>
+                </BIFrame>
                 <BFrame>
                     <Confirm onClick={this.props.cancelJoin}>회원가입</Confirm>&nbsp;&nbsp;
                     <Cancel onClick={this.props.cancelJoin}>취소</Cancel>
@@ -116,22 +138,20 @@ const PopupInner = styled.div`
 const PFrame = styled.div`
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(13, 1fr);
+    grid-template-rows: repeat(12, 1fr);
     grid-template-areas: 
-        "Title Title" 
-        ". ." 
-        "ID ID" 
-        "PW PW" 
-        "Name Name" 
-        "Gender Gender" 
-        "Birth Birth" 
-        "Cal Cal" 
-        "Cal Cal" 
-        "Cal Cal" 
-        ". ." 
-        "Bu Bu" 
-        ". ."
+        "Title" 
+        "." 
+        "IDFrame" 
+        "PWFrame"
+        "."  
+        "NFrame" 
+        "GFrame" 
+        "BIFrame" 
+        "." 
+        "Bu" 
+        "Bu"
+        "."
         ;
 `
 
@@ -145,13 +165,14 @@ const Title = styled.div`
     text-align: left;
     background: #ffde96;
 
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-areas: ". . JoinImage JoinText . .";
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: ". JoinImage JoinText .";
 `
 
 const JoinText = styled.div`
     grid-area: JoinText;
     margin-top: 10%;
+    font-size: 1.3rem;
 `;
 
 const JoinImage = styled.div`
@@ -159,15 +180,30 @@ const JoinImage = styled.div`
 `;
 
 const IDFrame = styled.div`
-    grid-area: ID;
+    grid-area: IDFrame;
+    display: grid;
     padding: auto;
-    padding-left: 15%;
-    justify-items: left;
+    /* padding-left: 15%; */
+    /* justify-items: left; */
     text-align: left;
+
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-areas: ". IdText ID ID ID ID ID .";
+    margin-left: -3%;
 `
+
+const IdText = styled.div`
+    grid-area: IdText;
+    display: grid;
+    text-align: center;
+    line-height: 36.8px;
+`;
+
 const ID = styled.input`
+    grid-area: ID;
+    display: grid;
     background: none;
-    width: 70%;
+    /* width: 70%; */
     border-color: #ffde96;
     border-style: solid;
     border-radius: .5rem;
@@ -178,95 +214,174 @@ const ID = styled.input`
     font-size: 0.875rem;
     -ms-flex: 1 1;
     flex: 1 1;
-    margin-left: 1.2rem;
-    color: inherit;
-`
-const PWFrame = styled.div`
-    grid-area: PW;
-    padding: auto;
-    padding-left: 15%;
-    justify-items: left;
-    text-align: left;
-`
-const PW = styled.input`
-    background: none;
-    width: 70%;
-    border-color: #ffde96;
-    border-style: solid;
-    border-radius: .5rem;
-    outline: none;
-    box-shadow: none;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    font-size: 0.875rem;
-    -ms-flex: 1 1;
-    flex: 1 1;
-    margin-left: 0.5rem;
-    color: inherit;
-`
-const NFrame = styled.div`
-    grid-area: Name;
-    padding: auto;
-    padding-left: 15%;
-    justify-items: left;
-    text-align: left;
-`
-const Name = styled.input`
-    background: none;
-    width: 70%;
-    border-color: #ffde96;
-    border-style: solid;
-    border-radius: .5rem;
-    outline: none;
-    box-shadow: none;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    font-size: 0.875rem;
-    -ms-flex: 1 1;
-    flex: 1 1;
-    margin-left: 0.5rem;
-    color: inherit;
-`
-const GFrame = styled.div`
-    grid-area: Gender;
-    padding: auto;
-    padding-left: 10%;
-    justify-items: left;
-    text-align: left;
-`
-const Gender = styled.input`
-    background: none;
-    margin-left: 1rem;
-`
-const BIFrame = styled.div`
-    grid-area: Birth;
-    padding: auto;
-    padding-left: 10%;
-    justify-items: left;
-    text-align: left;
-`
-const Birth = styled.input`
-    background: none;
-    width: 70%;
-    border-color: #ffde96;
-    border-style: solid;
-    border-radius: .5rem;
-    outline: none;
-    box-shadow: none;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    font-size: 0.875rem;
-    -ms-flex: 1 1;
-    flex: 1 1;
-    margin-left: 0.5rem;
+    /* margin-left: 1.2rem; */
     color: inherit;
 `
 
+const PWFrame = styled.div`
+    grid-area: PWFrame;
+    display: grid;
+    padding: auto;
+    /* padding-left: 15%; */
+    /* justify-items: left; */
+    text-align: left;
+
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-areas: ". PwText PW PW PW PW PW .";
+    margin-left: -3%;
+`;
+
+const PwText = styled.div`
+    grid-area: PwText;
+    display: grid;
+    text-align: center;
+    line-height: 36.8px;
+`;
+
+const PW = styled.input`
+    grid-area: PW;
+    display: grid;
+    background: none;
+    /* width: 70%; */
+    border-color: #ffde96;
+    border-style: solid;
+    border-radius: .5rem;
+    outline: none;
+    box-shadow: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 0.875rem;
+    -ms-flex: 1 1;
+    flex: 1 1;
+    /* margin-left: 0.5rem; */
+    color: inherit;
+`;
+
+const NFrame = styled.div`
+    grid-area: NFrame;
+    display: grid;
+    padding: auto;
+    /* padding-left: 15%; */
+    /* justify-items: left; */
+    text-align: left;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-areas: ". NText N N N N N .";
+    margin-left: -3%;
+`;
+
+const NText = styled.div`
+    grid-area: NText;
+    display: grid;
+    text-align: center;
+    line-height: 36.8px;
+`;
+
+const Name = styled.input`
+    grid-area: N;
+    display: grid;
+    background: none;
+    /* width: 70%; */
+    border-color: #ffde96;
+    border-style: solid;
+    border-radius: .5rem;
+    outline: none;
+    box-shadow: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 0.875rem;
+    -ms-flex: 1 1;
+    flex: 1 1;
+    /* margin-left: 0.5rem; */
+    color: inherit;
+`;
+
+const GFrame = styled.div`
+    grid-area: GFrame;
+    display: grid;
+    padding: auto;
+    /* padding-left: 10%; */
+    /* justify-items: left; */
+    text-align: left;
+
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-areas: ". GText GenderLabel GenderLabel . . . .";
+    margin-left: -3%;
+`;
+
+const GText = styled.div`
+    grid-area: GText;
+    display: grid;
+    text-align: center;
+    line-height: 36.8px;
+`;
+
+const GenderLabel = styled.div`
+    grid-area: GenderLabel;
+    display: grid;
+    background: none;
+    /* height: 20px; */
+    line-height: 36.8px;
+    /* margin-left: 12rem; */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "Gender1 Gender2";
+`;
+
+const Gender1 = styled.input`
+    grid-area: Gender1;
+    display: grid;
+`;
+
+const Gender2 = styled.input`
+    grid-area: Gender2;
+    display: grid;
+`;
+
+const BIFrame = styled.div`
+    grid-area: BIFrame;
+    display: grid;
+    padding: auto;
+    /* padding-left: 10%; */
+    /* justify-items: left; */
+    text-align: left;
+
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-areas: "BText BText B B B B B .";
+    margin-left: -3%;
+`;
+
+const BText = styled.div`
+    grid-area: BText;
+    display: grid;
+    text-align: right;
+    line-height: 36.8px;
+    padding-right: 10%;
+    /* font-size: 0.85rem; */
+`;
+
+const Birth = styled.input`
+    grid-area: B;
+    display: grid;
+    background: none;
+    /* width: 70%; */
+    border-color: #ffde96;
+    border-style: solid;
+    border-radius: .5rem;
+    outline: none;
+    box-shadow: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 0.875rem;
+    -ms-flex: 1 1;
+    flex: 1 1;
+    /* margin-left: 0.5rem; */
+    color: inherit;
+`;
+
 const BFrame = styled.div`
     grid-area: Bu;
-    justify-items: center;
+    /* justify-items: center; */
     text-align: center;
-`
+`;
 
 const Confirm = styled.button`
     height: 100%;
@@ -286,7 +401,8 @@ const Confirm = styled.button`
         opacity: 0.85;
         transform: scale(1);
     }  
-`
+`;
+
 const Cancel = styled.button`
     height: 100%;
     width: 40%;
@@ -305,6 +421,6 @@ const Cancel = styled.button`
         opacity: 0.85;
         transform: scale(1);
     }  
-`
+`;
 
 export default Join;

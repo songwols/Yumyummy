@@ -16,8 +16,18 @@ class Login extends React.Component {
                         <img src={logo} width='80' height='80'/>
                     </LoginImage>
                 </Title>
-                <IDFrame>ID<ID></ID></IDFrame>
-                <PWFrame>PW<PW></PW></PWFrame>
+                <IDFrame>
+                    <IdText>
+                        ID
+                    </IdText>
+                    <ID></ID>
+                </IDFrame>
+                <PWFrame>
+                    <PwText>
+                        PW    
+                    </PwText>
+                    <PW></PW>
+                </PWFrame>
                 <BFrame>
                     <Confirm onClick={this.props.cancelLogin}>로그인</Confirm>&nbsp;&nbsp;
                     <Cancel onClick={this.props.cancelLogin}>취소</Cancel>
@@ -84,21 +94,21 @@ const PopupInner = styled.div`
 const PFrame = styled.div`
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    /* grid-template-columns: repeat(2, 1fr); */
     grid-template-rows: repeat(12, 1fr);
     grid-template-areas: 
-        "Title Title" 
-        ". ." 
-        "ID ID" 
-        "PW PW" 
-        ". ." 
-        "Bu Bu" 
-        ". ." 
-        "Tag Tag" 
-        ". ." 
-        "Kakao Kakao" 
-        "Google Google" 
-        ". ."
+        "Title" 
+        "." 
+        "IDFrame"
+        "PWFrame" 
+        "." 
+        "Bu" 
+        "." 
+        "Tag" 
+        "." 
+        "Kakao" 
+        "Google" 
+        "."
         ;
 `
 const Title = styled.div`
@@ -124,16 +134,55 @@ const LoginImage = styled.div`
     grid-area: LoginImage;
 `;
 
+// const IDFrame = styled.div`
+//     grid-area: ID;
+//     padding: auto;
+//     padding-left: 12%;
+//     justify-items: left;
+//     text-align: left;
+// `
+// const ID = styled.input`
+//     background: none;
+//     width: 70%;
+//     border-color: #ffde96;
+//     border-style: solid;
+//     border-radius: .5rem;
+//     outline: none;
+//     box-shadow: none;
+//     padding-top: 0.5rem;
+//     padding-bottom: 0.5rem;
+//     font-size: 0.875rem;
+//     -ms-flex: 1 1;
+//     flex: 1 1;
+//     margin-left: 1.2rem;
+//     color: inherit;
+// `
+
 const IDFrame = styled.div`
-    grid-area: ID;
+    grid-area: IDFrame;
+    display: grid;
     padding: auto;
-    padding-left: 12%;
-    justify-items: left;
+    /* padding-left: 15%; */
+    /* justify-items: left; */
     text-align: left;
+
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-areas: ". IdText ID ID ID ID ID .";
+    margin-left: -8%;
 `
+
+const IdText = styled.div`
+    grid-area: IdText;
+    display: grid;
+    text-align: center;
+    line-height: 36.8px;
+`;
+
 const ID = styled.input`
+    grid-area: ID;
+    display: grid;
     background: none;
-    width: 70%;
+    /* width: 70%; */
     border-color: #ffde96;
     border-style: solid;
     border-radius: .5rem;
@@ -144,19 +193,59 @@ const ID = styled.input`
     font-size: 0.875rem;
     -ms-flex: 1 1;
     flex: 1 1;
-    margin-left: 1.2rem;
+    /* margin-left: 1.2rem; */
     color: inherit;
 `
+
+// const PWFrame = styled.div`
+//     grid-area: PW;
+//     padding: auto;
+//     padding-left: 12%;
+//     justify-items: left;
+//     text-align: left;
+// `
+// const PW = styled.input`
+//     background: none;
+//     width: 70%;
+//     border-color: #ffde96;
+//     border-style: solid;
+//     border-radius: .5rem;
+//     outline: none;
+//     box-shadow: none;
+//     padding-top: 0.5rem;
+//     padding-bottom: 0.5rem;
+//     font-size: 0.875rem;
+//     -ms-flex: 1 1;
+//     flex: 1 1;
+//     margin-left: 0.5rem;
+//     color: inherit;
+// `
+
 const PWFrame = styled.div`
-    grid-area: PW;
+    grid-area: PWFrame;
+    display: grid;
     padding: auto;
-    padding-left: 12%;
-    justify-items: left;
+    /* padding-left: 15%; */
+    /* justify-items: left; */
     text-align: left;
-`
+
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-areas: ". PwText PW PW PW PW PW .";
+    margin-left: -8%;
+`;
+
+const PwText = styled.div`
+    grid-area: PwText;
+    display: grid;
+    text-align: center;
+    line-height: 36.8px;
+`;
+
 const PW = styled.input`
+    grid-area: PW;
+    display: grid;
     background: none;
-    width: 70%;
+    /* width: 70%; */
     border-color: #ffde96;
     border-style: solid;
     border-radius: .5rem;
@@ -167,9 +256,10 @@ const PW = styled.input`
     font-size: 0.875rem;
     -ms-flex: 1 1;
     flex: 1 1;
-    margin-left: 0.5rem;
+    /* margin-left: 0.5rem; */
     color: inherit;
-`
+`;
+
 const BFrame = styled.div`
     grid-area: Bu;
     justify-items: center;

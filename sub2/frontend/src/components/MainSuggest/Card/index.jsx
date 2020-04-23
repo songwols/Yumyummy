@@ -106,7 +106,7 @@ const Title = styled.div`
 
 const T = styled.div`
     position: absolute;
-    margin-top: 40%;
+    margin-top: 45%;
     margin-left: 20%;
     z-index: 10;
 `

@@ -65,16 +65,31 @@ export default class StoreStore {
     this.menu = infos.menu;
     this.score = infos.score;
     this.review = infos.review;
+    localStorage.setItem("S_store_name", this.store_name);
+    localStorage.setItem("S_address", this.address);
+    localStorage.setItem("S_menu", this.menu);
+    localStorage.setItem("S_score", this.score);
+    localStorage.setItem("S_review", this.review);
   }
 
   @action search(info) {
-    console.log(info);
-    return agent.Data.search(info)
+    if(info.store_name==null && info.address==null && info.menu==null){
+      return agent.Data.all()
+      .then((res) => {
+        this.setStoreItems(res.data.results);
+        console.log("1번")
+      })
+      .catch((err) => console.log(err));
+    }
+    else{
+      return agent.Data.search(info)
       .then((res) => {
         this.setStoreItems(res.data.results);
       })
 
       .catch((err) => alert("검색 결과가 없습니다."));
+    }
+    
   }
 
   @action detail(id) {
@@ -86,7 +101,7 @@ export default class StoreStore {
       localStorage.setItem("latitude", val.latitude);
       localStorage.setItem("longitude", val.longitude);
       localStorage.setItem("category", val.category);
-      this.setStoreItems(res.data.results);
+      // this.setStoreItems(res.data.results);
     });
   }
 

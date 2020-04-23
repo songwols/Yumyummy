@@ -3,10 +3,16 @@ import styled from "styled-components";
 import Top from "../../components/Top";
 import { Link } from "react-router-dom";
 import CardLayout from "../../components/ResultList";
+<<<<<<< HEAD
 import Map from "../../components/Map";
 import StarImag from "../../assets/images/Star.png";
 import ReviewImag from "../../assets/images/Review.png";
 import ReviewCon from "../../components/Review";
+=======
+import MapContainer from "../../components/Map";
+import StarImag from '../../assets/images/Star.png';
+import ReviewImag from '../../assets/images/Review.png';
+>>>>>>> inkyung
 
 class Result extends React.Component {
   render() {
@@ -33,6 +39,7 @@ class Result extends React.Component {
                         <Link to="/result">양식</Link>&nbsp;
                         <Link to="/result">카페</Link>&nbsp;
                     </Categories> */}
+<<<<<<< HEAD
         </TopLayer>
         <LFrame>
           <CardLayout></CardLayout>
@@ -43,6 +50,18 @@ class Result extends React.Component {
       </RFrame>
     );
   }
+=======
+                </TopLayer>
+                <LFrame>
+                    <CardLayout></CardLayout>
+                    <MFrame>
+                        <MapContainer></MapContainer>
+                    </MFrame>
+                </LFrame>
+            </RFrame>
+        )
+    }
+>>>>>>> inkyung
 }
 
 const RFrame = styled.div`

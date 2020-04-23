@@ -6,24 +6,45 @@ import Card from "./Card"
 @inject("storeStore")
 @observer
 class CardLayout extends React.Component{
-    state = {
-        items: [],
-      };
-
-    componentDidMount() {
-        this.props.storeStore.loadPosts();
+    getInfo = async () => {
+        await this.props.storeStore.search(this.state.info);
+        console.log("2번")
     }
 
-    fetchMoreData = () => {
-        setTimeout(() => {
-            this.props.storeStore.getItems(this.state.items.length, 6);
-            this.setState({
-                items: this.state.items.concat(this.props.storeStore.returnItems)
-            });
-        }, 500);
-    };
+    constructor(props){
+        super();
+
+        this.state = {
+            items: [],
+            info : [
+                {
+                store_name: localStorage.getItem("S_store_name"),
+                address : localStorage.getItem("S_address"),
+                menu: localStorage.getItem("S_menu"),
+                score: localStorage.getItem("S_score"),
+                review: localStorage.getItem("S_review"),
+                }
+            ]
+          };
+          console.log("cons")
+    }
+
+    componentWillMount(){
+        this.getInfo();
+        console.log("will")
+    }
+    
+    componentDidMount() {
+        // this.props.storeStore.loadPosts();
+    }
 
     render(){
+        console.log("ren")
+        console.log(this.state.info)
+        console.log(this.props.storeStore.returnItems)
+        console.log(this.props.storeStore)
+
+       
         const returns = this.props.storeStore.returnItems;
 
         return(
@@ -31,6 +52,7 @@ class CardLayout extends React.Component{
                 { returns? (returns.map((item, index) => (
                     <Card key={index} post={item} />
                 ))) : (<></>)}
+
             </List>
         )
     }

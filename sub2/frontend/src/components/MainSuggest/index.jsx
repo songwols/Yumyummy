@@ -18,6 +18,7 @@ class Suggest extends React.Component {
         this.setState({
             items: suggestStore.returnItems
         });
+        
     }
 
     handleChangeIndexUp = () =>{
@@ -88,7 +89,7 @@ const DF = styled.div`
 
 const DI = styled.img`
     width: 3rem;
-    height: 30rem;
+    height: 28rem;
     cursor: pointer;
     z-index: 1;
     justify-items: center;
@@ -113,7 +114,7 @@ const UF = styled.div`
 
 const UI = styled.img`
     width: 3rem;
-    height: 30rem;
+    height: 28rem;
     cursor: pointer;
     z-index: 1;
     justify-items: center;

@@ -26,6 +26,7 @@ class Login extends React.Component {
 
 
 const Popup = styled.div`
+  z-index: 10;
   position: fixed;
   width: 100%;
   height: 100%;

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import psa from '../../assets/images/psa.png';
+import logo from '../../assets/images/Login.png';
 
 
 class Login extends React.Component {
@@ -13,7 +13,7 @@ class Login extends React.Component {
                 <Title>
                     <LoginText>로그인~~</LoginText>
                     <LoginImage>
-                        <img src={psa} width='80' height='80'/>
+                        <img src={logo} width='80' height='80'/>
                     </LoginImage>
                 </Title>
                 <IDFrame>ID<ID></ID></IDFrame>
@@ -110,12 +110,13 @@ const Title = styled.div`
     text-align: center;
     background: #ffde96;
 
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: "LoginText LoginImage";
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: ". . LoginImage LoginText . .";
 `
 
 const LoginText = styled.div`
     grid-area: LoginText;
+    margin-top: 10%;
 `;
 
 const LoginImage = styled.div`
@@ -183,6 +184,14 @@ const Confirm = styled.button`
     background-color: green; 
     border-radius: .5rem;
     cursor: pointer;
+    transform: scale(0.95);
+
+
+    :hover {
+        border-radius: .7rem;
+        opacity: 0.85;
+        transform: scale(1);
+    }    
 `
 const Cancel = styled.button`
     height: 100%;
@@ -193,6 +202,14 @@ const Cancel = styled.button`
     background-color: red; 
     border-radius: .5rem;
     cursor: pointer;
+    transform: scale(0.95);
+
+
+    :hover {
+        border-radius: .7rem;
+        opacity: 0.8;
+        transform: scale(1);
+    } 
 `
 
 const Tag = styled.div`
@@ -232,6 +249,15 @@ const Kakao = styled.button`
     cursor: pointer;
     justify-items: center;
     text-align: center;
+
+    transform: scale(0.95);
+
+
+    :hover {
+        border-radius: .7rem;
+        opacity: 0.95;
+        transform: scale(0.97);
+    } 
 `
 const GFrame = styled.div`
     grid-area: Google;
@@ -250,6 +276,15 @@ const Google = styled.button`
     cursor: pointer;
     justify-items: center;
     text-align: center;
+
+    transform: scale(0.95);
+
+
+    :hover {
+        border-radius: .7rem;
+        opacity: 0.95;
+        transform: scale(0.97);
+    } 
 `
 
 

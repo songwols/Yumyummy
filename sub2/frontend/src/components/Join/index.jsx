@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Calendar from 'react-calendar';
 import moment from 'moment';
 
-import psa from '../../assets/images/psa.png';
+import logo from '../../assets/images/Login.png';
 
 export const Cal = styled(Calendar)`
     width: 100%;
@@ -37,7 +37,7 @@ class Join extends React.Component {
                 <Title>
                     <JoinText>회원가입~~</JoinText>
                     <JoinImage>
-                        <img src={psa} width='80' height='80'/>
+                        <img src={logo} width='80' height='80'/>
                     </JoinImage>
                 </Title>
                 <IDFrame>ID<ID></ID></IDFrame>
@@ -148,12 +148,13 @@ const Title = styled.div`
     text-align: left;
     background: #ffde96;
 
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: "JoinText JoinImage";
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: ". . JoinImage JoinText . .";
 `
 
 const JoinText = styled.div`
     grid-area: JoinText;
+    margin-top: 10%;
 `;
 
 const JoinImage = styled.div`
@@ -180,7 +181,7 @@ const ID = styled.input`
     font-size: 0.875rem;
     -ms-flex: 1 1;
     flex: 1 1;
-    margin-left: 0.5rem;
+    margin-left: 1.2rem;
     color: inherit;
 `
 const PWFrame = styled.div`

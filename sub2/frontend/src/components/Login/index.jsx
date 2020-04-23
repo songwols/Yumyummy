@@ -177,7 +177,7 @@ const BFrame = styled.div`
 
 const Confirm = styled.button`
     height: 100%;
-    width: 40%;
+    width: 37%;
     background: none;
     border: none;
     outline: none;
@@ -185,6 +185,7 @@ const Confirm = styled.button`
     border-radius: .5rem;
     cursor: pointer;
     transform: scale(0.95);
+    font-size: 1rem;
 
 
     :hover {
@@ -195,7 +196,7 @@ const Confirm = styled.button`
 `
 const Cancel = styled.button`
     height: 100%;
-    width: 40%;
+    width: 37%;
     background: none;
     border: none;
     outline: none;
@@ -203,6 +204,7 @@ const Cancel = styled.button`
     border-radius: .5rem;
     cursor: pointer;
     transform: scale(0.95);
+    font-size: 1rem;
 
 
     :hover {

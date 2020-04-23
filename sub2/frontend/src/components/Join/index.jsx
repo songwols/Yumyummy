@@ -164,7 +164,7 @@ const JoinImage = styled.div`
 const IDFrame = styled.div`
     grid-area: ID;
     padding: auto;
-    padding-left: 10%;
+    padding-left: 15%;
     justify-items: left;
     text-align: left;
 `
@@ -187,7 +187,7 @@ const ID = styled.input`
 const PWFrame = styled.div`
     grid-area: PW;
     padding: auto;
-    padding-left: 10%;
+    padding-left: 15%;
     justify-items: left;
     text-align: left;
 `
@@ -210,7 +210,7 @@ const PW = styled.input`
 const NFrame = styled.div`
     grid-area: Name;
     padding: auto;
-    padding-left: 10%;
+    padding-left: 15%;
     justify-items: left;
     text-align: left;
 `
@@ -271,6 +271,15 @@ const Confirm = styled.button`
     background-color: green; 
     border-radius: .5rem;
     cursor: pointer;
+    font-size: 1rem;
+
+    transform: scale(0.95);
+
+    :hover {
+        border-radius: .7rem;
+        opacity: 0.85;
+        transform: scale(1);
+    }  
 `
 const Cancel = styled.button`
     height: 100%;
@@ -281,6 +290,15 @@ const Cancel = styled.button`
     background-color: red; 
     border-radius: .5rem;
     cursor: pointer;
+    font-size: 1rem;
+
+    transform: scale(0.95);
+
+    :hover {
+        border-radius: .7rem;
+        opacity: 0.85;
+        transform: scale(1);
+    }  
 `
 
 export default Join;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Calendar from 'react-calendar';
 import moment from 'moment';
 
-import logo from '../../assets/images/Login.png';
+import join from '../../assets/images/Join.png';
 
 export const Cal = styled(Calendar)`
     width: 100%;
@@ -37,7 +37,7 @@ class Join extends React.Component {
                 <Title>
                     <JoinText>회원가입~~</JoinText>
                     <JoinImage>
-                        <img src={logo} width='80' height='80'/>
+                        <img src={join} width='80' height='80'/>
                     </JoinImage>
                 </Title>
                 <IDFrame>

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import logo from '../../assets/images/Login.png';
+import login from '../../assets/images/Login.png';
 
 
 class Login extends React.Component {
@@ -13,7 +13,7 @@ class Login extends React.Component {
                 <Title>
                     <LoginText>로그인~~</LoginText>
                     <LoginImage>
-                        <img src={logo} width='80' height='80'/>
+                        <img src={login} width='80' height='80'/>
                     </LoginImage>
                 </Title>
                 <IDFrame>

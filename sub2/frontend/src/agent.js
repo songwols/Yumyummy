@@ -20,6 +20,8 @@ const Data = {
   detail: (id) => requests.get(`/id_stores?store_id=${id}`),
 
   id_review: (store_id) => requests.get(`/id_reviews?store_id=${store_id}`),
+
+  id_menu: (store_id) => requests.get(`/storeid_menus?store_id=${store_id}`),
 };
 
 export default {

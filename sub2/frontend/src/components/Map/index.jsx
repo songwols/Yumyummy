@@ -27,7 +27,6 @@ class MapContainer extends React.Component {
           }
         ]
       };
-      props.storeStore.setInfo(this.state.info);
       props.storeStore.search(this.state.info);
       console.log("cons")     
       console.log(props.storeStore)

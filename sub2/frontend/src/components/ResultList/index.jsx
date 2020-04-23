@@ -6,6 +6,11 @@ import Card from "./Card"
 @inject("storeStore")
 @observer
 class CardLayout extends React.Component{
+    getInfo = async () => {
+        await this.props.storeStore.search(this.state.info);
+        console.log("2번")
+    }
+
     constructor(props){
         super();
 
@@ -13,25 +18,33 @@ class CardLayout extends React.Component{
             items: [],
             info : [
                 {
-                store_name: localStorage.getItem("S_store_name", this.store_name),
-                address : localStorage.getItem("S_address", this.store_name),
-                menu: localStorage.getItem("S_menu", this.store_name),
-                score: localStorage.getItem("S_score", this.store_name),
-                review: localStorage.getItem("S_review", this.store_name),
-            }
-        ]
+                store_name: localStorage.getItem("S_store_name"),
+                address : localStorage.getItem("S_address"),
+                menu: localStorage.getItem("S_menu"),
+                score: localStorage.getItem("S_score"),
+                review: localStorage.getItem("S_review"),
+                }
+            ]
           };
-          props.storeStore.setInfo(this.state.info);
-          props.storeStore.search(this.state.info);
+          console.log("cons")
+    }
+
+    componentWillMount(){
+        this.getInfo();
+        console.log("will")
     }
     
     componentDidMount() {
-        this.props.storeStore.loadPosts();
+        // this.props.storeStore.loadPosts();
     }
 
     render(){
-        console.log("ResultList")
+        console.log("ren")
         console.log(this.state.info)
+        console.log(this.props.storeStore.returnItems)
+        console.log(this.props.storeStore)
+
+       
         const returns = this.props.storeStore.returnItems;
 
         return(
@@ -39,6 +52,7 @@ class CardLayout extends React.Component{
                 { returns? (returns.map((item, index) => (
                     <Card key={index} post={item} />
                 ))) : (<></>)}
+
             </List>
         )
     }

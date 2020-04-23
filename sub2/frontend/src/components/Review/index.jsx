@@ -9,7 +9,6 @@ import { inject, observer } from "mobx-react";
 @observer
 class ReviewCon extends React.Component {
   componentWillMount() {
-    console.log(this.props.storeid);
     this.props.reviewStore.get_review(this.props.storeid);
   }
   render() {

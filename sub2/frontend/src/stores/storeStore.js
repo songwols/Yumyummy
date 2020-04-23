@@ -8,10 +8,8 @@ export default class StoreStore {
   @observable store_name = "";
   @observable address = "";
   @observable menu = "";
-  @observable score: "3.0";
-  @observable review: "0";
   @observable predicate = {};
-  @observable detailPost = undefined;
+  @observable detailPost = {};
   @observable pageNumber = 1;
   @observable info = {};
 
@@ -37,7 +35,6 @@ export default class StoreStore {
       return agent.Data.all(this.pageNumber)
         .then((res) => {
           this.setStoreItems(res.data.results);
-          console.log("1번");
         })
         .catch((err) => console.log(err));
     } else {
@@ -95,11 +92,8 @@ export default class StoreStore {
   }
 
   @action loadPost(id) {
-    console.log("로드포스트~~");
     return agent.Data.get(id).then(
       action((res) => {
-        console.log("여기를 보시오");
-        console.log(res);
         this.detailPost = res.data.results;
         this.storeRegistry.set(this.detailPost.id, this.detailPost);
         return this.detailPost;
@@ -111,17 +105,12 @@ export default class StoreStore {
     this.store_name = infos.store_name;
     this.address = infos.address;
     this.menu = infos.menu;
-    this.score = infos.score;
-    this.review = infos.review;
     localStorage.setItem("S_store_name", this.store_name);
     localStorage.setItem("S_address", this.address);
     localStorage.setItem("S_menu", this.menu);
-    localStorage.setItem("S_score", this.score);
-    localStorage.setItem("S_review", this.review);
   }
 
   @action search(info) {
-    console.log(info);
     this.info = info;
     this.pageNumber = 1;
 
@@ -129,7 +118,6 @@ export default class StoreStore {
       return agent.Data.all(this.pageNumber)
         .then((res) => {
           this.setStoreItems(res.data.results);
-          console.log("1번");
         })
         .catch((err) => console.log(err));
     } else {
@@ -144,14 +132,7 @@ export default class StoreStore {
 
   @action detail(id) {
     return agent.Data.detail(id).then((res) => {
-      const val = res.data.results[0];
-      localStorage.setItem("store_name", val.store_name);
-      localStorage.setItem("address", val.address);
-      localStorage.setItem("tel", val.tel);
-      localStorage.setItem("latitude", val.latitude);
-      localStorage.setItem("longitude", val.longitude);
-      localStorage.setItem("category", val.category);
-      // this.setStoreItems(res.data.results);
+      this.detailPost = res.data.results[0];
     });
   }
 

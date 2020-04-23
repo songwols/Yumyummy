@@ -13,26 +13,26 @@ class Store(models.Model):
     longitude = models.FloatField(max_length=10, null=True)
     category = models.CharField(max_length=200, null=True)
 
-    @property
-    def category_list(self):
-        return self.category.split("|") if self.category else []
+    # @property
+    # def category_list(self):
+    #     return self.category.split("|") if self.category else []
 
     def __str__(self):
         return self.store_name
 
 
-class User(models.Model):
-    user_id = models.AutoField(primary_key=True)
-    email = models.CharField(max_length=500, null=True, blank=True)
-    token = models.CharField(max_length=500, blank=True)
-    name = models.CharField(max_length=50, null=True, blank=True)
-    password = models.CharField(max_length=100, null=True, blank=True)
-    gender = models.CharField(max_length=10, blank=True)
-    age = models.IntegerField(default=0, blank=True)
-    profileimg = models.CharField(max_length=500, blank=True)
+#class User(models.Model):
+    # user_id = models.AutoField(primary_key=True)
+    # email = models.CharField(max_length=500, null=True, blank=True)
+    # token = models.CharField(max_length=500, blank=True)
+    # name = models.CharField(max_length=50, null=True, blank=True)
+    # password = models.CharField(max_length=100, null=True, blank=True)
+    # gender = models.CharField(max_length=10, blank=True)
+    # age = models.IntegerField(default=0, blank=True)
+    # profileimg = models.CharField(max_length=500, blank=True)
 
-    def __int__(self):
-        return self.user_id
+    # def __int__(self):
+    #     return self.user_id
 
 
 # class Category(models.Model):
@@ -65,7 +65,7 @@ class Bhour(models.Model):
 
 class Menu(models.Model):
     menu_id = models.AutoField(primary_key=True)
-    store = models.ForeignKey(Store, on_delete=models.CASCADE, null=True)
+    store = models.ForeignKey(Store, on_delete=models.CASCADE)
     menu = models.CharField(max_length=200, null=True)
     price = models.FloatField(null=True, default=0)
 
@@ -76,11 +76,10 @@ class Menu(models.Model):
 class Review(models.Model):
     review_id = models.AutoField(primary_key=True)
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     total_score = models.IntegerField(null=True)
     content = models.TextField(blank=True)
     reg_time = models.DateTimeField(auto_now_add=True)
 
     def __int__(self):
         return self.review_id
-

@@ -26,9 +26,7 @@ SECRET_KEY = "$yg2c-8-8cszt%3k$b=3wwc^j1g%gn)wj%yldz)6jd(ez80u-s"
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    '52.79.156.160',
+    '*'
 ]
 
 
@@ -44,6 +42,12 @@ INSTALLED_APPS = [
     "rest_framework",
     "api",
     "corsheaders",
+    'rest_framework.authtoken',
+    'rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
 ]
 
 MIDDLEWARE = [
@@ -136,6 +140,9 @@ MEDIA_URL = '/media/'
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "PAGE_SIZE": 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
 }
 
 PASSWORD_HASHERS = (
@@ -149,10 +156,19 @@ PASSWORD_HASHERS = (
 
 STATIC_ROOT = os.path.join(BASE_DIR, ".static_root")
 
-# CORS_ORIGIN_WHITELIST = (
-#     'http://localhost:3000',
-#     'http://127.0.0.1:3000',
-#     'http://52.79.156.160'
-# )
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://52.79.156.160',
+    'http://192.168.99.1:3000'
+)
 
-CORS_ORIGIN_ALLOW_ALL = True
+REST_USE_JWT = True
+
+SITE_ID = 1
+
+# django-allauth
+# ------------------------------------------------------------------------------
+
+ACCOUNT_EMAIL_REQUIRED = False
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -12,6 +12,10 @@ export default class StoreStore {
   @observable detailPost = {};
   @observable pageNumber = 1;
   @observable info = {};
+  @observable latitude = [];
+  @observable longitude = [];
+  @observable location = [];
+
 
   @computed get posts() {
     return this.storeRegistry.values();
@@ -105,28 +109,47 @@ export default class StoreStore {
     this.store_name = infos.store_name;
     this.address = infos.address;
     this.menu = infos.menu;
-    localStorage.setItem("S_store_name", this.store_name);
-    localStorage.setItem("S_address", this.address);
-    localStorage.setItem("S_menu", this.menu);
   }
 
   @action search(info) {
     this.info = info;
+    if(info.store_name == undefined){
+      this.info = info[0];
+    }
+    else{
+      this.info = info;
+    }
     this.pageNumber = 1;
-
-    if (info.store_name == null && info.address == null && info.menu == null) {
+    
+    if (this.info.store_name == undefined && this.info.address == undefined && this.info.menu == undefined) {
       return agent.Data.all(this.pageNumber)
         .then((res) => {
           this.setStoreItems(res.data.results);
+          for(var i=0;i<res.data.results.length;i++){
+            this.location = this.location.concat(
+              {
+                lat : res.data.results[i].latitude,
+                long : res.data.results[i].longitude
+               }
+              ) 
+          }
         })
         .catch((err) => console.log(err));
     } else {
-      return agent.Data.search(info, this.pageNumber)
+      return agent.Data.search(this.info, this.pageNumber)
         .then((res) => {
           this.setStoreItems(res.data.results);
+          for(var i=0;i<res.data.results.length;i++){
+            this.location = this.location.concat(
+              {
+                lat : res.data.results[i].latitude,
+                long : res.data.results[i].longitude
+               }
+              ) 
+          }
         })
 
-        .catch((err) => alert("검색 결과가 없습니다."));
+        .catch((err) => console.log(err));
     }
   }
 

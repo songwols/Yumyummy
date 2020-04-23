@@ -9,48 +9,38 @@ dotenv.config();
 @inject("storeStore")
 @observer
 class MapContainer extends React.Component {
-    constructor(props) {
-      super();  
-      this.state = {
+    state = {
         stores: [
           {
-            latitude: localStorage.getItem("latitude"), longitude: localStorage.getItem("longitude")
+            latitude: 37.50128521296166, 
+            longitude: 127.03954246304296
           },
         ],
-        info : [
+        stores: [
           {
-          store_name: localStorage.getItem("S_store_name", this.store_name),
-          address : localStorage.getItem("S_address", this.store_name),
-          menu: localStorage.getItem("S_menu", this.store_name),
-          score: localStorage.getItem("S_score", this.store_name),
-          review: localStorage.getItem("S_review", this.store_name),
-          }
-        ]
+            store_name: this.props.store_name,
+            address: this.props.address,
+            menu: this.props.menu,
+          },
+        ],
       };
-      props.storeStore.search(this.state.info);
-      console.log("cons")     
-      console.log(props.storeStore)
-      console.log(props.storeStore.returnItems) 
-    }
 
-    componentDidMount(){
-      
+    componentWillMount(){
+      this.props.storeStore.search(this.state.stores)
+      this.props.storeStore.detail(this.props.storeid);
     }
 
     displayMarkers = () => {
-      return this.state.stores.map((store, index) => {
-        return <Marker key={index} id={index} position={{
-         lat: store.latitude,
-         lng: store.longitude
+      return this.props.storeStore.location.map((store, index) => {
+        return <Marker key={index} id={store} position={{
+         lat: store.lat,
+         lng: store.long
        }}
        onClick={() => console.log("You clicked me!")} />
       })
     }
   
     render() {
-        console.log("Map")
-        const returns = this.props.storeStore.returnItems;
-
         const containerStyle = {
             position: 'absolute',  
             width: '30%',
@@ -63,7 +53,12 @@ class MapContainer extends React.Component {
                 google={this.props.google}
                 zoom={10}
                 containerStyle={containerStyle}
-                initialCenter={{ lat: localStorage.getItem("latitude"), lng: localStorage.getItem("longitude")}}
+                initialCenter={
+                  { 
+                    lat: 37.50128521296166, 
+                    lng: 127.03954246304296
+                  }
+                }
             >
                 {this.displayMarkers()}
             </Map>

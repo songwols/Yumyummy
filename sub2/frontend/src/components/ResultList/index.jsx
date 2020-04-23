@@ -6,46 +6,22 @@ import Card from "./Card"
 @inject("storeStore")
 @observer
 class CardLayout extends React.Component{
-    getInfo = async () => {
-        await this.props.storeStore.search(this.state.info);
-        console.log("2번")
-    }
-
-    constructor(props){
-        super();
-
-        this.state = {
-            items: [],
-            info : [
-                {
-                store_name: localStorage.getItem("S_store_name"),
-                address : localStorage.getItem("S_address"),
-                menu: localStorage.getItem("S_menu"),
-                score: localStorage.getItem("S_score"),
-                review: localStorage.getItem("S_review"),
-                }
-            ]
-          };
-          console.log("cons")
-    }
+    state = {
+        stores: [
+          {
+            store_name: this.props.store_name,
+            address: this.props.address,
+            menu: this.props.menu,
+          },
+        ],
+      };
 
     componentWillMount(){
-        this.getInfo();
-        console.log("will")
-    }
-    
-    componentDidMount() {
-        // this.props.storeStore.loadPosts();
+        this.props.storeStore.search(this.state.stores)
     }
 
-    render(){
-        console.log("ren")
-        console.log(this.state.info)
-        console.log(this.props.storeStore.returnItems)
-        console.log(this.props.storeStore)
-
-       
-        const returns = this.props.storeStore.returnItems;
+    render(){     
+        const returns = this.props.storeStore.storeItems;
 
         return(
             <List>

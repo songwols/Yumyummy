@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Calendar from 'react-calendar';
 import moment from 'moment';
 
+import logo from '../../assets/images/Login.png';
+
 export const Cal = styled(Calendar)`
     width: 100%;
 `
@@ -32,7 +34,12 @@ class Join extends React.Component {
         <Popup>
           <PopupInner>
               <PFrame>
-                <Title>회원가입~~</Title>
+                <Title>
+                    <JoinText>회원가입~~</JoinText>
+                    <JoinImage>
+                        <img src={logo} width='80' height='80'/>
+                    </JoinImage>
+                </Title>
                 <IDFrame>ID<ID></ID></IDFrame>
                 <PWFrame>PW<PW></PW></PWFrame>
                 <NFrame>이름<Name></Name></NFrame>
@@ -70,6 +77,7 @@ const Popup = styled.div`
     bottom: 0;
     margin: auto;
     background-color: rgba(0,0,0, 0.5);
+    z-index: 999;
 `
 
 const PopupInner = styled.div`
@@ -80,6 +88,17 @@ const PopupInner = styled.div`
   bottom: 25%;
   margin: auto;
   background: white;
+
+  border-radius: 4%;
+  overflow: hidden;
+
+  animation-name: zoom;
+  animation-duration: 0.6s;
+
+  @keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+  }
 
   @media (max-width: 768px) {
     left: 10%;
@@ -95,22 +114,54 @@ const PopupInner = styled.div`
 `
 
 const PFrame = styled.div`
+    height: 100%;
     display: grid;
-    grid-template-rows: repeat(10, 1fr);
-    grid-template-areas: "Title" "." "ID" "PW" "Name" "Gender" "Birth" "." "Bu" ".";
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(13, 1fr);
+    grid-template-areas: 
+        "Title Title" 
+        ". ." 
+        "ID ID" 
+        "PW PW" 
+        "Name Name" 
+        "Gender Gender" 
+        "Birth Birth" 
+        "Cal Cal" 
+        "Cal Cal" 
+        "Cal Cal" 
+        ". ." 
+        "Bu Bu" 
+        ". ."
+        ;
 `
 
 const Title = styled.div`
     grid-area: Title;
+    display: grid;
+
     padding-left: 1rem;
     padding-top: .5rem;
     font-size: x-large;
     text-align: left;
+    background: #ffde96;
+
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: ". . JoinImage JoinText . .";
 `
+
+const JoinText = styled.div`
+    grid-area: JoinText;
+    margin-top: 10%;
+`;
+
+const JoinImage = styled.div`
+    grid-area: JoinImage;
+`;
+
 const IDFrame = styled.div`
     grid-area: ID;
     padding: auto;
-    padding-left: 10%;
+    padding-left: 15%;
     justify-items: left;
     text-align: left;
 `
@@ -127,13 +178,13 @@ const ID = styled.input`
     font-size: 0.875rem;
     -ms-flex: 1 1;
     flex: 1 1;
-    margin-left: 0.5rem;
+    margin-left: 1.2rem;
     color: inherit;
 `
 const PWFrame = styled.div`
     grid-area: PW;
     padding: auto;
-    padding-left: 10%;
+    padding-left: 15%;
     justify-items: left;
     text-align: left;
 `
@@ -156,7 +207,7 @@ const PW = styled.input`
 const NFrame = styled.div`
     grid-area: Name;
     padding: auto;
-    padding-left: 10%;
+    padding-left: 15%;
     justify-items: left;
     text-align: left;
 `
@@ -226,6 +277,15 @@ const Confirm = styled.button`
     background-color: green; 
     border-radius: .5rem;
     cursor: pointer;
+    font-size: 1rem;
+
+    transform: scale(0.95);
+
+    :hover {
+        border-radius: .7rem;
+        opacity: 0.85;
+        transform: scale(1);
+    }  
 `
 const Cancel = styled.button`
     height: 100%;
@@ -236,6 +296,15 @@ const Cancel = styled.button`
     background-color: red; 
     border-radius: .5rem;
     cursor: pointer;
+    font-size: 1rem;
+
+    transform: scale(0.95);
+
+    :hover {
+        border-radius: .7rem;
+        opacity: 0.85;
+        transform: scale(1);
+    }  
 `
 
 export default Join;

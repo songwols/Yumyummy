@@ -10,15 +10,17 @@ export const Mapp = styled(Map)`
   }
 `;
 
-@inject("storeStore")
+@inject("storeStore", "menuStore")
 @observer
 class DetailContent extends React.Component {
   componentWillMount() {
     this.props.storeStore.detail(this.props.storeid);
+    this.props.menuStore.get_menu(this.props.storeid);
   }
 
   render() {
     const detailpost = this.props.storeStore.detailPost;
+    const menus = this.props.menuStore.menus;
     return (
       <DCFrame>
         <IRFrame>
@@ -39,12 +41,16 @@ class DetailContent extends React.Component {
                   </Graph>
                 </DInfo>
                 <Menu>
-                  <DIV>메뉴</DIV>
-                  <div>1</div>
-                  <div>1</div>
-                  <div>1</div>
-                  <div>1</div>
-                  <div>1</div>
+                  <Div>메뉴</Div>
+                  {menus.length != 0 ? (
+                    menus.map((item, index) => (
+                      <DIV>
+                        {item.menu} - {item.price}
+                      </DIV>
+                    ))
+                  ) : (
+                    <Nothing>등록된 메뉴가 없습니다.</Nothing>
+                  )}
                 </Menu>
               </RInfo>
             </Frame>
@@ -55,6 +61,16 @@ class DetailContent extends React.Component {
     );
   }
 }
+
+const Div = styled.div`
+  justify-items: center;
+  align-items: center;
+  padding-bottom: 0.8rem;
+  font-size: 1.5rem;
+`;
+const Nothing = styled.div`
+  margin-left: 50%;
+`;
 
 const DCFrame = styled.div`
   grid-area: content;

@@ -1,15 +1,33 @@
 import React from "react";
 import styled from "styled-components";
 
+import login from '../../assets/images/Login.png';
+
+
 class Login extends React.Component {
     render() {
       return (
         <Popup>
           <PopupInner>
             <PFrame>
-                <Title>로그인~~</Title>
-                <IDFrame>ID<ID></ID></IDFrame>
-                <PWFrame>PW<PW></PW></PWFrame>
+                <Title>
+                    <LoginText>로그인~~</LoginText>
+                    <LoginImage>
+                        <img src={login} width='80' height='80'/>
+                    </LoginImage>
+                </Title>
+                <IDFrame>
+                    <IdText>
+                        ID
+                    </IdText>
+                    <ID></ID>
+                </IDFrame>
+                <PWFrame>
+                    <PwText>
+                        PW    
+                    </PwText>
+                    <PW></PW>
+                </PWFrame>
                 <BFrame>
                     <Confirm onClick={this.props.cancelLogin}>로그인</Confirm>&nbsp;&nbsp;
                     <Cancel onClick={this.props.cancelLogin}>취소</Cancel>
@@ -36,6 +54,7 @@ const Popup = styled.div`
   bottom: 0;
   margin: auto;
   background-color: rgba(0,0,0, 0.5);
+  z-index: 999;
 `
 
 const PopupInner = styled.div`
@@ -47,6 +66,17 @@ const PopupInner = styled.div`
   margin: auto;
   background: white;
 
+  border-radius: 4%;
+  overflow: hidden;
+
+  animation-name: zoom;
+  animation-duration: 0.6s;
+
+  @keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+  }
+
   @media (max-width: 768px) {
     left: 10%;
     right: 10%;
@@ -55,33 +85,104 @@ const PopupInner = styled.div`
   }
   
   @media (min-width: 768px) and (max-width: 1024px) {  
+    
     top: 10%;
     bottom: 15%;
   }
 `
 
 const PFrame = styled.div`
+    height: 100%;
     display: grid;
+    /* grid-template-columns: repeat(2, 1fr); */
     grid-template-rows: repeat(12, 1fr);
-    grid-template-areas: "Title" "." "ID" "PW" "." "Bu" "." "Tag" "." "Kakao" "Google" ".";
+    grid-template-areas: 
+        "Title" 
+        "." 
+        "IDFrame"
+        "PWFrame" 
+        "." 
+        "Bu" 
+        "." 
+        "Tag" 
+        "." 
+        "Kakao" 
+        "Google" 
+        "."
+        ;
 `
 const Title = styled.div`
     grid-area: Title;
+    display: grid;
+
     padding-left: 1rem;
     padding-top: .5rem;
     font-size: x-large;
-    text-align: left;
+    text-align: center;
+    background: #ffde96;
+
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: ". . LoginImage LoginText . .";
 `
+
+const LoginText = styled.div`
+    grid-area: LoginText;
+    margin-top: 10%;
+`;
+
+const LoginImage = styled.div`
+    grid-area: LoginImage;
+`;
+
+// const IDFrame = styled.div`
+//     grid-area: ID;
+//     padding: auto;
+//     padding-left: 12%;
+//     justify-items: left;
+//     text-align: left;
+// `
+// const ID = styled.input`
+//     background: none;
+//     width: 70%;
+//     border-color: #ffde96;
+//     border-style: solid;
+//     border-radius: .5rem;
+//     outline: none;
+//     box-shadow: none;
+//     padding-top: 0.5rem;
+//     padding-bottom: 0.5rem;
+//     font-size: 0.875rem;
+//     -ms-flex: 1 1;
+//     flex: 1 1;
+//     margin-left: 1.2rem;
+//     color: inherit;
+// `
+
 const IDFrame = styled.div`
-    grid-area: ID;
+    grid-area: IDFrame;
+    display: grid;
     padding: auto;
-    padding-left: 10%;
-    justify-items: left;
+    /* padding-left: 15%; */
+    /* justify-items: left; */
     text-align: left;
+
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-areas: ". IdText ID ID ID ID ID .";
+    margin-left: -8%;
 `
+
+const IdText = styled.div`
+    grid-area: IdText;
+    display: grid;
+    text-align: center;
+    line-height: 36.8px;
+`;
+
 const ID = styled.input`
+    grid-area: ID;
+    display: grid;
     background: none;
-    width: 70%;
+    /* width: 70%; */
     border-color: #ffde96;
     border-style: solid;
     border-radius: .5rem;
@@ -92,19 +193,59 @@ const ID = styled.input`
     font-size: 0.875rem;
     -ms-flex: 1 1;
     flex: 1 1;
-    margin-left: 0.5rem;
+    /* margin-left: 1.2rem; */
     color: inherit;
 `
+
+// const PWFrame = styled.div`
+//     grid-area: PW;
+//     padding: auto;
+//     padding-left: 12%;
+//     justify-items: left;
+//     text-align: left;
+// `
+// const PW = styled.input`
+//     background: none;
+//     width: 70%;
+//     border-color: #ffde96;
+//     border-style: solid;
+//     border-radius: .5rem;
+//     outline: none;
+//     box-shadow: none;
+//     padding-top: 0.5rem;
+//     padding-bottom: 0.5rem;
+//     font-size: 0.875rem;
+//     -ms-flex: 1 1;
+//     flex: 1 1;
+//     margin-left: 0.5rem;
+//     color: inherit;
+// `
+
 const PWFrame = styled.div`
-    grid-area: PW;
+    grid-area: PWFrame;
+    display: grid;
     padding: auto;
-    padding-left: 10%;
-    justify-items: left;
+    /* padding-left: 15%; */
+    /* justify-items: left; */
     text-align: left;
-`
+
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-areas: ". PwText PW PW PW PW PW .";
+    margin-left: -8%;
+`;
+
+const PwText = styled.div`
+    grid-area: PwText;
+    display: grid;
+    text-align: center;
+    line-height: 36.8px;
+`;
+
 const PW = styled.input`
+    grid-area: PW;
+    display: grid;
     background: none;
-    width: 70%;
+    /* width: 70%; */
     border-color: #ffde96;
     border-style: solid;
     border-radius: .5rem;
@@ -115,9 +256,10 @@ const PW = styled.input`
     font-size: 0.875rem;
     -ms-flex: 1 1;
     flex: 1 1;
-    margin-left: 0.5rem;
+    /* margin-left: 0.5rem; */
     color: inherit;
-`
+`;
+
 const BFrame = styled.div`
     grid-area: Bu;
     justify-items: center;
@@ -126,23 +268,41 @@ const BFrame = styled.div`
 
 const Confirm = styled.button`
     height: 100%;
-    width: 40%;
+    width: 37%;
     background: none;
     border: none;
     outline: none;
     background-color: green; 
     border-radius: .5rem;
     cursor: pointer;
+    transform: scale(0.95);
+    font-size: 1rem;
+
+
+    :hover {
+        border-radius: .7rem;
+        opacity: 0.85;
+        transform: scale(1);
+    }    
 `
 const Cancel = styled.button`
     height: 100%;
-    width: 40%;
+    width: 37%;
     background: none;
     border: none;
     outline: none;
     background-color: red; 
     border-radius: .5rem;
     cursor: pointer;
+    transform: scale(0.95);
+    font-size: 1rem;
+
+
+    :hover {
+        border-radius: .7rem;
+        opacity: 0.8;
+        transform: scale(1);
+    } 
 `
 
 const Tag = styled.div`
@@ -182,6 +342,15 @@ const Kakao = styled.button`
     cursor: pointer;
     justify-items: center;
     text-align: center;
+
+    transform: scale(0.95);
+
+
+    :hover {
+        border-radius: .7rem;
+        opacity: 0.95;
+        transform: scale(0.97);
+    } 
 `
 const GFrame = styled.div`
     grid-area: Google;
@@ -200,6 +369,15 @@ const Google = styled.button`
     cursor: pointer;
     justify-items: center;
     text-align: center;
+
+    transform: scale(0.95);
+
+
+    :hover {
+        border-radius: .7rem;
+        opacity: 0.95;
+        transform: scale(0.97);
+    } 
 `
 
 

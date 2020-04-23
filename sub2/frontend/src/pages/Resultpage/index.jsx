@@ -7,6 +7,8 @@ import Map from "../../components/Map";
 import StarImag from "../../assets/images/Star.png";
 import ReviewImag from "../../assets/images/Review.png";
 import Paging from "../../components/Paging";
+import ReviewCon from "../../components/Review";
+import MapContainer from "../../components/Map";
 
 class Result extends React.Component {
   render() {
@@ -38,7 +40,7 @@ class Result extends React.Component {
           <CardLayout></CardLayout>
           <Paging></Paging>
           <MFrame>
-            <Map></Map>
+            <MapContainer></MapContainer>
           </MFrame>
         </LFrame>
       </RFrame>

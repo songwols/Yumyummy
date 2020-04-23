@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Calendar from 'react-calendar';
 import moment from 'moment';
 
+import psa from '../../assets/images/psa.png';
+
 export const Cal = styled(Calendar)`
     width: 100%;
 `
@@ -32,7 +34,12 @@ class Join extends React.Component {
         <Popup>
           <PopupInner>
               <PFrame>
-                <Title>회원가입~~</Title>
+                <Title>
+                    <JoinText>회원가입~~</JoinText>
+                    <JoinImage>
+                        <img src={psa} width='80' height='80'/>
+                    </JoinImage>
+                </Title>
                 <IDFrame>ID<ID></ID></IDFrame>
                 <PWFrame>PW<PW></PW></PWFrame>
                 <NFrame>이름<Name></Name></NFrame>
@@ -73,6 +80,7 @@ const Popup = styled.div`
     bottom: 0;
     margin: auto;
     background-color: rgba(0,0,0, 0.5);
+    z-index: 999;
 `
 
 const PopupInner = styled.div`
@@ -83,6 +91,17 @@ const PopupInner = styled.div`
   bottom: 10%;
   margin: auto;
   background: white;
+
+  border-radius: 4%;
+  overflow: hidden;
+
+  animation-name: zoom;
+  animation-duration: 0.6s;
+
+  @keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+  }
 
   @media (max-width: 768px) {
     left: 10%;
@@ -98,18 +117,49 @@ const PopupInner = styled.div`
 `
 
 const PFrame = styled.div`
+    height: 100%;
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(13, 1fr);
-    grid-template-areas: "Title" "." "ID" "PW" "Name" "Gender" "Birth" "Cal" "Cal" "Cal" "." "Bu" ".";
+    grid-template-areas: 
+        "Title Title" 
+        ". ." 
+        "ID ID" 
+        "PW PW" 
+        "Name Name" 
+        "Gender Gender" 
+        "Birth Birth" 
+        "Cal Cal" 
+        "Cal Cal" 
+        "Cal Cal" 
+        ". ." 
+        "Bu Bu" 
+        ". ."
+        ;
 `
 
 const Title = styled.div`
     grid-area: Title;
+    display: grid;
+
     padding-left: 1rem;
     padding-top: .5rem;
     font-size: x-large;
     text-align: left;
+    background: #ffde96;
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "JoinText JoinImage";
 `
+
+const JoinText = styled.div`
+    grid-area: JoinText;
+`;
+
+const JoinImage = styled.div`
+    grid-area: JoinImage;
+`;
+
 const IDFrame = styled.div`
     grid-area: ID;
     padding: auto;

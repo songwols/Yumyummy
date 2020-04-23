@@ -1,13 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 
+import psa from '../../assets/images/psa.png';
+
+
 class Login extends React.Component {
     render() {
       return (
         <Popup>
           <PopupInner>
             <PFrame>
-                <Title>로그인~~</Title>
+                <Title>
+                    <LoginText>로그인~~</LoginText>
+                    <LoginImage>
+                        <img src={psa} width='80' height='80'/>
+                    </LoginImage>
+                </Title>
                 <IDFrame>ID<ID></ID></IDFrame>
                 <PWFrame>PW<PW></PW></PWFrame>
                 <BFrame>
@@ -35,6 +43,7 @@ const Popup = styled.div`
   bottom: 0;
   margin: auto;
   background-color: rgba(0,0,0, 0.5);
+  z-index: 999;
 `
 
 const PopupInner = styled.div`
@@ -46,6 +55,17 @@ const PopupInner = styled.div`
   margin: auto;
   background: white;
 
+  border-radius: 4%;
+  overflow: hidden;
+
+  animation-name: zoom;
+  animation-duration: 0.6s;
+
+  @keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+  }
+
   @media (max-width: 768px) {
     left: 10%;
     right: 10%;
@@ -54,27 +74,58 @@ const PopupInner = styled.div`
   }
   
   @media (min-width: 768px) and (max-width: 1024px) {  
+    
     top: 10%;
     bottom: 15%;
   }
 `
 
 const PFrame = styled.div`
+    height: 100%;
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(12, 1fr);
-    grid-template-areas: "Title" "." "ID" "PW" "." "Bu" "." "Tag" "." "Kakao" "Google" ".";
+    grid-template-areas: 
+        "Title Title" 
+        ". ." 
+        "ID ID" 
+        "PW PW" 
+        ". ." 
+        "Bu Bu" 
+        ". ." 
+        "Tag Tag" 
+        ". ." 
+        "Kakao Kakao" 
+        "Google Google" 
+        ". ."
+        ;
 `
 const Title = styled.div`
     grid-area: Title;
+    display: grid;
+
     padding-left: 1rem;
     padding-top: .5rem;
     font-size: x-large;
-    text-align: left;
+    text-align: center;
+    background: #ffde96;
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "LoginText LoginImage";
 `
+
+const LoginText = styled.div`
+    grid-area: LoginText;
+`;
+
+const LoginImage = styled.div`
+    grid-area: LoginImage;
+`;
+
 const IDFrame = styled.div`
     grid-area: ID;
     padding: auto;
-    padding-left: 10%;
+    padding-left: 12%;
     justify-items: left;
     text-align: left;
 `
@@ -91,13 +142,13 @@ const ID = styled.input`
     font-size: 0.875rem;
     -ms-flex: 1 1;
     flex: 1 1;
-    margin-left: 0.5rem;
+    margin-left: 1.2rem;
     color: inherit;
 `
 const PWFrame = styled.div`
     grid-area: PW;
     padding: auto;
-    padding-left: 10%;
+    padding-left: 12%;
     justify-items: left;
     text-align: left;
 `

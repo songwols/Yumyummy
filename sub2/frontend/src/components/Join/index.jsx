@@ -165,8 +165,8 @@ const Title = styled.div`
     text-align: left;
     background: #ffde96;
 
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-areas: ". JoinImage JoinText .";
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: ". . JoinImage JoinText . .";
 `
 
 const JoinText = styled.div`

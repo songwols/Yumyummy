@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Top from "../../components/Top";
 import DetailContent from "../../components/Detail";
-import Map from "../../components/Map";
+import MapContainer from "../../components/Map";
 import ReviewCon from "../../components/Review";
 
 const Detail = ({ match }) => {
@@ -16,7 +16,7 @@ const Detail = ({ match }) => {
       <CFrame>
         <DetailContent storeid={id}></DetailContent>
         <MFrame>
-          <Map></Map>
+          <MapContainer storeid={id}></MapContainer>
         </MFrame>
       </CFrame>
       <ReviewCon storeid={id}></ReviewCon>

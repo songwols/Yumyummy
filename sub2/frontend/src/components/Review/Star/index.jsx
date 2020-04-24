@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { FaStar } from 'react-icons/fa';
 import './Star.css';
 

@@ -9,48 +9,51 @@ dotenv.config();
 @inject("storeStore")
 @observer
 class MapContainer extends React.Component {
-    constructor(props) {
-      super();  
-      this.state = {
+    state = {
+        cenLat: localStorage.getItem("latitude"), 
+        cenLong: localStorage.getItem("longitude"),
         stores: [
           {
-            latitude: localStorage.getItem("latitude"), longitude: localStorage.getItem("longitude")
+            store_name: this.props.store_name,
+            address: this.props.address,
+            menu: this.props.menu,
           },
         ],
-        info : [
-          {
-          store_name: localStorage.getItem("S_store_name", this.store_name),
-          address : localStorage.getItem("S_address", this.store_name),
-          menu: localStorage.getItem("S_menu", this.store_name),
-          score: localStorage.getItem("S_score", this.store_name),
-          review: localStorage.getItem("S_review", this.store_name),
-          }
-        ]
       };
-      props.storeStore.search(this.state.info);
-      console.log("cons")     
-      console.log(props.storeStore)
-      console.log(props.storeStore.returnItems) 
+
+    componentWillMount(){
+      this.props.storeStore.search(this.state.stores);
+      this.props.storeStore.detail(this.props.storeid);
+      this.setState({
+        cenLat : localStorage.getItem("latitude"),
+        cenLong: localStorage.getItem("longitude")
+      })
     }
 
     componentDidMount(){
-      
     }
 
-    displayMarkers = () => {
-      return this.state.stores.map((store, index) => {
-        return <Marker key={index} id={index} position={{
-         lat: store.latitude,
-         lng: store.longitude
-       }}
-       onClick={() => console.log("You clicked me!")} />
-      })
+    displayMarkers = (e) => {
+      if(this.props.storeid !== undefined){
+        return <Marker position={{
+          lat: e.latitude,
+          lng: e.longitude
+        }}
+        onClick={() => console.log("You clicked me!")} />
+      }
+      else{
+        return this.props.storeStore.location.map((store, index) => {
+          return <Marker key={index} id={store} position={{
+           lat: store.lat,
+           lng: store.long
+         }}
+         onClick={() => console.log("You clicked me!")} />
+        })
+      }
     }
   
     render() {
-        console.log("Map")
-        const returns = this.props.storeStore.returnItems;
-
+        const detailpost = this.props.storeStore.detailPost;
         const containerStyle = {
             position: 'absolute',  
             width: '30%',
@@ -63,9 +66,14 @@ class MapContainer extends React.Component {
                 google={this.props.google}
                 zoom={10}
                 containerStyle={containerStyle}
-                initialCenter={{ lat: localStorage.getItem("latitude"), lng: localStorage.getItem("longitude")}}
+                initialCenter={
+                  { 
+                    lat: localStorage.getItem("latitude"), 
+                    lng: localStorage.getItem("longitude")
+                  }
+                }
             >
-                {this.displayMarkers()}
+                {this.displayMarkers(detailpost)}
             </Map>
           </Maps>
       );

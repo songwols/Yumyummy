@@ -15,7 +15,7 @@ const App = () => {
     <GlobalStyle></GlobalStyle>
       <Switch>
         <Route path="/test" component={Test} />
-        <Route path="/result" component={Result} />
+        <Route path="/result/:store_name/:address/:menu" component={Result} />
         <Route path="/detail/:id" component={Detail} />
         <Route path="/my" component={My} />
         <Route path="/" component={MainPage} />

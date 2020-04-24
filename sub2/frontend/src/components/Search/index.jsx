@@ -55,7 +55,7 @@ class Searching extends React.Component {
       e.preventDefault();
       this.props.storeStore.setInfo(this.state.info);
       this.props.storeStore.search(this.state.info);
-      this.props.history.push("/result");
+      this.props.history.push("/result/"+ this.state.info.store_name + "/"+this.state.info.address + "/"+this.state.info.menu);
     };
 
     const Enterkey = (e) => {

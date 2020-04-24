@@ -1,51 +1,49 @@
 import React from "react";
 import styled from "styled-components";
 import Top from "../../components/Top";
-import { Link } from "react-router-dom";
 import CardLayout from "../../components/ResultList";
-import Map from "../../components/Map";
 import StarImag from "../../assets/images/Star.png";
 import ReviewImag from "../../assets/images/Review.png";
 import Paging from "../../components/Paging";
 import ReviewCon from "../../components/Review";
 import MapContainer from "../../components/Map";
 
-class Result extends React.Component {
-  render() {
+const Result = ({match}) => {
+    const {store_name, address, menu} = match.params;
+
     return (
-      <RFrame>
-        <TopLayer>
-          <Top></Top>
-          <Filter>
-            <GradeReview>
-              <Grade>
-                <img src={StarImag} width="70" height="60" />
-                평점순
-              </Grade>
-              <Review>
-                <img src={ReviewImag} width="70" height="60" />
-                리뷰순
-              </Review>
-            </GradeReview>
-          </Filter>
-          {/* <Categories>
-                        <Link to="/result">한식</Link>&nbsp;
-                        <Link to="/result">중식</Link>&nbsp;
-                        <Link to="/result">일식</Link>&nbsp;
-                        <Link to="/result">양식</Link>&nbsp;
-                        <Link to="/result">카페</Link>&nbsp;
-                    </Categories> */}
-        </TopLayer>
-        <LFrame>
-          <CardLayout></CardLayout>
-          <Paging></Paging>
-          <MFrame>
-            <MapContainer></MapContainer>
-          </MFrame>
-        </LFrame>
-      </RFrame>
-    );
-  }
+        <RFrame>
+          <TopLayer>
+            <Top></Top>
+            <Filter>
+              <GradeReview>
+                <Grade>
+                  <img src={StarImag} width="70" height="60" />
+                  평점순
+                </Grade>
+                <Review>
+                  <img src={ReviewImag} width="70" height="60" />
+                  리뷰순
+                </Review>
+              </GradeReview>
+            </Filter>
+            {/* <Categories>
+                          <Link to="/result">한식</Link>&nbsp;
+                          <Link to="/result">중식</Link>&nbsp;
+                          <Link to="/result">일식</Link>&nbsp;
+                          <Link to="/result">양식</Link>&nbsp;
+                          <Link to="/result">카페</Link>&nbsp;
+                      </Categories> */}
+          </TopLayer>
+          <LFrame>
+            <CardLayout store_name={store_name} address={address} menu={menu}></CardLayout>
+            <Paging></Paging>
+            <MFrame>
+              <MapContainer></MapContainer>
+            </MFrame>
+          </LFrame>
+        </RFrame>
+      );
 }
 
 const RFrame = styled.div`

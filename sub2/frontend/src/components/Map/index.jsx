@@ -10,12 +10,8 @@ dotenv.config();
 @observer
 class MapContainer extends React.Component {
     state = {
-        stores: [
-          {
-            latitude: 37.50128521296166, 
-            longitude: 127.03954246304296
-          },
-        ],
+        cenLat: localStorage.getItem("latitude"), 
+        cenLong: localStorage.getItem("longitude"),
         stores: [
           {
             store_name: this.props.store_name,
@@ -26,21 +22,31 @@ class MapContainer extends React.Component {
       };
 
     componentWillMount(){
-      this.props.storeStore.search(this.state.stores)
+      this.props.storeStore.search(this.state.stores);
       this.props.storeStore.detail(this.props.storeid);
     }
 
-    displayMarkers = () => {
-      return this.props.storeStore.location.map((store, index) => {
-        return <Marker key={index} id={store} position={{
-         lat: store.lat,
-         lng: store.long
-       }}
-       onClick={() => console.log("You clicked me!")} />
-      })
+    displayMarkers = (e) => {
+      if(this.props.storeid != undefined){
+        return <Marker position={{
+          lat: e.latitude,
+          lng: e.longitude
+        }}
+        onClick={() => console.log("You clicked me!")} />
+      }
+      else{
+        return this.props.storeStore.location.map((store, index) => {
+          return <Marker key={index} id={store} position={{
+           lat: store.lat,
+           lng: store.long
+         }}
+         onClick={() => console.log("You clicked me!")} />
+        })
+      }
     }
   
     render() {
+        const detailpost = this.props.storeStore.detailPost;
         const containerStyle = {
             position: 'absolute',  
             width: '30%',
@@ -55,12 +61,12 @@ class MapContainer extends React.Component {
                 containerStyle={containerStyle}
                 initialCenter={
                   { 
-                    lat: 37.50128521296166, 
-                    lng: 127.03954246304296
+                    lat: this.state.cenLat, 
+                    lng: this.state.cenLong
                   }
                 }
             >
-                {this.displayMarkers()}
+                {this.displayMarkers(detailpost)}
             </Map>
           </Maps>
       );

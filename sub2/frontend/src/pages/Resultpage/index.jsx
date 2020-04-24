@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Top from "../../components/Top";
-import { Link } from "react-router-dom";
 import CardLayout from "../../components/ResultList";
-import Map from "../../components/Map";
 import StarImag from "../../assets/images/Star.png";
 import ReviewImag from "../../assets/images/Review.png";
 import Paging from "../../components/Paging";

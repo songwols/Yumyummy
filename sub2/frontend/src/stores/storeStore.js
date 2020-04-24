@@ -113,7 +113,7 @@ export default class StoreStore {
 
   @action search(info) {
     this.info = info;
-    if(info.store_name == undefined){
+    if(info.store_name == undefined && info[0].store_name != undefined){
       this.info = info[0];
     }
     else{
@@ -125,6 +125,8 @@ export default class StoreStore {
       return agent.Data.all(this.pageNumber)
         .then((res) => {
           this.setStoreItems(res.data.results);
+          localStorage.setItem("latitude", res.data.results[0].latitude)
+          localStorage.setItem("longitude", res.data.results[0].longitude)
           for(var i=0;i<res.data.results.length;i++){
             this.location = this.location.concat(
               {
@@ -139,6 +141,9 @@ export default class StoreStore {
       return agent.Data.search(this.info, this.pageNumber)
         .then((res) => {
           this.setStoreItems(res.data.results);
+          this.location = [];
+          localStorage.setItem("latitude", res.data.results[0].latitude)
+          localStorage.setItem("longitude", res.data.results[0].longitude)
           for(var i=0;i<res.data.results.length;i++){
             this.location = this.location.concat(
               {
@@ -156,6 +161,8 @@ export default class StoreStore {
   @action detail(id) {
     return agent.Data.detail(id).then((res) => {
       this.detailPost = res.data.results[0];
+      localStorage.setItem("latitude", res.data.results[0].latitude)
+      localStorage.setItem("longitude", res.data.results[0].longitude)
     });
   }
 

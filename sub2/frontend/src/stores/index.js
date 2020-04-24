@@ -2,6 +2,7 @@ import TestStore from "./testStore";
 import StoreStore from "./storeStore";
 import ReviewStore from "./reviewStore";
 import MenuStore from "./menuStore";
+import UserStore from "./userStore";
 import SuggestStore from "./suggestStore";
 
 class RootStore {
@@ -10,6 +11,7 @@ class RootStore {
     this.storeStore = new StoreStore(this);
     this.reviewStore = new ReviewStore(this);
     this.menuStore = new MenuStore(this);
+    this.userStore = new UserStore(this);
     this.suggestStore = new SuggestStore(this);
   }
 }

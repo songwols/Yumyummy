@@ -32,7 +32,7 @@ class KLogin extends Component {
             <Container>
                 <Kakao
                     jsKey={process.env.REACT_APP_KAKAO_AUTH}
-                    buttonText="Kakao 로그인"
+                    buttonText="Kakao"
                     onSuccess={this.responseKakao}
                     onFailure={this.responseFail}
                     getProfile="true"
@@ -43,23 +43,29 @@ class KLogin extends Component {
 }
 
 export const Kakao = styled(KakaoLogin)`
-    height: 100% !important;
+    font-size: 1rem;
+    /* height: 100% !important; */
     border: 0 !important;
     outline: 0 !important;
     box-shadow: none !important;
-    color: black !important;
+    /* color: black !important; */
     background-color: #00ff0000 !important;
     cursor: pointer;
 `
 
 const Container = styled.div`
-    line-height: 4rem;
-    width: 100%;
-    height: 4rem;
+    line-height: 50px;
+    /* width: 100%; */
+    /* height: 4rem; */
     background-color: #ffff00;
-    display: inline-block;
-    margin-top: 3rem;
+    /* display: inline-block; */
+    /* margin-top: 3rem; */
     cursor: pointer;
+    
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
 `
 
 export default KLogin;

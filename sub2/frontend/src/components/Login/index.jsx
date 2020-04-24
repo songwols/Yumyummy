@@ -36,8 +36,10 @@ class Login extends React.Component {
                     <Cancel onClick={this.props.cancelLogin}>취소</Cancel>
                 </BFrame>
                 <Tag><Hr>&nbsp;소셜 로그인하기&nbsp;</Hr></Tag>
+                <SocialLogin>
                     <KFrame><KLogin></KLogin></KFrame>
                     <GFrame><GLogin></GLogin></GFrame>
+                </SocialLogin>
             </PFrame>
           </PopupInner>
         </Popup>
@@ -97,22 +99,31 @@ const PopupInner = styled.div`
 const PFrame = styled.div`
     height: 100%;
     display: grid;
-    /* grid-template-columns: repeat(2, 1fr); */
-    grid-template-rows: repeat(12, 1fr);
+    grid-template-rows: repeat(10, 1fr);
     grid-template-areas: 
-        "Title" 
-        "." 
+        "Title"
+        "."
         "IDFrame"
-        "PWFrame" 
-        "." 
+        "."
+        "PWFrame"
+        "."
         "Bu" 
-        "." 
-        "Tag" 
-        "." 
-        "Kakao" 
-        "Google" 
+        "Tag"
+        "SocialLogin" 
         "."
         ;
+
+    @media (max-width: 773px) {
+        grid-template-rows: 1fr 1fr 1fr 1fr 0.7fr 1fr;
+        grid-template-areas: 
+            "Title"
+            "IDFrame"
+            "PWFrame"
+            "Bu" 
+            "Tag"
+            "SocialLogin" 
+            ;
+        }
 `
 const Title = styled.div`
     grid-area: Title;
@@ -126,6 +137,11 @@ const Title = styled.div`
 
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas: ". . LoginImage LoginText . .";
+
+    @media (max-width: 773px) {
+        grid-template-columns: 1fr 1fr 2fr 1fr;
+        grid-template-areas: ". LoginImage LoginText LoginText .";
+
 `
 
 const LoginText = styled.div`
@@ -137,41 +153,20 @@ const LoginImage = styled.div`
     grid-area: LoginImage;
 `;
 
-// const IDFrame = styled.div`
-//     grid-area: ID;
-//     padding: auto;
-//     padding-left: 12%;
-//     justify-items: left;
-//     text-align: left;
-// `
-// const ID = styled.input`
-//     background: none;
-//     width: 70%;
-//     border-color: #ffde96;
-//     border-style: solid;
-//     border-radius: .5rem;
-//     outline: none;
-//     box-shadow: none;
-//     padding-top: 0.5rem;
-//     padding-bottom: 0.5rem;
-//     font-size: 0.875rem;
-//     -ms-flex: 1 1;
-//     flex: 1 1;
-//     margin-left: 1.2rem;
-//     color: inherit;
-// `
-
 const IDFrame = styled.div`
     grid-area: IDFrame;
     display: grid;
     padding: auto;
-    /* padding-left: 15%; */
-    /* justify-items: left; */
     text-align: left;
 
     grid-template-columns: repeat(8, 1fr);
     grid-template-areas: ". IdText ID ID ID ID ID .";
     margin-left: -8%;
+
+    @media (max-width: 773px) {
+        padding-top: 6%;
+        padding-bottom: 6%;
+        }
 `
 
 const IdText = styled.div`
@@ -185,7 +180,6 @@ const ID = styled.input`
     grid-area: ID;
     display: grid;
     background: none;
-    /* width: 70%; */
     border-color: #ffde96;
     border-style: solid;
     border-radius: .5rem;
@@ -196,45 +190,22 @@ const ID = styled.input`
     font-size: 0.875rem;
     -ms-flex: 1 1;
     flex: 1 1;
-    /* margin-left: 1.2rem; */
     color: inherit;
 `
-
-// const PWFrame = styled.div`
-//     grid-area: PW;
-//     padding: auto;
-//     padding-left: 12%;
-//     justify-items: left;
-//     text-align: left;
-// `
-// const PW = styled.input`
-//     background: none;
-//     width: 70%;
-//     border-color: #ffde96;
-//     border-style: solid;
-//     border-radius: .5rem;
-//     outline: none;
-//     box-shadow: none;
-//     padding-top: 0.5rem;
-//     padding-bottom: 0.5rem;
-//     font-size: 0.875rem;
-//     -ms-flex: 1 1;
-//     flex: 1 1;
-//     margin-left: 0.5rem;
-//     color: inherit;
-// `
-
 const PWFrame = styled.div`
     grid-area: PWFrame;
     display: grid;
     padding: auto;
-    /* padding-left: 15%; */
-    /* justify-items: left; */
     text-align: left;
 
     grid-template-columns: repeat(8, 1fr);
     grid-template-areas: ". PwText PW PW PW PW PW .";
     margin-left: -8%;
+
+    @media (max-width: 773px) {
+        padding-top: 6%;
+        padding-bottom: 6%;
+        }
 `;
 
 const PwText = styled.div`
@@ -248,7 +219,6 @@ const PW = styled.input`
     grid-area: PW;
     display: grid;
     background: none;
-    /* width: 70%; */
     border-color: #ffde96;
     border-style: solid;
     border-radius: .5rem;
@@ -259,7 +229,6 @@ const PW = styled.input`
     font-size: 0.875rem;
     -ms-flex: 1 1;
     flex: 1 1;
-    /* margin-left: 0.5rem; */
     color: inherit;
 `;
 
@@ -267,10 +236,16 @@ const BFrame = styled.div`
     grid-area: Bu;
     justify-items: center;
     text-align: center;
+    display: block;
+
+    @media (max-width: 773px) {
+        padding-top: 6%;
+        padding-bottom: 6%;
+        }
 `
 
 const Confirm = styled.button`
-    height: 100%;
+    height: 110%;
     width: 37%;
     background: none;
     border: none;
@@ -279,7 +254,7 @@ const Confirm = styled.button`
     border-radius: .5rem;
     cursor: pointer;
     transform: scale(0.95);
-    font-size: 1rem;
+    font-size: 1.2rem;
 
 
     :hover {
@@ -289,7 +264,7 @@ const Confirm = styled.button`
     }    
 `
 const Cancel = styled.button`
-    height: 100%;
+    height: 110%;
     width: 37%;
     background: none;
     border: none;
@@ -298,7 +273,7 @@ const Cancel = styled.button`
     border-radius: .5rem;
     cursor: pointer;
     transform: scale(0.95);
-    font-size: 1rem;
+    font-size: 1.2rem;
 
 
     :hover {
@@ -311,7 +286,7 @@ const Cancel = styled.button`
 const Tag = styled.div`
     grid-area: Tag;
     text-align: center;
-    padding-top: .5rem;
+    padding-top: 1.3rem;
 `
 const Hr = styled.div`
     padding-right: 1rem;
@@ -328,60 +303,74 @@ const Hr = styled.div`
         height: .1rem;
     }
 `
+const SocialLogin = styled.div`
+    margin-top: 3%;
+    grid-area: SocialLogin;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        ". KFrame GFrame .";
+    
+    @media (max-width: 773px) {
+        transform: scale(1.4);
+        }
+`;
+
 const KFrame = styled.div`
-    grid-area: Kakao;
+    grid-area: KFrame;
+    display: grid;
     justify-items: center;
     text-align: center;
-
 `
-const Kakao = styled.button` 
-    height: 90%;
-    width: 80%;
-    background: none;
-    border: none;
-    outline: none;
-    background-color: yellow; 
-    border-radius: .5rem;
-    cursor: pointer;
-    justify-items: center;
-    text-align: center;
+// const Kakao = styled.button` 
+//     height: 90%;
+//     width: 80%;
+//     background: none;
+//     border: none;
+//     outline: none;
+//     background-color: yellow; 
+//     border-radius: .5rem;
+//     cursor: pointer;
+//     justify-items: center;
+//     text-align: center;
 
-    transform: scale(0.95);
+//     transform: scale(0.95);
 
 
-    :hover {
-        border-radius: .7rem;
-        opacity: 0.95;
-        transform: scale(0.97);
-    } 
-`
+//     :hover {
+//         border-radius: .7rem;
+//         opacity: 0.95;
+//         transform: scale(0.97);
+//     } 
+// `
 const GFrame = styled.div`
-    grid-area: Google;
+    grid-area: GFrame;
+    display: grid;
     justify-items: center;
     text-align: center;
 
 `
-const Google = styled.button`
-    height: 90%;
-    width: 80%;
-    background: none;
-    border: none;
-    outline: none;
-    background-color: gray; 
-    border-radius: .5rem;
-    cursor: pointer;
-    justify-items: center;
-    text-align: center;
+// const Google = styled.button`
+//     height: 90%;
+//     width: 80%;
+//     background: none;
+//     border: none;
+//     outline: none;
+//     background-color: gray; 
+//     border-radius: .5rem;
+//     cursor: pointer;
+//     justify-items: center;
+//     text-align: center;
 
-    transform: scale(0.95);
+//     transform: scale(0.95);
 
 
-    :hover {
-        border-radius: .7rem;
-        opacity: 0.95;
-        transform: scale(0.97);
-    } 
-`
+//     :hover {
+//         border-radius: .7rem;
+//         opacity: 0.95;
+//         transform: scale(0.97);
+//     } 
+// `
 
 
 export default Login;

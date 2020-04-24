@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Calendar from 'react-calendar';
 import moment from 'moment';
+import Radio from "./RadioButton";
 
 import join from '../../assets/images/Join.png';
 
@@ -61,14 +62,22 @@ class Join extends React.Component {
                 <GFrame>
                     <GText>성별</GText>
                     <GenderLabel>
-                        <label>
+                        {/* <label> */}
+                            <Radio name="gender">남자</Radio>
+                        {/* </label> */}
+                        {/* <label> */}
+                            <Radio name="gender">여자</Radio>
+                        {/* </label> */}
+                        {/* <label>
                         <Gender1 type="radio" value="male" name="gender" onChange={() => this.onGenderChange("male")}>
-                        </Gender1>남자
+                        </Gender1>
+                        남자
                         </label>
                         <label>
                         <Gender2 type="radio" value="female" name="gender" onChange={() => this.onGenderChange("female")}>
-                        </Gender2>여자
-                        </label>
+                        </Gender2>
+                        여자
+                        </label> */}
                     </GenderLabel>
                 </GFrame>
                 <BIFrame>
@@ -320,21 +329,21 @@ const GenderLabel = styled.div`
     display: grid;
     background: none;
     /* height: 20px; */
-    line-height: 36.8px;
+    /* line-height: 36.8px; */
     /* margin-left: 12rem; */
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas: "Gender1 Gender2";
 `;
 
-const Gender1 = styled.input`
-    grid-area: Gender1;
-    display: grid;
-`;
+// const Gender1 = styled.input`
+//     grid-area: Gender1;
+//     display: grid;
+// `;
 
-const Gender2 = styled.input`
-    grid-area: Gender2;
-    display: grid;
-`;
+// const Gender2 = styled.input`
+//     grid-area: Gender2;
+//     display: grid;
+// `;
 
 const BIFrame = styled.div`
     grid-area: BIFrame;

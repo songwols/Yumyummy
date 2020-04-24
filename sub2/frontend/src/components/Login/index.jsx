@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 import login from '../../assets/images/Login.png';
+import GLogin from "./GLogin";
+import KLogin from "./KLogin";
+
 
 
 class Login extends React.Component {
@@ -33,8 +36,8 @@ class Login extends React.Component {
                     <Cancel onClick={this.props.cancelLogin}>취소</Cancel>
                 </BFrame>
                 <Tag><Hr>&nbsp;소셜 로그인하기&nbsp;</Hr></Tag>
-                    <KFrame><Kakao>카카오로 로그인하기</Kakao></KFrame>
-                    <GFrame><Google>구글로 로그인하기</Google></GFrame>
+                    <KFrame><KLogin></KLogin></KFrame>
+                    <GFrame><GLogin></GLogin></GFrame>
             </PFrame>
           </PopupInner>
         </Popup>

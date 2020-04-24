@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import KakaoLogin from 'react-kakao-login';
 import styled from 'styled-components';
+import dotenv from "dotenv";
 
-require('dotenv').config();
+dotenv.config();
 
 class KLogin extends Component {
     constructor(props) {
@@ -30,7 +31,7 @@ class KLogin extends Component {
         return (
             <Container>
                 <Kakao
-                    jsKey={process.env.REACT_APP_KAKAO}
+                    jsKey={process.env.REACT_APP_KAKAO_AUTH}
                     buttonText="Kakao 로그인"
                     onSuccess={this.responseKakao}
                     onFailure={this.responseFail}

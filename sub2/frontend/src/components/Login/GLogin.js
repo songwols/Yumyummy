@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import styled from 'styled-components';
 import axios from 'axios';
+import dotenv from "dotenv";
 
-require('dotenv').config();
+dotenv.config();
 
 class GLogin extends Component {
 
@@ -44,7 +45,7 @@ class GLogin extends Component {
         return (
             <Container>
                 <Google
-                    clientId={process.env.REACT_APP_Google}
+                    clientId={process.env.REACT_APP_Google_AUTH}
                     buttonText="Google 로그인"
                     onSuccess={this.responseGoogle}
                     onFailure={this.responseFail}

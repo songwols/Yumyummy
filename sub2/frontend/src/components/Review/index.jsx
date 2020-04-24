@@ -65,17 +65,23 @@ class ReviewCon extends React.Component {
 const RFrame = styled.div`
   height: 100%;
   display: grid;
-  grid-template-areas: "Content";
+  grid-template-columns: 70% 30%;
+  grid-template-areas: "Content .";
+  /* grid-template-areas: "Content ."; */
+  @media (max-width: 768px) {
+    grid-template-columns: 100%;
+  }
 `;
 const Content = styled.div`
   height: 100%;
   display: grid;
   grid-area: Content;
+  grid-template-columns: 10% 90%;
   grid-template-rows: 2fr 1fr 5fr;
   grid-template-areas:
-    "ReviewWriteBox"
-    "ReviewHeader"
-    "ReviewList";
+    ". ReviewWriteBox"
+    ". ReviewHeader"
+    ". ReviewList";
 `;
 
 const ReviewWriteBox = styled.div`
@@ -87,7 +93,7 @@ const ReviewWriteBox = styled.div`
     "ReviewStar"
     "ReviewWrite"
     /* "ReviewSend" */;
-  margin-left: 30px;
+  /* margin-left: 30px; */
 `;
 const ReviewStar = styled.div`
   display: grid;
@@ -135,7 +141,7 @@ const ReviewHeader = styled.div`
   grid-template-columns: 2fr 1fr;
   grid-template-areas: "ReviewNum ReviewFilter";
   align-items: center;
-  padding-left: 8%;
+  /* padding-left: 8%; */
   border-bottom: 0.5px solid #ffde96;
 `;
 const ReviewNum = styled.div`

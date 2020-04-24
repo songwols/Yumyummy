@@ -75,7 +75,7 @@ export default class StoreStore {
   }
 
   @action setPredicate(predicate) {
-    if (JSON.stringfy(predicate) === JSON.stringfy(this.predicate)) return;
+    if (JSON.stringfy(predicate) == JSON.stringfy(this.predicate)) return;
     this.clear();
     this.predicate = predicate;
   }
@@ -113,7 +113,7 @@ export default class StoreStore {
 
   @action search(info) {
     this.info = info;
-    if(info.store_name == undefined && info[0].store_name != undefined){
+    if(info.store_name === undefined && info[0].store_name !== undefined){
       this.info = info[0];
     }
     else{
@@ -121,7 +121,7 @@ export default class StoreStore {
     }
     this.pageNumber = 1;
     
-    if (this.info.store_name == undefined && this.info.address == undefined && this.info.menu == undefined) {
+    if (this.info.store_name === undefined && this.info.address === undefined && this.info.menu === undefined) {
       return agent.Data.all(this.pageNumber)
         .then((res) => {
           this.setStoreItems(res.data.results);
@@ -142,6 +142,7 @@ export default class StoreStore {
         .then((res) => {
           this.setStoreItems(res.data.results);
           this.location = [];
+          // console.log(res.data.results)
           localStorage.setItem("latitude", res.data.results[0].latitude)
           localStorage.setItem("longitude", res.data.results[0].longitude)
           for(var i=0;i<res.data.results.length;i++){

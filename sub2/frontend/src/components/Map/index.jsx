@@ -24,10 +24,17 @@ class MapContainer extends React.Component {
     componentWillMount(){
       this.props.storeStore.search(this.state.stores);
       this.props.storeStore.detail(this.props.storeid);
+      this.setState({
+        cenLat : localStorage.getItem("latitude"),
+        cenLong: localStorage.getItem("longitude")
+      })
+    }
+
+    componentDidMount(){
     }
 
     displayMarkers = (e) => {
-      if(this.props.storeid != undefined){
+      if(this.props.storeid !== undefined){
         return <Marker position={{
           lat: e.latitude,
           lng: e.longitude
@@ -61,8 +68,8 @@ class MapContainer extends React.Component {
                 containerStyle={containerStyle}
                 initialCenter={
                   { 
-                    lat: this.state.cenLat, 
-                    lng: this.state.cenLong
+                    lat: localStorage.getItem("latitude"), 
+                    lng: localStorage.getItem("longitude")
                   }
                 }
             >

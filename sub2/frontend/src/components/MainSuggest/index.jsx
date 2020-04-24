@@ -141,15 +141,15 @@ const Content = styled.div`
     grid-column-gap: 3%;
     grid-template-rows: repeat(auto-fit, 1fr);
 
-    @media (max-width: 768px) {
-        grid-template-columns: 100%;
-        grid-template-rows: repeat(auto-fit, 1fr);
-    }
+    // @media (max-width: 768px) {
+    //     grid-template-columns: 100%;
+    //     grid-template-rows: repeat(auto-fit, 1fr);
+    // }
 
-    @media (min-width: 769px and max-width: 1024px) {
-        grid-template-columns: repeat(auto-fit, 50%);
-        grid-template-rows: repeat(auto-fit, 1fr);
-    }
+    // @media (min-width: 769px and max-width: 1024px) {
+    //     grid-template-columns: repeat(auto-fit, 50%);
+    //     grid-template-rows: repeat(auto-fit, 1fr);
+    // }
 
 `
 

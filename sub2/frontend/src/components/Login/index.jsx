@@ -1,14 +1,50 @@
 import React from "react";
 import styled from "styled-components";
-
+import { inject, observer } from "mobx-react";
 import login from '../../assets/images/Login.png';
 import GLogin from "./GLogin";
 import KLogin from "./KLogin";
 
-
-
+@observer
+@inject("authStore")
 class Login extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+          info: [
+            {
+              ID: "",
+              PW: "",
+            },
+          ],
+        };
+      }
+
+      onIDChange = (e) => {
+        this.setState({
+          info: {
+            ID: e.target.value,
+            PW: this.state.info.PW,
+          },
+        });
+      };
+    
+      onPWChange = (e) => {
+        this.setState({
+          info: {
+            ID: this.state.info.ID,
+            PW: e.target.value,
+          },
+        });
+      };
+
+        
     render() {
+        const Login = (e) => {
+            e.preventDefault();
+            this.props.authStore.setInfo(this.state.info)
+        }
+
       return (
         <Popup>
           <PopupInner>
@@ -23,16 +59,16 @@ class Login extends React.Component {
                     <IdText>
                         ID
                     </IdText>
-                    <ID></ID>
+                    <ID value={this.state.ID} onChange={this.onIDChange}></ID>
                 </IDFrame>
                 <PWFrame>
                     <PwText>
                         PW    
                     </PwText>
-                    <PW></PW>
+                    <PW type="password" value={this.state.PW} onChange={this.onPWChange}></PW>
                 </PWFrame>
                 <BFrame>
-                    <Confirm onClick={this.props.cancelLogin}>로그인</Confirm>&nbsp;&nbsp;
+                    <Confirm onClick={Login}>로그인</Confirm>&nbsp;&nbsp;
                     <Cancel onClick={this.props.cancelLogin}>취소</Cancel>
                 </BFrame>
                 <Tag><Hr>&nbsp;소셜 로그인하기&nbsp;</Hr></Tag>
@@ -137,30 +173,6 @@ const LoginImage = styled.div`
     grid-area: LoginImage;
 `;
 
-// const IDFrame = styled.div`
-//     grid-area: ID;
-//     padding: auto;
-//     padding-left: 12%;
-//     justify-items: left;
-//     text-align: left;
-// `
-// const ID = styled.input`
-//     background: none;
-//     width: 70%;
-//     border-color: #ffde96;
-//     border-style: solid;
-//     border-radius: .5rem;
-//     outline: none;
-//     box-shadow: none;
-//     padding-top: 0.5rem;
-//     padding-bottom: 0.5rem;
-//     font-size: 0.875rem;
-//     -ms-flex: 1 1;
-//     flex: 1 1;
-//     margin-left: 1.2rem;
-//     color: inherit;
-// `
-
 const IDFrame = styled.div`
     grid-area: IDFrame;
     display: grid;
@@ -199,30 +211,6 @@ const ID = styled.input`
     /* margin-left: 1.2rem; */
     color: inherit;
 `
-
-// const PWFrame = styled.div`
-//     grid-area: PW;
-//     padding: auto;
-//     padding-left: 12%;
-//     justify-items: left;
-//     text-align: left;
-// `
-// const PW = styled.input`
-//     background: none;
-//     width: 70%;
-//     border-color: #ffde96;
-//     border-style: solid;
-//     border-radius: .5rem;
-//     outline: none;
-//     box-shadow: none;
-//     padding-top: 0.5rem;
-//     padding-bottom: 0.5rem;
-//     font-size: 0.875rem;
-//     -ms-flex: 1 1;
-//     flex: 1 1;
-//     margin-left: 0.5rem;
-//     color: inherit;
-// `
 
 const PWFrame = styled.div`
     grid-area: PWFrame;

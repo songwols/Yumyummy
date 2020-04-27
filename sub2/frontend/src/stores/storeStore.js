@@ -61,7 +61,6 @@ export default class StoreStore {
       return agent.Data.all(this.pageNumber)
         .then((res) => {
           this.setStoreItems(res.data.results);
-          console.log("1번");
         })
         .catch((err) => console.log(err));
     } else {

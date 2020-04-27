@@ -13,7 +13,6 @@ class ReviewCon extends React.Component {
   }
   render() {
     const reviews = this.props.reviewStore.reviews;
-    console.log(reviews);
     return (
       <RFrame>
         <Content>

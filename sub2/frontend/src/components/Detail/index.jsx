@@ -14,6 +14,7 @@ export const Mapp = styled(Map)`
 @observer
 class DetailContent extends React.Component {
   componentWillMount() {
+    window.scrollTo(0,0);
     this.props.storeStore.detail(this.props.storeid);
     this.props.menuStore.get_menu(this.props.storeid);
   }

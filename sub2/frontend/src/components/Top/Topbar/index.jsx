@@ -17,10 +17,19 @@ class Topbar extends React.Component {
       showLogin: !this.state.showLogin,
     });
   }
+ 
   toggleJoin() {
     this.setState({
       showJoin: !this.state.showJoin,
     });
+  }
+
+  Login = e => {
+    console.log(e)
+  }
+
+  Logout() {
+    
   }
 
   render() {
@@ -31,6 +40,7 @@ class Topbar extends React.Component {
         <Link to={"/my"} style={{ textDecoration: "none" }}>
           <Button>마이페이지</Button>
         </Link>
+        <Button onClick={this.Logout}>로그아웃</Button>
         {this.state.showLogin ? (
           <Login cancelLogin={this.toggleLogin.bind(this)} />
         ) : null}

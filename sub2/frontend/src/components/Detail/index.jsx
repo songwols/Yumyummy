@@ -62,7 +62,7 @@ class DetailContent extends React.Component {
               </RInfo>
             </Frame>
           </Info>
-          <Review>리뷰</Review>
+          {/* <Review>리뷰</Review> */}
         </IRFrame>
       </DCFrame>
     );
@@ -95,7 +95,7 @@ const IRFrame = styled.div`
 
 const Info = styled.div`
   grid-area: info;
-  border-bottom: 1px solid #ffde96;
+  /* border-bottom: 1px solid #ffde96; */
   display: grid;
   grid-template-rows: 10% 90%;
   grid-template-areas: "title" "frame";

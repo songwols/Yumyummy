@@ -42,6 +42,7 @@ const ReviewItem = styled.div`
   grid-area: ReviewItem;
   grid-template-columns: 1fr 4fr 1fr;
   grid-template-areas: "ReviewUser ReviewContent ReviewRating";
+
 `;
 const ReviewUser = styled.div`
   grid-area: ReviewUser;

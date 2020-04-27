@@ -1,6 +1,9 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 import styled from "styled-components";
+import face from "../../assets/images/face.png";
+import restaurant from "../../assets/images/restaurant.png";
+
 
 export const Mapp = styled(Map)`
   display: none !important;
@@ -25,7 +28,11 @@ class DetailContent extends React.Component {
       <DCFrame>
         <IRFrame>
           <Info>
-            <Title>{detailpost.store_name}</Title>
+            <Title>
+              <FaceIcon><img src={face} width="30" height="30" /></FaceIcon>
+              <RTitle>{detailpost.store_name}식당 이름</RTitle>
+              <ResIcon><img src={restaurant} width="30" height="25" /></ResIcon>
+            </Title>            
             <Frame>
               <RInfo>
                 <DInfo>
@@ -55,7 +62,7 @@ class DetailContent extends React.Component {
               </RInfo>
             </Frame>
           </Info>
-          <Review>리뷰</Review>
+          {/* <Review>리뷰</Review> */}
         </IRFrame>
       </DCFrame>
     );
@@ -88,7 +95,7 @@ const IRFrame = styled.div`
 
 const Info = styled.div`
   grid-area: info;
-  border-bottom: 1px solid #ffde96;
+  /* border-bottom: 1px solid #ffde96; */
   display: grid;
   grid-template-rows: 10% 90%;
   grid-template-areas: "title" "frame";
@@ -96,17 +103,37 @@ const Info = styled.div`
 
 const Title = styled.div`
   grid-area: title;
+  display: grid;
   font-size: xx-large;
   align-items: center;
   justify-items: center;
   float: left;
   border-bottom: 1px solid #e9e9e9;
   line-height: 60px;
-  /* background: pink; */
+  grid-template-columns: 10% 80% 10%;
+  grid-template-areas: "ResIcon RTitle FaceIcon";
+  /* background: #ffde96; */
 
   :hover {
     border-bottom: 1px solid #ffde96;
+    color: #281c07;
   }
+`;
+
+const ResIcon = styled.div`
+  grid-area: ResIcon;
+  display: grid;
+`;
+
+const RTitle = styled.div`
+  grid-area: RTitle;
+  display: grid;
+  text-align: left;
+`;
+
+const FaceIcon = styled.div`
+  grid-area: FaceIcon;
+  display: grid;
 `;
 
 const Frame = styled.div`
@@ -169,6 +196,7 @@ const DIV = styled.div`
 const Review = styled.div`
   grid-area: review;
   padding-top: 1rem;
+  border-bottom: 1px solid #ffde96;
 `;
 
 export default inject(({ storeStore }) => ({

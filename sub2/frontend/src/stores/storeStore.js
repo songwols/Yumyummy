@@ -31,10 +31,9 @@ export default class StoreStore {
 
   @action pageIncrease() {
     this.pageNumber = this.pageNumber + 1;
-    if (
-      this.info.store_name == null &&
-      this.info.address == null &&
-      this.info.menu == null
+    if ((this.info.store_name === undefined && this.info.address === undefined && this.info.menu === undefined)
+     || (this.info.store_name === "" && this.info.address === "" && this.info.menu === "")
+     || (this.info.store_name === "undefined" && this.info.address === "undefined" && this.info.menu === "undefined")
     ) {
       return agent.Data.all(this.pageNumber)
         .then((res) => {
@@ -53,10 +52,9 @@ export default class StoreStore {
 
   @action pageDecrease() {
     this.pageNumber = this.pageNumber - 1;
-    if (
-      this.info.store_name == null &&
-      this.info.address == null &&
-      this.info.menu == null
+    if ((this.info.store_name === undefined && this.info.address === undefined && this.info.menu === undefined)
+     || (this.info.store_name === "" && this.info.address === "" && this.info.menu === "")
+     || (this.info.store_name === "undefined" && this.info.address === "undefined" && this.info.menu === "undefined")
     ) {
       return agent.Data.all(this.pageNumber)
         .then((res) => {
@@ -111,7 +109,6 @@ export default class StoreStore {
   }
 
   @action search(info) {
-    this.info = info;
     if(info.store_name === undefined && info[0].store_name !== undefined){
       this.info = info[0];
     }
@@ -119,8 +116,10 @@ export default class StoreStore {
       this.info = info;
     }
     this.pageNumber = 1;
-    
-    if (this.info.store_name === undefined && this.info.address === undefined && this.info.menu === undefined) {
+    if ((this.info.store_name === undefined && this.info.address === undefined && this.info.menu === undefined)
+     || (this.info.store_name === "" && this.info.address === "" && this.info.menu === "")
+     || (this.info.store_name === "undefined" && this.info.address === "undefined" && this.info.menu === "undefined")
+    ) {
       return agent.Data.all(this.pageNumber)
         .then((res) => {
           this.setStoreItems(res.data.results);
@@ -141,7 +140,6 @@ export default class StoreStore {
         .then((res) => {
           this.setStoreItems(res.data.results);
           this.location = [];
-          // console.log(res.data.results)
           localStorage.setItem("latitude", res.data.results[0].latitude)
           localStorage.setItem("longitude", res.data.results[0].longitude)
           for(var i=0;i<res.data.results.length;i++){
@@ -154,7 +152,7 @@ export default class StoreStore {
           }
         })
 
-        .catch((err) => console.log(err));
+        .catch((err) => console.log("에러"));
     }
   }
 

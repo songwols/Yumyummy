@@ -28,7 +28,6 @@ class Topbar extends React.Component {
   }
 
   render() {
-    console.log(window.sessionStorage.getItem("token"));
     const Logout = (e) => {
       e.preventDefault();
       this.props.authStore.logout();

@@ -1,5 +1,5 @@
 import agent from "../agent";
-import { observable, action, computed } from "mobx";
+import { observable, action } from "mobx";
 
 export default class UserStore {
   @observable currentuser = {};

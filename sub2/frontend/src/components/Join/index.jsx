@@ -76,7 +76,10 @@ class Join extends React.Component {
       //age: this.state.age,
     };
     this.props.userStore.register(user);
-    //window.location.reload();
+    window.location.reload();
+    alert(
+      window.sessionStorage.getItem("name") + "님! 회원가입이 완료되었습니다!"
+    );
   };
   RadioBoy = (e) => {
     this.setState({

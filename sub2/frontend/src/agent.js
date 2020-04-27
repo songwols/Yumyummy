@@ -3,7 +3,6 @@ import axios from "axios";
 // const API_ROOT = "http://52.79.156.160/api";
 const API_ROOT = "http://localhost:8000";
 
-
 const requests = {
   get: (url, header) => axios.get(`${API_ROOT}${url}`, { headers: header }),
   post: (url, body, header) =>
@@ -35,17 +34,21 @@ const Data = {
       password1: user.password,
       password2: user.pw2,
     }),
+  post_review: (review) =>
+    requests.post(`/api/post_review/`, {
+      store_id: review.store_id,
+      user_id: review.user_id,
+      total_score: review.total_score,
+      content: review.content,
+    }),
 };
 
 const Auth = {
-  login : (name, pw) => 
-    requests.post('/rest-auth/login/', 
-    {username: name, password: pw}, 
-    {})
-  
-}
+  login: (name, pw) =>
+    requests.post("/rest-auth/login/", { username: name, password: pw }, {}),
+};
 
 export default {
   Data,
-  Auth
+  Auth,
 };

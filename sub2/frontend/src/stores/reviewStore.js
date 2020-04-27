@@ -30,6 +30,14 @@ export default class ReviewStore {
 
       .catch((err) => alert("검색 결과가 없습니다."));
   }
+  @action post_review(review) {
+    return agent.Data.post_review(review)
+      .then((res) => {
+        alert("리뷰 작성이 완료되었습니다.");
+      })
+
+      .catch((err) => alert("실패하였습니다."));
+  }
   constructor(root) {
     this.root = root;
   }

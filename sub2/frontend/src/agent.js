@@ -38,9 +38,9 @@ const Data = {
 };
 
 const Auth = {
-  login : (name, id, pw) => 
+  login : (name, pw) => 
     requests.post('/rest-auth/login/', 
-    {username: name, email: id, password: pw}, 
+    {username: name, password: pw}, 
     {})
   
 }

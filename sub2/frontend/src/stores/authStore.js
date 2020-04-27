@@ -39,9 +39,7 @@ export default class AuthStore {
       }
 
     @action setInfo(info){
-        console.log(info)
-        this.name = "송월";
-        this.id = info.ID;
+        this.name = info.ID;
         this.pw = info.PW;
         console.log(this.name)
     }
@@ -49,26 +47,24 @@ export default class AuthStore {
     @action setToken(token) {
         this.token = token;
         window.sessionStorage.setItem("token", token);
+        window.location.reload();
     }
     
       
     @action login(info){
-      console.log("로그인")
       this.setInfo(info);
         return agent.Auth.login(
             this.name,
-            this.id,
             this.pw
         )
         .then((res) => {
             this.setToken(res.data.token)
-            // console.log(res)
         })
         
     }
 
     @action logout() {
-        window.sessionStorage.removeItem("jwt");
+        window.sessionStorage.removeItem("token");
         window.location.reload();
       }
     

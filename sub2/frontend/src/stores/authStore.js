@@ -53,14 +53,17 @@ export default class AuthStore {
     
       
     @action login(info){
-        console.log(info)
+      console.log("로그인")
+      this.setInfo(info);
         return agent.Auth.login(
+          console.log(this.name + this.id + this.pw),
             this.name,
-            info.ID,
-            info.PW
+            this.id,
+            this.pw
         )
         .then((res) => {
-            this.setToken(res.data.results)
+            // this.setToken(res.data.results)
+            console.log(res)
         })
         
     }

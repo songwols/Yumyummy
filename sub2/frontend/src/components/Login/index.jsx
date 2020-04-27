@@ -42,7 +42,8 @@ class Login extends React.Component {
     render() {
         const Login = (e) => {
             e.preventDefault();
-            this.props.authStore.setInfo(this.state.info)
+            // this.props.authStore.setInfo()
+            this.props.authStore.login(this.state.info);
         }
 
       return (

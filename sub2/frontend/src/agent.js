@@ -4,12 +4,11 @@ import axios from "axios";
 const API_ROOT = "http://localhost:8000/api";
 const Auth_ROOT = "http://localhost:8000/rest-auth/"
 
-const responseBody = (res) => res.body;
 
 const requests = {
   get: (url, header) => axios.get(`${API_ROOT}${url}`, { headers: header }),
   post: (url, body, header) => 
-    axios.post(`${Auth_ROOT}${url}`, body, {headers: header}),
+    axios.post(`${url}`, body, {headers: header}),
 };
 
 const Data = {
@@ -28,7 +27,7 @@ const Data = {
 };
 
 const Auth = {
-  login : (name, id, pw) => requests.post('/login', {username: name, email: id, password: pw}, {})
+  login : (name, id, pw) => requests.post('/rest-auth/login', {username: name, email: id, password: pw}, {})
 }
 
 export default {

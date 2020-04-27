@@ -32,7 +32,11 @@ const Data = {
 };
 
 const Auth = {
-  login : (name, id, pw) => requests.post('/rest-auth/login', {username: name, email: id, password: pw}, {})
+  login : (name, id, pw) => 
+    requests.post('/rest-auth/login/', 
+    {username: name, email: id, password: pw}, 
+    {})
+  
 }
 
 export default {

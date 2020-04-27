@@ -56,14 +56,13 @@ export default class AuthStore {
       console.log("로그인")
       this.setInfo(info);
         return agent.Auth.login(
-          console.log(this.name + this.id + this.pw),
             this.name,
             this.id,
             this.pw
         )
         .then((res) => {
-            // this.setToken(res.data.results)
-            console.log(res)
+            this.setToken(res.data.token)
+            // console.log(res)
         })
         
     }

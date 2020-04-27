@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { inject, observer } from "mobx-react";
 import dotenv from "dotenv";
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import Geo from "../Geo"
 
 dotenv.config();
 
@@ -65,6 +66,7 @@ class MapContainer extends React.Component {
 
       return (
           <Maps>
+            <Geo></Geo>
             <Map
                 google={this.props.google}
                 zoom={10}

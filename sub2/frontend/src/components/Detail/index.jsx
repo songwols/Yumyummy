@@ -31,7 +31,7 @@ class DetailContent extends React.Component {
           <Info>
             <Title>
               <FaceIcon><img src={face} width="30" height="30" /></FaceIcon>
-              <RTitle>{detailpost.store_name}식당 이름</RTitle>
+              <RTitle>{detailpost.store_name}</RTitle>
               <ResIcon><img src={restaurant} width="30" height="25" /></ResIcon>
             </Title>            
             <Frame>
@@ -109,14 +109,14 @@ const Title = styled.div`
   align-items: center;
   justify-items: center;
   float: left;
-  border-bottom: 1px solid #e9e9e9;
+  border-bottom: 1px solid #ffde96;
   line-height: 60px;
   grid-template-columns: 10% 80% 10%;
   grid-template-areas: "ResIcon RTitle FaceIcon";
   /* background: #ffde96; */
 
   :hover {
-    border-bottom: 1px solid #ffde96;
+    border-bottom: 1.5px solid #ffde96;
     color: #281c07;
   }
 `;
@@ -151,7 +151,7 @@ const Frame = styled.div`
 `;
 
 const RInfo = styled.div`
-  height: 100vh;
+  height: 85vh;
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-areas: "detailinfo menu";
@@ -185,6 +185,15 @@ const Graph = styled.div`
 
 const Menu = styled.div`
   grid-area: menu;
+
+  @media (min-width: 733px) {
+    border-left: 1px solid #ffde96;
+    padding-left: 5%;
+  }
+  @media (max-width: 733px) {
+    border-top: 1px solid #ffde96;
+    padding-top: 5%;
+  }
 `;
 
 const DIV = styled.div`

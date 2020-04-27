@@ -46,6 +46,7 @@ const ReviewItem = styled.div`
 `;
 const ReviewUser = styled.div`
   grid-area: ReviewUser;
+  display: grid;
   cursor: pointer;
 `;
 const Reviewer = styled.div`

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { inject, observer } from "mobx-react";
 import dotenv from "dotenv";
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
-import Geo from "../Geo"
 
 dotenv.config();
 
@@ -43,7 +42,7 @@ class MapContainer extends React.Component {
           lat: e.latitude,
           lng: e.longitude
         }}
-        onClick={() => console.log("You clicked me!")} />
+        onClick={() => console.log(e.store_name)} />
       }
       else{
         return this.props.storeStore.location.map((store, index) => {
@@ -66,7 +65,7 @@ class MapContainer extends React.Component {
 
       return (
           <Maps>
-            <Geo></Geo>
+            <div></div>
             <Map
                 google={this.props.google}
                 zoom={10}

@@ -66,7 +66,7 @@ class Searching extends React.Component {
     };
 
     const Enterkey = (e) => {
-      if (window.event.keyCode == 13) {
+      if (window.event.keyCode === 13) {
         SearchBtn(e);
       }
     };

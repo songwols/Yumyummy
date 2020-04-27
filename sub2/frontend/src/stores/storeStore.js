@@ -72,7 +72,7 @@ export default class StoreStore {
   }
 
   @action setPredicate(predicate) {
-    if (JSON.stringfy(predicate) == JSON.stringfy(this.predicate)) return;
+    if (JSON.stringfy(predicate) === JSON.stringfy(this.predicate)) return;
     this.clear();
     this.predicate = predicate;
   }

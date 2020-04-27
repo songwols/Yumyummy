@@ -4,13 +4,14 @@ import Top from "../../components/Top";
 import { inject, observer } from "mobx-react";
 import CardLayout from "../../components/ResultList";
 
-@inject("reviewStore", "userStore")
+@inject("reviewStore", "userStore", "authStore")
 @observer
 class My extends React.Component {
   componentWillMount() {
-    this.props.reviewStore.get_myreview(
-      this.props.userStore.currentUser.user_id
-    );
+    // this.props.reviewStore.get_myreview(
+    //   this.props.userStore.currentUser.user_id
+    // );
+    //console.log(this.props.authStore.name);
   }
   render() {
     return (
@@ -24,7 +25,7 @@ class My extends React.Component {
             <MyFace>
               <img src="https://seolyucode.github.io/imgs/thumb.png"></img>
             </MyFace>
-            <MyName>NickName</MyName>
+            <MyName>{window.sessionStorage.getItem("name")}</MyName>
             {/* </MyFaceName> */}
             <ProfileEdit>프로필 수정</ProfileEdit>
           </MyProfile>

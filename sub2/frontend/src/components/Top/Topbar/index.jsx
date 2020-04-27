@@ -20,7 +20,7 @@ class Topbar extends React.Component {
       showLogin: !this.state.showLogin,
     });
   }
- 
+
   toggleJoin() {
     this.setState({
       showJoin: !this.state.showJoin,
@@ -28,26 +28,28 @@ class Topbar extends React.Component {
   }
 
   render() {
-    console.log(window.sessionStorage.getItem("token"))
+    console.log(window.sessionStorage.getItem("token"));
     const Logout = (e) => {
       e.preventDefault();
       this.props.authStore.logout();
-  }
+    };
     return (
       <div>
-        {window.sessionStorage.getItem("token")===null ? 
-        (<div>
-        <Button onClick={this.toggleLogin.bind(this)}>로그인</Button>
-        <Button onClick={this.toggleJoin.bind(this)}>회원가입</Button>
-        </div>) 
-        :
-        (<div>
-        <Link to={"/my"} style={{ textDecoration: "none" }}>
-          <Button>마이페이지</Button>
-        </Link>
-        <Button onClick={Logout}>로그아웃</Button>
-         </div>)
-        }
+        {window.sessionStorage.getItem("token") === null ? (
+          <div>
+            <Button onClick={this.toggleLogin.bind(this)}>로그인</Button>
+            <Button onClick={this.toggleJoin.bind(this)}>회원가입</Button>
+          </div>
+        ) : (
+          <div>
+            <Link to={"/my"} style={{ textDecoration: "none" }}>
+              <Button name={window.sessionStorage.getItem("name")}>
+                마이페이지
+              </Button>
+            </Link>
+            <Button onClick={Logout}>로그아웃</Button>
+          </div>
+        )}
         {this.state.showLogin ? (
           <Login cancelLogin={this.toggleLogin.bind(this)} />
         ) : null}

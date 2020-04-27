@@ -60,13 +60,13 @@ class Login extends React.Component {
                     <IdText>
                         ID
                     </IdText>
-                    <ID value={this.state.ID} onChange={this.onIDChange}></ID>
+                    <ID placeholder="이름을 입력하세요." value={this.state.ID} onChange={this.onIDChange}></ID>
                 </IDFrame>
                 <PWFrame>
                     <PwText>
                         PW    
                     </PwText>
-                    <PW type="password" value={this.state.PW} onChange={this.onPWChange}></PW>
+                    <PW placeholder="비밀번호를 입력하세요." type="password" value={this.state.PW} onChange={this.onPWChange}></PW>
                 </PWFrame>
                 <BFrame>
                     <Confirm onClick={Login}>로그인</Confirm>&nbsp;&nbsp;

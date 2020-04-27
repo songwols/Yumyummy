@@ -3,7 +3,10 @@ import styled from "styled-components";
 import Login from "../../Login";
 import Join from "../../Join";
 import { Link } from "react-router-dom";
+import { inject, observer } from "mobx-react";
 
+@observer
+@inject("authStore")
 class Topbar extends React.Component {
   constructor() {
     super();
@@ -24,23 +27,27 @@ class Topbar extends React.Component {
     });
   }
 
-  Login = e => {
-    console.log(e)
-  }
-
-  Logout() {
-    
-  }
-
   render() {
+    console.log(window.sessionStorage.getItem("token"))
+    const Logout = (e) => {
+      e.preventDefault();
+      this.props.authStore.logout();
+  }
     return (
       <div>
+        {window.sessionStorage.getItem("token")===null ? 
+        (<div>
         <Button onClick={this.toggleLogin.bind(this)}>로그인</Button>
         <Button onClick={this.toggleJoin.bind(this)}>회원가입</Button>
+        </div>) 
+        :
+        (<div>
         <Link to={"/my"} style={{ textDecoration: "none" }}>
           <Button>마이페이지</Button>
         </Link>
-        <Button onClick={this.Logout}>로그아웃</Button>
+        <Button onClick={Logout}>로그아웃</Button>
+         </div>)
+        }
         {this.state.showLogin ? (
           <Login cancelLogin={this.toggleLogin.bind(this)} />
         ) : null}

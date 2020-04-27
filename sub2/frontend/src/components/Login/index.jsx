@@ -119,14 +119,14 @@ const PopupInner = styled.div`
     to {transform:scale(1)}
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 733px) {
     left: 10%;
     right: 10%;
     top: 10%;
     bottom: 15%;
   }
   
-  @media (min-width: 768px) and (max-width: 1024px) {  
+  @media (min-width: 733px) and (max-width: 1024px) {  
     
     top: 10%;
     bottom: 15%;
@@ -179,7 +179,7 @@ const Title = styled.div`
         grid-template-columns: 1fr 1fr 2fr 1fr;
         grid-template-areas: ". LoginImage LoginText LoginText .";
 
-`
+`;
 
 const LoginText = styled.div`
     grid-area: LoginText;
@@ -359,27 +359,7 @@ const KFrame = styled.div`
     justify-items: center;
     text-align: center;
 `
-// const Kakao = styled.button` 
-//     height: 90%;
-//     width: 80%;
-//     background: none;
-//     border: none;
-//     outline: none;
-//     background-color: yellow; 
-//     border-radius: .5rem;
-//     cursor: pointer;
-//     justify-items: center;
-//     text-align: center;
 
-//     transform: scale(0.95);
-
-
-//     :hover {
-//         border-radius: .7rem;
-//         opacity: 0.95;
-//         transform: scale(0.97);
-//     } 
-// `
 const GFrame = styled.div`
     grid-area: GFrame;
     display: grid;
@@ -387,27 +367,6 @@ const GFrame = styled.div`
     text-align: center;
 
 `
-// const Google = styled.button`
-//     height: 90%;
-//     width: 80%;
-//     background: none;
-//     border: none;
-//     outline: none;
-//     background-color: gray; 
-//     border-radius: .5rem;
-//     cursor: pointer;
-//     justify-items: center;
-//     text-align: center;
-
-//     transform: scale(0.95);
-
-
-//     :hover {
-//         border-radius: .7rem;
-//         opacity: 0.95;
-//         transform: scale(0.97);
-//     } 
-// `
 
 
 export default Login;

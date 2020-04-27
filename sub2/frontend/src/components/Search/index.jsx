@@ -14,7 +14,7 @@ class Searching extends React.Component {
         {
           store_name: "",
           address: "",
-          menu: "",
+          // menu: "",
         },
       ],
     };
@@ -25,7 +25,7 @@ class Searching extends React.Component {
       info: {
         store_name: e.target.value,
         address: this.state.info.address,
-        menu: this.state.info.menu,
+        // menu: this.state.info.menu,
       },
     });
   };
@@ -35,7 +35,7 @@ class Searching extends React.Component {
       info: {
         store_name: this.state.info.store_name,
         address: e.target.value,
-        menu: this.state.info.menu,
+        // menu: this.state.info.menu,
       },
     });
   };
@@ -45,7 +45,7 @@ class Searching extends React.Component {
       info: {
         store_name: this.state.info.store_name,
         address: this.state.info.address,
-        menu: e.target.value,
+        // menu: e.target.value,
       },
     });
   };
@@ -55,7 +55,14 @@ class Searching extends React.Component {
       e.preventDefault();
       this.props.storeStore.setInfo(this.state.info);
       this.props.storeStore.search(this.state.info);
-      this.props.history.push("/result/"+ this.state.info.store_name + "/"+this.state.info.address + "/"+this.state.info.menu);
+      this.props.history.push(
+        "/result/" +
+          this.state.info.store_name +
+          "/" +
+          this.state.info.address +
+          "/" +
+          this.state.info.menu
+      );
     };
 
     const Enterkey = (e) => {
@@ -81,13 +88,13 @@ class Searching extends React.Component {
             onKeyPress={Enterkey}
           ></InputBox>{" "}
           &nbsp;
-          <InputBox
+          {/* <InputBox
             placeholder="메뉴(ex. 파스타, 햄버거)"
             value={this.state.menu}
             onChange={this.onMenuChange}
             onKeyPress={Enterkey}
           ></InputBox>{" "}
-          &nbsp;
+          &nbsp; */}
           <SButton onClick={SearchBtn}>검색</SButton>
         </IBO>
       </div>
@@ -105,7 +112,7 @@ const IBO = styled.div`
 const InputBox = styled.input`
   background: none;
   height: 70%;
-  width: 25%;
+  width: 35%;
   border-color: #ffde96;
   border-style: solid;
   border-radius: 0.5rem;

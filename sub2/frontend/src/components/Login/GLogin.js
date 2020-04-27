@@ -46,7 +46,7 @@ class GLogin extends Component {
             <Container>
                 <Google
                     clientId={process.env.REACT_APP_Google_AUTH}
-                    buttonText="Google 로그인"
+                    buttonText="Google"
                     onSuccess={this.responseGoogle}
                     onFailure={this.responseFail}
                     icon={false}
@@ -57,20 +57,29 @@ class GLogin extends Component {
 }
 
 export const Google = styled(GoogleLogin)`
-    height: 100% !important;
+    font-size: 0.6rem !important;
+    /* height: 100% !important; */
+    border: 0 !important;
+    outline: 0 !important;
     box-shadow: none !important;
     color: white !important;
-    background-color: #00ff0000 !important;
+    background-color: #b32d00 !important;
+    cursor: pointer;
 `
 
 const Container = styled.div`
-    line-height: 4rem;
-    width: 100%;
-    height: 4rem;
+    line-height: 50px;
+    /* width: 100%; */
+    /* height: 4rem; */
     background-color: #b32d00;
-    display: inline-block;
-    margin-top: 3rem;
+    /* display: inline-block; */
+    /* margin-top: 3rem; */
     cursor: pointer;
+    
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
 `
 
 

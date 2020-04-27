@@ -101,6 +101,13 @@ const Title = styled.div`
   align-items: center;
   justify-items: center;
   float: left;
+  border-bottom: 1px solid #e9e9e9;
+  line-height: 60px;
+  /* background: pink; */
+
+  :hover {
+    border-bottom: 1px solid #ffde96;
+  }
 `;
 
 const Frame = styled.div`
@@ -108,6 +115,7 @@ const Frame = styled.div`
   display: grid;
   grid-template-rows: 0 100%;
   grid-template-areas: "Map" "RInfo";
+  margin-top: 3%;
 
   @media (max-width: 768px) {
     grid-template-rows: 33% 66%;
@@ -120,6 +128,7 @@ const RInfo = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-areas: "detailinfo menu";
+  /* background: pink; */
 
   @media (max-width: 768px) {
     grid-template-columns: none;

@@ -23,7 +23,10 @@ class MapContainer extends React.Component {
 
     componentWillMount(){
       this.props.storeStore.search(this.state.stores);
-      this.props.storeStore.detail(this.props.storeid);
+      if(this.props.storeid !== undefined){
+        this.props.storeStore.detail(this.props.storeid);
+      }
+      
       this.setState({
         cenLat : localStorage.getItem("latitude"),
         cenLong: localStorage.getItem("longitude")

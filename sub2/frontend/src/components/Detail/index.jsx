@@ -52,7 +52,7 @@ class DetailContent extends React.Component {
                   <Div>메뉴</Div>
                   {menus.length !== 0 ? (
                     menus.map((item, index) => (
-                      <DIV>
+                      <DIV key={index}>
                         {item.menu} - {item.price}
                       </DIV>
                     ))

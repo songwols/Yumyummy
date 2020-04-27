@@ -9,6 +9,7 @@ export default class UserStore {
     this.currentuser = user;
   }
   @action register(user) {
+    console.log(user);
     return agent.Data.register(user)
       .then((res) => {
         alert("회원가입이 완료되었습니다.");

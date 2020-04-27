@@ -1,10 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import Top from "../../components/Top";
-
+import { inject, observer } from "mobx-react";
 import CardLayout from "../../components/ResultList";
 
+@inject("reviewStore", "userStore")
+@observer
 class My extends React.Component {
+  componentWillMount() {
+    this.props.reviewStore.get_myreview(
+      this.props.userStore.currentUser.user_id
+    );
+  }
   render() {
     return (
       <MyLayer>

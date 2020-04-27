@@ -3,83 +3,171 @@ import styled from "styled-components";
 import Calendar from "react-calendar";
 import moment from "moment";
 import Radio from "./RadioButton";
-
+import { withRouter } from "react-router-dom";
+import { inject, observer } from "mobx-react";
 import join from "../../assets/images/Join.png";
 
 export const Cal = styled(Calendar)`
   width: 100%;
 `;
 
+@inject("userStore")
+@observer
+@withRouter
 class Join extends React.Component {
-  state = {
-    date: moment(new Date()).format("YYYY-MM-DD"),
-    gender: "",
-  };
-
-  onDateChange = (date) => {
+  constructor(props) {
+    super(props);
+    this.handleRadio = this.handleRadio.bind(this);
+    this.state = {
+      radioGroup: {
+        boy: true,
+        girl: false,
+      },
+      email: "",
+      password: "",
+      password2: "",
+      username: "",
+      gender: "",
+      age: "",
+    };
+  }
+  handleRadio(event) {
+    let obj = {};
+    obj[event.target.value] = event.target.checked; // true
+    this.setState({ radioGroup: obj });
+  }
+  onIdChange = (e) => {
     this.setState({
-      date: moment(date).format("YYYY-MM-DD"),
+      email: e.target.value,
     });
   };
-
-  onGenderChange = (gender) => {
+  onPwChange = (e) => {
     this.setState({
-      gender: gender,
+      password: e.target.value,
+    });
+  };
+  onPw2Change = (e) => {
+    this.setState({
+      password2: e.target.value,
+    });
+  };
+  onNameChange = (e) => {
+    this.setState({
+      username: e.target.value,
+    });
+  };
+  onAgeChange = (e) => {
+    this.setState({
+      age: e.target.value,
+    });
+  };
+  Register = (e) => {
+    if (this.state.radioGroup.boy == true) {
+      this.setState({ gender: "남" });
+    } else if (this.state.radioGroup.girl == true) {
+      this.setState({ gender: "여" });
+    }
+    const user = {
+      email: this.state.email,
+      password: this.state.password,
+      pw2: this.state.password2,
+      username: this.state.username,
+      //gender: "남자",
+      //age: this.state.age,
+    };
+    this.props.userStore.register(user);
+    //window.location.reload();
+  };
+  RadioBoy = (e) => {
+    this.setState({
+      gender: "남자",
+    });
+  };
+  RadioGirl = (e) => {
+    console.log("여자");
+    this.setState({
+      gender: "여자",
     });
   };
 
   render() {
-    console.log(this.state.date);
-    console.log(this.state.gender);
     return (
       <Popup>
         <PopupInner>
           <PFrame>
             <Title>
-              <JoinText>회원가입~~</JoinText>
+              <JoinText>회원가입</JoinText>
               <JoinImage>
                 <img src={join} width="80" height="80" />
               </JoinImage>
             </Title>
             <IDFrame>
-              <IdText>ID</IdText>
-              <ID></ID>
+              <IdText>EMAIL</IdText>
+              <ID
+                onChange={this.onIdChange}
+                name="id"
+                value={this.state.email}
+              ></ID>
             </IDFrame>
             <PWFrame>
               <PwText>PW</PwText>
-              <PW></PW>
+              <PW
+                onChange={this.onPwChange}
+                name="pw"
+                type="password"
+                value={this.state.password}
+              ></PW>
             </PWFrame>
+            <PW2Frame>
+              <PwText>PW 확인</PwText>
+              <PW
+                onChange={this.onPw2Change}
+                name="pw2"
+                type="password"
+                value={this.state.password2}
+              ></PW>
+            </PW2Frame>
             <NFrame>
               <NText>이름</NText>
-              <Name></Name>
+              <Name
+                onChange={this.onNameChange}
+                name="name"
+                value={this.state.username}
+              ></Name>
             </NFrame>
             <GFrame>
               <GText>성별</GText>
               <GenderLabel>
-                {/* <label> */}
-                <Radio name="gender">남자</Radio>
-                {/* </label> */}
-                {/* <label> */}
-                <Radio name="gender">여자</Radio>
-                {/* </label> */}
-                {/* <label>
-                        <Gender1 type="radio" value="male" name="gender" onChange={() => this.onGenderChange("male")}>
-                        </Gender1>
-                        남자
-                        </label>
-                        <label>
-                        <Gender2 type="radio" value="female" name="gender" onChange={() => this.onGenderChange("female")}>
-                        </Gender2>
-                        여자
-                        </label> */}
+                <Radio
+                  type="radio"
+                  name="gender"
+                  value="boy"
+                  checked={this.state.radioGroup["boy"]}
+                  onChange={this.handleRadio}
+                >
+                  남자
+                </Radio>
+                <Radio
+                  type="radio"
+                  name="gender"
+                  value="girl"
+                  checked={this.state.radioGroup["girl"]}
+                  onChange={this.handleRadio}
+                >
+                  여자
+                </Radio>
               </GenderLabel>
             </GFrame>
             <BIFrame>
-              <BText>생년월일</BText>
-              <Birth></Birth>
+              <BText>나이</BText>
+              <Birth
+                onChange={this.onAgeChange}
+                name="age"
+                value={this.state.age}
+              ></Birth>
             </BIFrame>
             <BFrame>
-              <Confirm onClick={this.props.cancelJoin}>회원가입</Confirm>
+              <Confirm onClick={this.Register}>회원가입</Confirm>
               &nbsp;&nbsp;
               <Cancel onClick={this.props.cancelJoin}>취소</Cancel>
             </BFrame>
@@ -150,6 +238,7 @@ const PFrame = styled.div`
     "."
     "IDFrame"
     "PWFrame"
+    "PW2Frame"
     "."
     "NFrame"
     "GFrame"
@@ -225,6 +314,18 @@ const ID = styled.input`
 
 const PWFrame = styled.div`
   grid-area: PWFrame;
+  display: grid;
+  padding: auto;
+  /* padding-left: 15%; */
+  /* justify-items: left; */
+  text-align: left;
+
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-areas: ". PwText PW PW PW PW PW .";
+  margin-left: -3%;
+`;
+const PW2Frame = styled.div`
+  grid-area: PW2Frame;
   display: grid;
   padding: auto;
   /* padding-left: 15%; */

@@ -1,15 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import Calendar from "react-calendar";
-import moment from "moment";
 import Radio from "./RadioButton";
 import { withRouter } from "react-router-dom";
 import { inject, observer } from "mobx-react";
 import join from "../../assets/images/Join.png";
-
-export const Cal = styled(Calendar)`
-  width: 100%;
-`;
 
 @inject("userStore")
 @observer
@@ -62,9 +56,9 @@ class Join extends React.Component {
     });
   };
   Register = (e) => {
-    if (this.state.radioGroup.boy == true) {
+    if (this.state.radioGroup.boy === true) {
       this.setState({ gender: "남" });
-    } else if (this.state.radioGroup.girl == true) {
+    } else if (this.state.radioGroup.girl === true) {
       this.setState({ gender: "여" });
     }
     const user = {

@@ -29,7 +29,13 @@ const Data = {
   id_menu: (store_id) =>
     requests.get(`/api/storeid_menus?store_id=${store_id}`),
 
-  register: (user) => requests.post(`/rest-auth/registration/`, { user }),
+  register: (user) =>
+    requests.post(`/rest-auth/registration/`, {
+      email: user.email,
+      username: user.username,
+      password1: user.password,
+      password2: user.pw2,
+    }),
 };
 
 export default {

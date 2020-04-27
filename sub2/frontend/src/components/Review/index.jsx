@@ -88,12 +88,15 @@ const ReviewWriteBox = styled.div`
   /* background: dodgerblue; */
   display: grid;
   grid-area: ReviewWriteBox;
-  grid-template-rows: 1fr 2fr;
+  grid-template-rows: 1fr 1fr;
   grid-template-areas:
     "ReviewStar"
     "ReviewWrite"
     /* "ReviewSend" */;
   /* margin-left: 30px; */
+  
+  border-top: 1px solid #ffde96;
+  padding-top: 5%;
 `;
 const ReviewStar = styled.div`
   display: grid;

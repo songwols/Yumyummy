@@ -5,7 +5,6 @@ import CardLayout from "../../components/ResultList";
 import StarImag from "../../assets/images/Star.png";
 import ReviewImag from "../../assets/images/Review.png";
 import Paging from "../../components/Paging";
-import ReviewCon from "../../components/Review";
 import MapContainer from "../../components/Map";
 
 const Result = ({match}) => {
@@ -52,6 +51,9 @@ const RFrame = styled.div`
   /* grid-template-rows: 200px; */
   grid-template-rows: 200px 100px;
   grid-template-areas: "TopLayer" "Filter" "Content";
+  @media (max-width: 768px) {
+    grid-template-areas: "TopLayer" "Filter" "MFrame" "Content";
+  }
 `;
 
 const TopLayer = styled.div`
@@ -107,12 +109,6 @@ const Review = styled.div`
 
   margin: 0 auto;
 `;
-const Menus = styled.div`
-  grid-area: Menus;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-areas: "Korean Chinese Japanese Western Cafe Other";
-`;
 
 const LFrame = styled.div`
   height: 100vh;
@@ -124,6 +120,8 @@ const LFrame = styled.div`
   grid-template-areas: "List MFrame";
 
   @media (max-width: 768px) {
+    grid-template-rows: 30% 70%;
+    grid-template-areas: "Map" ;
     grid-template-columns: 10% 80% 10%;
     grid-template-areas: ". List .";
   }

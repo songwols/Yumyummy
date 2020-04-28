@@ -1,4 +1,4 @@
-import { observable, action, reaction } from "mobx";
+import { observable, action } from "mobx";
 import agent from "../agent";
 
 export default class AuthStore {
@@ -9,33 +9,6 @@ export default class AuthStore {
 
   constructor(root) {
     this.root = root;
-
-    // reaction(
-    //   () => this.name,
-    //   (name) => {
-    //     if (name) {
-    //       this.name = "송월";
-    //     }
-    //   }
-    // );
-
-    // reaction(
-    //   () => this.email,
-    //   (email) => {
-    //     if (email) {
-    //       this.email = email;
-    //     }
-    //   }
-    // );
-
-    // reaction(
-    //   () => this.pw,
-    //   (pw) => {
-    //     if (pw) {
-    //       this.pw = pw;
-    //     }
-    //   }
-    // );
   }
 
   @action setInfo(info) {

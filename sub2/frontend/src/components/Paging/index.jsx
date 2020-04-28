@@ -14,6 +14,12 @@ export const RightArrow = styled(RightArrowAlt)`
   :hover {
     opacity: 0.5;
   }
+
+  @media (max-width: 768px) {
+    float: none;
+    width: 50px;
+  }
+
 `;
 
 export const LeftArrow = styled(LeftArrowAlt)`
@@ -25,6 +31,12 @@ export const LeftArrow = styled(LeftArrowAlt)`
   :hover {
     opacity: 0.5;
   }
+
+  @media (max-width: 768px) {
+    margin-left: 0px;
+    width: 50px;
+  }
+
 `;
 
 @inject("storeStore")

@@ -109,6 +109,16 @@ export default class StoreStore {
     this.menu = infos.menu;
   }
 
+  @action count_stores(info) {
+    this.info = info;
+    return agent.Data.count_stores(info.address)
+      .then((res) => {
+        this.setStoreItems(res.data.results);
+        console.log(this.storeItems);
+      })
+      .catch((err) => console.log(err));
+  }
+
   @action search(info) {
     this.info = info;
     if (info.store_name === undefined && info[0].store_name !== undefined) {

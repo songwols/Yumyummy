@@ -12,7 +12,13 @@ export default class UserStore {
     console.log(user);
     return agent.Data.register(user)
       .then((res) => {
-        alert("회원가입이 완료되었습니다.");
+        console.log(res);
+        window.sessionStorage.setItem("name", user.username);
+        alert(
+          window.sessionStorage.getItem("name") +
+            "님! 회원가입이 완료되었습니다!"
+        );
+        window.location.reload();
       })
 
       .catch((err) => alert("실패하였습니다."));

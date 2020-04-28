@@ -19,6 +19,7 @@ class StoreSerializer(serializers.ModelSerializer):
             "latitude",
             "longitude",
             "category",
+            "count"
         ]
 
 

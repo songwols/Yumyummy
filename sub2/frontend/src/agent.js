@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const API_ROOT = "http://52.79.156.160";
-const API_ROOT = "http://localhost:8080";
+const API_ROOT = "http://localhost:8000";
 
 const responseBody = (res) => res.body;
 

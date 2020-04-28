@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import dotenv from "dotenv";
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker, Circle } from 'google-maps-react';
 import Geocode from "react-geocode";
+import { inject, observer } from "mobx-react";
 
 dotenv.config();
 
@@ -10,6 +11,8 @@ Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API);
 Geocode.enableDebug();
 Geocode.setLanguage("KOREAN");
 
+@inject("storeStore")
+@observer
 class Mymap extends React.Component {
     state = {
         lat: 0,
@@ -33,20 +36,38 @@ class Mymap extends React.Component {
         });
 
         Geocode.fromLatLng(position.coords.latitude, position.coords.longitude).then(
-            response => {
-              const address = response.results[0].formatted_address;
-              this.setState({
-                addr : address
-              });
-            },
-            error => {
-              console.log(error);
+          response => {
+            const address = response.results[0].formatted_address;
+            const arr = address.split(" ")
+            var sarr="";
+            for(var i=1;i<arr.length-1;i++){
+              sarr = sarr + arr[i] + " ";
             }
-          );
+            this.setState({
+              addr : sarr
+            });
+            console.log(this.state.addr)
+            //장소만 검색할 수 있는 거
+            //this.props.storeStore.search(sarr)
+          },
+          error => {
+            console.log(error);
+          }
+        );
       };
+
+      displayMarkers = (e) => {
+        return <Marker position={{
+            lat : this.state.lat,
+            lng : this.state.lng
+            }}
+            icon={{
+                url: "https://github.com/chokyungeun/TRAVEL_KE/blob/master/flag%20(3).png?raw=true"
+              }}
+        />
+      }
  
     render() {
-        console.log(this.state.addr)
         const { lat, lng } = this.state;
 
         const containerStyle = {
@@ -70,15 +91,19 @@ class Mymap extends React.Component {
                         lng
                     }}
                     >
-                    <Marker position={{
+                    <Circle
+                      radius={800}
+                      center={{
                         lat,
                         lng
-                        }}
-                        icon={{
-                            url: "https://github.com/chokyungeun/TRAVEL_KE/blob/master/flag%20(3).png?raw=true"
-                          }}
+                      }}
+                      strokeColor='transparent'
+                      strokeOpacity={0}
+                      strokeWeight={5}
+                      fillColor='#FF0000'
+                      fillOpacity={0.2}
                     />
-                    
+                    {this.displayMarkers()}
                 </Map>
             </Maps>    
         )

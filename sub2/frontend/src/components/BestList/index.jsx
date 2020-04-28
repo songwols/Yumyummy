@@ -5,19 +5,17 @@ import Card from "./Card";
 
 @inject("storeStore")
 @observer
-class CardLayout extends React.Component {
+class BestLayout extends React.Component {
   state = {
     stores: [
       {
-        store_name: this.props.store_name,
         address: this.props.address,
-        menu: this.props.menu,
       },
     ],
   };
 
   componentWillMount() {
-    this.props.storeStore.search(this.state.stores[0]);
+    this.props.storeStore.count_stores(this.state.stores[0]);
   }
 
   render() {
@@ -53,4 +51,4 @@ const List = styled.div`
   }
 `;
 
-export default CardLayout;
+export default BestLayout;

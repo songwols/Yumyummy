@@ -52,6 +52,14 @@ class StoreIdViewSet(viewsets.ModelViewSet):
         queryset = (
             models.Store.objects.all().filter(store_id=id).order_by("store_id")
         )
+        
+        cnt_update = models.Store.objects.get(store_id=id)
+        if cnt_update.count is None:
+            cnt_update.count=1
+        else:
+             cnt_update.count+=1
+        cnt_update.save()
+        print(cnt_update)
         return queryset
 
 
@@ -142,6 +150,23 @@ class ReviewIdViewSet(viewsets.ModelViewSet):
         queryset = (
             models.Review.objects.all().filter(store_id=id).order_by("review_id")
         )
+        return queryset
+
+# 검색하여 store 불러오기
+class StoreCountViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.StoreSerializer
+    pagination_class = SmallPagination
+
+    def get_queryset(self):
+        address = self.request.query_params.get("address", "")
+        # 검색 빈칸일때 예외처리 해야함
+        # menu = self.request.query_params.get("menu", "")
+        # score = self.request.query_params.get("score", "")
+        # review = self.request.query_params.get("review", "")
+        queryset = (
+            models.Store.objects.all().filter(address__contains=address).order_by("-count")
+        )
+
         return queryset
 
 

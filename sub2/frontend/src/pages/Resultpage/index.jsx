@@ -51,6 +51,9 @@ const RFrame = styled.div`
   /* grid-template-rows: 200px; */
   grid-template-rows: 200px 100px;
   grid-template-areas: "TopLayer" "Filter" "Content";
+  @media (max-width: 768px) {
+    grid-template-areas: "TopLayer" "Filter" "MFrame" "Content";
+  }
 `;
 
 const TopLayer = styled.div`

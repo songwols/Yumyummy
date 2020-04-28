@@ -42,7 +42,7 @@ class MapContainer extends React.Component {
           lat: e.latitude,
           lng: e.longitude
         }}
-        onClick={() => console.log(e.store_name)} />
+        onClick={() => console.log()} />
       }
       else{
         return this.props.storeStore.location.map((store, index) => {
@@ -65,7 +65,6 @@ class MapContainer extends React.Component {
 
       return (
           <Maps>
-            <div></div>
             <Map
                 google={this.props.google}
                 zoom={10}

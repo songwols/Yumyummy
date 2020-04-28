@@ -16,7 +16,6 @@ export default class AuthStore {
     window.sessionStorage.setItem("name", info.ID);
     this.pw = info.PW;
     window.sessionStorage.setItem("pw", info.PW);
-    console.log(this.name);
   }
 
   @action setToken(token) {
@@ -29,8 +28,6 @@ export default class AuthStore {
     this.setInfo(info);
     return agent.Auth.login(this.name, this.pw).then((res) => {
       this.setToken(res.data.token);
-      console.log(this.name);
-      console.log(this.pw);
     });
   }
 

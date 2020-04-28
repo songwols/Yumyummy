@@ -21,6 +21,8 @@ router.register(r"id_reviews", views.ReviewIdViewSet, basename="id_reviews")
 router.register(r"id_myreviews", views.ReviewUserIdViewSet,
                 basename="id_myreviews")
 router.register(r"all_reviews", views.ReviewAllViewSet, basename="all_reviews")
+
+router.register(r"count_stores", views.StoreCountViewSet, basename="count_stores")
 # router.register(
 #     r"id_users", views.UserIdViewSet, basename="id_users")
 

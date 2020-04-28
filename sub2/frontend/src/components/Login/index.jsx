@@ -46,6 +46,12 @@ class Login extends React.Component {
       alert(window.sessionStorage.getItem("name") + "님! 반갑습니다!");
     };
 
+    const Enterkey = (e) => {
+      if (window.event.keyCode === 13) {
+        Login(e);
+      }
+    };
+
     return (
       <Popup>
         <PopupInner>
@@ -71,6 +77,7 @@ class Login extends React.Component {
                 type="password"
                 value={this.state.PW}
                 onChange={this.onPWChange}
+                onKeyPress={Enterkey}
               ></PW>
             </PWFrame>
             <BFrame>

@@ -1,28 +1,30 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 
 // Pages
 import MainPage from "./pages/Mainpage";
 import Result from "./pages/Resultpage";
+import Best from "./pages/Bestpage";
 import Detail from "./pages/Detailpage";
 import My from "./pages/Mypage";
-import Mymap from "./components/Mymap"
+import Mymap from "./components/Mymap";
 
 const App = () => {
-  return(
+  return (
     <div>
-    <GlobalStyle></GlobalStyle>
+      <GlobalStyle></GlobalStyle>
       <Switch>
-        <Route path="/loc" component={Mymap}/>
+        <Route path="/loc" component={Mymap} />
         <Route path="/result/:store_name/:address/:menu" component={Result} />
+        <Route path="/best/:address" component={Best} />
         <Route path="/detail/:id" component={Detail} />
         <Route path="/my" component={My} />
         <Route path="/" component={MainPage} />
       </Switch>
     </div>
-  )
-}
+  );
+};
 
 const GlobalStyle = createGlobalStyle`
   body{
@@ -30,6 +32,5 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
 `;
-
 
 export default App;

@@ -36,9 +36,9 @@ class My extends React.Component {
               <Want>여기어때?()</Want>
             </DCategory>
 
-            <DetailCon>
+            {/* <DetailCon>
               <CardLayout></CardLayout>
-            </DetailCon>
+            </DetailCon> */}
           </MyDetail>
         </MyFrame>
       </MyLayer>

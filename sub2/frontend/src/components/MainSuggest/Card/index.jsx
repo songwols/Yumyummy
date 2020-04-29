@@ -40,13 +40,13 @@ class CardL extends React.Component {
       e.preventDefault();
       this.props.storeStore.setInfo(this.state.info);
       this.props.storeStore.count_stores(this.state.info);
-      this.props.history.push("/result");
+      this.props.history.push("/best/" + this.state.info.address);
     };
 
     return (
       <CardLayout>
         <BLayout onClick={SearchBtn} onMouseOver={saveBtn}>
-          <CardImg src={post.img} />
+          <CardImg src={post.img} className="img" />
           <Title className="title">
             <T>{post.Title}</T>
           </Title>
@@ -66,17 +66,18 @@ const CardLayout = styled.div`
   padding-bottom: 100%;
   top: 0;
   left: 0;
-
-  &:hover .title {
-    display: block;
-    background-color: #8a8a8a;
-    opacity: 0.5;
-    z-index: 1;
-  }
 `;
 
 const BLayout = styled.button`
   cursor: pointer;
+  &:hover .title {
+    display: block;
+  }
+  &:hover .img {
+    display: block;
+    background-color: #8a8a8a;
+    opacity: 0.5;
+  }
 `;
 
 const CardImg = styled.img`
@@ -89,6 +90,7 @@ const CardImg = styled.img`
 `;
 const Title = styled.div`
   font-size: x-Large;
+  color: black;
   position: absolute;
   object-fit: cover;
   display: none;
@@ -96,7 +98,6 @@ const Title = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-
   @media (max-width: 768px) {
   }
 `;

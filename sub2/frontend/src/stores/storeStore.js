@@ -114,6 +114,15 @@ export default class StoreStore {
     return agent.Data.count_stores(info.address)
       .then((res) => {
         this.setStoreItems(res.data.results);
+        this.location = [];
+        localStorage.setItem("latitude", res.data.results[0].latitude);
+        localStorage.setItem("longitude", res.data.results[0].longitude);
+        for (var i = 0; i < res.data.results.length; i++) {
+          this.location = this.location.concat({
+            lat: res.data.results[i].latitude,
+            long: res.data.results[i].longitude,
+          });
+        }
       })
       .catch((err) => console.log(err));
   }

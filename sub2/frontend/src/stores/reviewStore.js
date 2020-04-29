@@ -21,15 +21,7 @@ export default class ReviewStore {
 
       .catch((err) => alert("검색 결과가 없습니다."));
   }
-  @action get_myreview(user_id) {
-    return agent.Data.id_myreview(user_id)
-      .then((res) => {
-        localStorage.setItem("reviews", res.data.results);
-        this.setReviews(res.data.results);
-      })
 
-      .catch((err) => alert("검색 결과가 없습니다."));
-  }
   @action post_review(review) {
     return agent.Data.post_review(review)
       .then((res) => {

@@ -84,7 +84,7 @@ class Login extends React.Component {
               <Confirm onClick={Login}>로그인</Confirm>&nbsp;&nbsp;
               <Cancel onClick={this.props.cancelLogin}>취소</Cancel>
             </BFrame>
-            <Tag>
+            {/* <Tag>
               <Hr>&nbsp;소셜 로그인하기&nbsp;</Hr>
             </Tag>
             <SocialLogin>
@@ -94,7 +94,7 @@ class Login extends React.Component {
               <GFrame>
                 <GLogin></GLogin>
               </GFrame>
-            </SocialLogin>
+            </SocialLogin> */}
           </PFrame>
         </PopupInner>
       </Popup>

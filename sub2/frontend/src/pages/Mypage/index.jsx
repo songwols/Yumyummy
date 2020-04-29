@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Top from "../../components/Top";
 import { inject, observer } from "mobx-react";
-import CardLayout from "../../components/ResultList";
+import Here from "../../components/Here";
 
 @inject("reviewStore", "userStore", "authStore")
 @observer
@@ -31,13 +31,12 @@ class My extends React.Component {
           </MyProfile>
           <MyDetail>
             <DCategory>
-              <Review>리뷰()</Review>
               <Want>여기어때?()</Want>
             </DCategory>
 
-            {/* <DetailCon>
-              <CardLayout></CardLayout>
-            </DetailCon> */}
+            <DetailCon>
+              <RHere></RHere>
+            </DetailCon>
           </MyDetail>
         </MyFrame>
       </MyLayer>
@@ -189,36 +188,10 @@ const MyDetail = styled.div`
 const DCategory = styled.div`
   grid-area: DCategory;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-areas: "Favorite Review Like Recent Want";
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-areas: "Here";
   border-top: 1px solid rgba(var(--b38, 219, 219, 219), 1);
   padding-top: 1rem;
-`;
-
-const Favorite = styled.div`
-  grid-area: Favorite;
-  display: grid;
-  margin: 0 auto;
-
-  font-weight: bold;
-`;
-
-const Review = styled.div`
-  grid-area: Review;
-  display: grid;
-  margin: 0 auto;
-`;
-
-const Like = styled.div`
-  grid-area: Like;
-  display: grid;
-  margin: 0 auto;
-`;
-
-const Recent = styled.div`
-  grid-area: Recent;
-  display: grid;
-  margin: 0 auto;
 `;
 
 const Want = styled.div`
@@ -233,6 +206,10 @@ const DetailCon = styled.div`
 
   margin-top: -4rem;
   margin-left: -8rem;
+`;
+
+export const RHere = styled(Here)`
+  display: block;
 `;
 
 export default My;

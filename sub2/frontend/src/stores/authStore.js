@@ -33,6 +33,6 @@ export default class AuthStore {
 
   @action logout() {
     window.sessionStorage.removeItem("token");
-    window.location.reload();
+    window.location.replace("/");
   }
 }

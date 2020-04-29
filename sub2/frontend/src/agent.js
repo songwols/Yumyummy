@@ -23,9 +23,6 @@ const Data = {
 
   id_review: (store_id) => requests.get(`/api/id_reviews?store_id=${store_id}`),
 
-  id_myreview: (user_id) =>
-    requests.get(`/api/id_myreviews?user_id=${user_id}`),
-
   id_menu: (store_id) =>
     requests.get(`/api/storeid_menus?store_id=${store_id}`),
 

@@ -3,7 +3,7 @@ import { inject, observer } from "mobx-react";
 import styled from "styled-components";
 import face from "../../assets/images/face.png";
 import restaurant from "../../assets/images/restaurant.png";
-
+import MapContainer from "../../components/Map";
 
 export const Mapp = styled(Map)`
   display: none !important;
@@ -17,7 +17,7 @@ export const Mapp = styled(Map)`
 @observer
 class DetailContent extends React.Component {
   componentWillMount() {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     this.props.storeStore.detail(this.props.storeid);
     this.props.menuStore.get_menu(this.props.storeid);
   }
@@ -30,40 +30,39 @@ class DetailContent extends React.Component {
         <IRFrame>
           <Info>
             <Title>
-              <FaceIcon><img src={face} width="30" height="30" /></FaceIcon>
+              <FaceIcon>
+                <img src={face} width="30" height="30" />
+              </FaceIcon>
               <RTitle>{detailpost.store_name}</RTitle>
-              <ResIcon><img src={restaurant} width="30" height="25" /></ResIcon>
-            </Title>            
+              <ResIcon>
+                <img src={restaurant} width="30" height="25" />
+              </ResIcon>
+            </Title>
             <Frame>
               <RInfo>
                 <DInfo>
                   <DIVL>
-                    <DIV>주소 : {detailpost.address}</DIV>
-                    <DIV>영업시간 : 몰라</DIV>
-                    <DIV>휴무일 : 미정</DIV>
-                    <DIV>전화번호 : {detailpost.tel}</DIV>
+                    <Div>ADDRESS</Div>
+                    <DIV>{detailpost.address}</DIV>
+                    <Div>TEL</Div>
+                    <DIV>{detailpost.tel}</DIV>
+                    <Div>MENU</Div>
+                    {menus.length !== 0 ? (
+                      menus.map((item, index) => (
+                        <DIV key={index}>
+                          {item.menu} - {item.price}
+                        </DIV>
+                      ))
+                    ) : (
+                      <Nothing>등록된 메뉴가 없습니다.</Nothing>
+                    )}
                   </DIVL>
-                  <Graph>
-                    그래프
-                    <div>d</div>
-                  </Graph>
                 </DInfo>
-                <Menu>
-                  <Div>메뉴</Div>
-                  {menus.length !== 0 ? (
-                    menus.map((item, index) => (
-                      <DIV key={index}>
-                        {item.menu} - {item.price}
-                      </DIV>
-                    ))
-                  ) : (
-                    <Nothing>등록된 메뉴가 없습니다.</Nothing>
-                  )}
-                </Menu>
+
+                <MFrame storeid={this.props.storeid}></MFrame>
               </RInfo>
             </Frame>
           </Info>
-          {/* <Review>리뷰</Review> */}
         </IRFrame>
       </DCFrame>
     );
@@ -73,6 +72,7 @@ class DetailContent extends React.Component {
 const Div = styled.div`
   justify-items: center;
   align-items: center;
+  padding-top: 3rem;
   padding-bottom: 0.8rem;
   font-size: 1.5rem;
 `;
@@ -154,13 +154,13 @@ const RInfo = styled.div`
   height: 85vh;
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-areas: "detailinfo menu";
+  grid-template-areas: "detailinfo MFrame";
   /* background: pink; */
 
   @media (max-width: 768px) {
     grid-template-columns: none;
     grid-template-rows: 50% 50%;
-    grid-template-areas: "detailinfo" "menu";
+    grid-template-areas: "detailinfo" "MFrame";
   }
 `;
 
@@ -177,17 +177,29 @@ const DInfo = styled.div`
   }
 `;
 const DIVL = styled.div`
+  padding-left: 10rem;
+  padding-top: 3rem;
   grid-area: divL;
 `;
 const Graph = styled.div`
   grid-area: graph;
 `;
+export const MFrame = styled(MapContainer)`
+  grid-area: MFrame;
+  margin-top: 5rem;
 
+  @media (min-width: 733px) {
+    padding-left: 5%;
+  }
+  @media (max-width: 733px) {
+    border-top: 1px solid #ffde96;
+    padding-top: 5%;
+  }
+`;
 const Menu = styled.div`
   grid-area: menu;
 
   @media (min-width: 733px) {
-    border-left: 1px solid #ffde96;
     padding-left: 5%;
   }
   @media (max-width: 733px) {

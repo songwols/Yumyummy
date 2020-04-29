@@ -7,7 +7,7 @@ import MainPage from "./pages/Mainpage";
 import Result from "./pages/Resultpage";
 import Best from "./pages/Bestpage";
 import Detail from "./pages/Detailpage";
-import My from "./pages/Mypage";
+import MP from "./pages/MP";
 import Mymap from "./components/Mymap";
 
 const App = () => {
@@ -19,7 +19,7 @@ const App = () => {
         <Route path="/result/:store_name/:address/:menu" component={Result} />
         <Route path="/best/:address" component={Best} />
         <Route path="/detail/:id" component={Detail} />
-        <Route path="/my" component={My} />
+        <Route path="/my" component={MP} />
         <Route path="/" component={MainPage} />
       </Switch>
     </div>

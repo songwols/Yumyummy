@@ -41,7 +41,7 @@ export const Review = styled(ReviewCard)`
   grid-area: Review; */
 `;
 const Nothing = styled.div`
-  margin-left: 50%;
+  margin-left: 45%;
 `;
 
 export default MyReview;

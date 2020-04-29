@@ -197,28 +197,8 @@ const DCategory = styled.div`
   padding-top: 1rem;
 `;
 
-const Favorite = styled.div`
-  grid-area: Favorite;
-  display: grid;
-  margin: 0 auto;
-
-  font-weight: bold;
-`;
-
 const Review = styled.div`
   grid-area: Review;
-  display: grid;
-  margin: 0 auto;
-`;
-
-const Like = styled.div`
-  grid-area: Like;
-  display: grid;
-  margin: 0 auto;
-`;
-
-const Recent = styled.div`
-  grid-area: Recent;
   display: grid;
   margin: 0 auto;
 `;

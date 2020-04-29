@@ -33,7 +33,7 @@ export default class SuggestStore {
     },
     {
       Title: "수원 핫플레이스 10",
-      address: "수원",
+      address: "경기도 수원",
       menu: "",
       img:
         "https://www.suwon.go.kr/resources/web/visitsuwon/images/sub/tour_02/sub_list02.png",

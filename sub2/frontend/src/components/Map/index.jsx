@@ -42,7 +42,7 @@ class MapContainer extends React.Component {
           lat: e.latitude,
           lng: e.longitude
         }}
-        onClick={() => console.log()} />
+        />
       }
       else{
         return this.props.storeStore.location.map((store, index) => {

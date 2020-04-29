@@ -47,7 +47,7 @@ class ReviewCon extends React.Component {
           <ReviewList>
             {reviews.length !== 0 ? (
               reviews.map((item, index) => (
-                <div>
+                <div key={index}>
                   <Review key={index} review={item} />
                 </div>
               ))

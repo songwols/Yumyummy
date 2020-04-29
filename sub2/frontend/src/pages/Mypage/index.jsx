@@ -32,7 +32,6 @@ class My extends React.Component {
           <MyDetail>
             <DCategory>
               <Review>리뷰()</Review>
-              <Recent>최근 본 맛집()</Recent>
               <Want>여기어때?()</Want>
             </DCategory>
 
@@ -183,8 +182,6 @@ const MyDetail = styled.div`
   grid-template-columns: repeat(5, 1fr);
   grid-template-areas:
     "DCategory DCategory DCategory DCategory DCategory"
-    "DetailCon DetailCon DetailCon DetailCon DetailCon"
-    "DetailCon DetailCon DetailCon DetailCon DetailCon"
     "DetailCon DetailCon DetailCon DetailCon DetailCon"
     "DetailCon DetailCon DetailCon DetailCon DetailCon";
 `;

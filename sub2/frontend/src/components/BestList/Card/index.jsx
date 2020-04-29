@@ -30,7 +30,6 @@ class Card extends React.Component {
         <Div>
           <Title>{post.store_name}</Title>
           <Address>주소 : {post.address}</Address>
-          <Time>영업시간 : 아직 </Time>
           <Tel>전화번호 : {post.tel}</Tel>
         </Div>
       </B>
@@ -55,7 +54,7 @@ const Div = styled.div`
   outline: none;
   box-shadow: none;
   grid-template-rows: repeat(5, 1fr);
-  grid-template-areas: "title" "address" "time" "tel" ".";
+  grid-template-areas: "." "title" "address" "tel" ".";
   // padding-left: 1rem;
   align-content: center;
 `;

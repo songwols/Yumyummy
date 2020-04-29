@@ -8,10 +8,6 @@ import psa from "../../../assets/images/psa.png";
 @withRouter
 @observer
 class ReviewCard extends React.Component {
-  componentDidMount() {
-    // console.log(this.props.post)
-  }
-
   render() {
     const { review } = this.props;
 
@@ -20,7 +16,7 @@ class ReviewCard extends React.Component {
         <ReviewUser>
           <Reviewer>
             <ReviewerPsa>
-              <img src={psa} width="80" height="80" />
+              <img src={psa} width="80" height="80" alt="" />
             </ReviewerPsa>
           </Reviewer>
         </ReviewUser>
@@ -63,12 +59,7 @@ const ReviewerPsa = styled.div`
   cursor: pointer;
   margin: 0 auto;
 `;
-const ReviewerName = styled.div`
-  display: grid;
-  grid-area: ReviewerName;
-  cursor: pointer;
-  margin: 0 auto;
-`;
+
 const ReviewerContent = styled.div`
   display: grid;
   grid-area: ReviewContent;

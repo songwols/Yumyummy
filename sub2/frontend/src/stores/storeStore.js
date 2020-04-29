@@ -159,7 +159,6 @@ export default class StoreStore {
         .then((res) => {
           this.setStoreItems(res.data.results);
           this.location = [];
-          // console.log(res.data.results)
           localStorage.setItem("latitude", res.data.results[0].latitude);
           localStorage.setItem("longitude", res.data.results[0].longitude);
           for (var i = 0; i < res.data.results.length; i++) {
@@ -183,7 +182,6 @@ export default class StoreStore {
   }
 
   @action getPost(id) {
-    console.log(this.storeRegistry);
     return this.storeRegistry.get(id);
   }
 

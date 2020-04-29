@@ -7,7 +7,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 class GLogin extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -24,16 +23,6 @@ class GLogin extends Component {
             provider: 'google',
         });
         console.log('login success')
-        axios.post('http://localhost:3000/login',{
-            test: 1111
-        }, { headers: {"Authorization" : `Bearer ${res.accessToken}`,
-          "Content-Type":"application/json"}})
-        .then(function (response){
-            console.log(response);
-        })
-        .catch(function (error){
-            console.log(error);
-        });
     }
 
     responseFail = (err) => {

@@ -9,7 +9,7 @@ export default class SuggestStore {
       address: "연남동",
       menu: "",
       img:
-        "https://lh3.googleusercontent.com/proxy/Jm5OirmHhelJxtfLPIlw05-UVV2oVfTf6VokOStaUK3yad4UsNOrMiYsGsTXUl6xAy9h0h0czhMrCy-cS96NL4U47Sq4s8q4NF9d6_oanNf2IfIVyS74eYxrDMrPwF7wlwOdIue9Ewf6931-AQ_51dQj_EEk4SND47tgfsVViBrdWSkl5haEpgFiiPUML7tKqxbc_OQboVNozwfCoWM-zqS-_oZWaw",
+        "https://thumb-wishbeen.akamaized.net/YWzk79F3Z3Ur4o8t7lptTVomBQo=/898x420/smart/filters:no_upscale()/img-wishbeen.akamaized.net/spot/1509865127488_image",
     },
     {
       Title: "강남 핫플레이스 10",

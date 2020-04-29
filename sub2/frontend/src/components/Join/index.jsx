@@ -116,7 +116,7 @@ class Join extends React.Component {
               ></PW>
             </PWFrame>
             <PW2Frame>
-              <PwText>PW 확인</PwText>
+              <PwText2>PW 확인</PwText2>
               <PW
                 onChange={this.onPw2Change}
                 name="pw2"
@@ -229,7 +229,7 @@ const PopupInner = styled.div`
 const PFrame = styled.div`
   height: 100%;
   display: grid;
-  grid-template-rows: repeat(12, 1fr);
+  grid-template-rows: repeat(14, 1fr);
   grid-template-areas:
     "Title"
     "."
@@ -241,6 +241,7 @@ const PFrame = styled.div`
     "GFrame"
     "BIFrame"
     "."
+    "Bu"
     "Bu"
     "Bu"
     ".";
@@ -257,7 +258,14 @@ const Title = styled.div`
   background: #ffde96;
 
   grid-template-columns: repeat(6, 1fr);
-  grid-template-areas: ". . JoinImage JoinText . .";
+  grid-template-areas: ". JoinImage JoinImage JoinText JoinText .";
+
+  @media (max-width: 420px) {
+    padding-top: 0rem;
+  }
+  @media (max-width: 360px) {
+    height: 60px;
+  }
 `;
 
 const JoinText = styled.div`
@@ -268,18 +276,30 @@ const JoinText = styled.div`
 
 const JoinImage = styled.div`
   grid-area: JoinImage;
+  margin-left: 44%;
+
+  @media (max-width: 420px) {
+    transform: scale(0.8);
+    margin-left: 34%;
+    height: 85%;
+  }
+
+  @media (max-width: 360px) {
+    transform: scale(0.6);
+    margin-left: 34%;
+    /* height: 80%; */
+    height: 60px;
+  }
 `;
 
 const IDFrame = styled.div`
   grid-area: IDFrame;
   display: grid;
   padding: auto;
-  /* padding-left: 15%; */
-  /* justify-items: left; */
   text-align: left;
 
   grid-template-columns: repeat(8, 1fr);
-  grid-template-areas: ". IdText ID ID ID ID ID .";
+  grid-template-areas: "IdText IdText ID ID ID ID ID .";
   margin-left: -3%;
 `;
 
@@ -288,13 +308,18 @@ const IdText = styled.div`
   display: grid;
   text-align: center;
   line-height: 36.8px;
+
+  margin-left: 45%;
+
+  @media (max-width: 420px) {
+    margin-left: 35%;
+  }
 `;
 
 const ID = styled.input`
   grid-area: ID;
   display: grid;
   background: none;
-  /* width: 70%; */
   border-color: #ffde96;
   border-style: solid;
   border-radius: 0.5rem;
@@ -305,7 +330,6 @@ const ID = styled.input`
   font-size: 0.875rem;
   -ms-flex: 1 1;
   flex: 1 1;
-  /* margin-left: 1.2rem; */
   color: inherit;
 `;
 
@@ -313,8 +337,6 @@ const PWFrame = styled.div`
   grid-area: PWFrame;
   display: grid;
   padding: auto;
-  /* padding-left: 15%; */
-  /* justify-items: left; */
   text-align: left;
 
   grid-template-columns: repeat(8, 1fr);
@@ -325,12 +347,10 @@ const PW2Frame = styled.div`
   grid-area: PW2Frame;
   display: grid;
   padding: auto;
-  /* padding-left: 15%; */
-  /* justify-items: left; */
   text-align: left;
 
   grid-template-columns: repeat(8, 1fr);
-  grid-template-areas: ". PwText PW PW PW PW PW .";
+  grid-template-areas: "PwText2 PwText2 PW PW PW PW PW .";
   margin-left: -3%;
 `;
 
@@ -341,11 +361,26 @@ const PwText = styled.div`
   line-height: 36.8px;
 `;
 
+const PwText2 = styled.div`
+  grid-area: PwText2;
+  display: grid;
+  text-align: center;
+  line-height: 36.8px;
+  margin-left: 45%;
+
+  @media (max-width: 790px) {
+    margin-left: 35%;
+  }
+
+  @media (max-width: 420px) {
+    margin-left: 15%;
+  }
+`;
+
 const PW = styled.input`
   grid-area: PW;
   display: grid;
   background: none;
-  /* width: 70%; */
   border-color: #ffde96;
   border-style: solid;
   border-radius: 0.5rem;
@@ -356,7 +391,6 @@ const PW = styled.input`
   font-size: 0.875rem;
   -ms-flex: 1 1;
   flex: 1 1;
-  /* margin-left: 0.5rem; */
   color: inherit;
 `;
 
@@ -364,8 +398,6 @@ const NFrame = styled.div`
   grid-area: NFrame;
   display: grid;
   padding: auto;
-  /* padding-left: 15%; */
-  /* justify-items: left; */
   text-align: left;
   grid-template-columns: repeat(8, 1fr);
   grid-template-areas: ". NText N N N N N .";
@@ -383,7 +415,6 @@ const Name = styled.input`
   grid-area: N;
   display: grid;
   background: none;
-  /* width: 70%; */
   border-color: #ffde96;
   border-style: solid;
   border-radius: 0.5rem;
@@ -394,7 +425,6 @@ const Name = styled.input`
   font-size: 0.875rem;
   -ms-flex: 1 1;
   flex: 1 1;
-  /* margin-left: 0.5rem; */
   color: inherit;
 `;
 
@@ -402,12 +432,10 @@ const GFrame = styled.div`
   grid-area: GFrame;
   display: grid;
   padding: auto;
-  /* padding-left: 10%; */
-  /* justify-items: left; */
   text-align: left;
 
   grid-template-columns: repeat(8, 1fr);
-  grid-template-areas: ". GText GenderLabel GenderLabel . . . .";
+  grid-template-areas: ". GText . GenderLabel GenderLabel GenderLabel GenderLabel .";
   margin-left: -3%;
 `;
 
@@ -422,29 +450,15 @@ const GenderLabel = styled.div`
   grid-area: GenderLabel;
   display: grid;
   background: none;
-  /* height: 20px; */
-  /* line-height: 36.8px; */
-  /* margin-left: 12rem; */
+  margin-top: -2%;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: "Gender1 Gender2";
 `;
-
-// const Gender1 = styled.input`
-//     grid-area: Gender1;
-//     display: grid;
-// `;
-
-// const Gender2 = styled.input`
-//     grid-area: Gender2;
-//     display: grid;
-// `;
 
 const BIFrame = styled.div`
   grid-area: BIFrame;
   display: grid;
   padding: auto;
-  /* padding-left: 10%; */
-  /* justify-items: left; */
   text-align: left;
 
   grid-template-columns: repeat(8, 1fr);
@@ -458,14 +472,12 @@ const BText = styled.div`
   text-align: right;
   line-height: 36.8px;
   padding-right: 10%;
-  /* font-size: 0.85rem; */
 `;
 
 const Birth = styled.input`
   grid-area: B;
   display: grid;
   background: none;
-  /* width: 70%; */
   border-color: #ffde96;
   border-style: solid;
   border-radius: 0.5rem;
@@ -476,19 +488,25 @@ const Birth = styled.input`
   font-size: 0.875rem;
   -ms-flex: 1 1;
   flex: 1 1;
-  /* margin-left: 0.5rem; */
   color: inherit;
 `;
 
 const BFrame = styled.div`
   grid-area: Bu;
-  /* justify-items: center; */
   text-align: center;
+  display: grid;
+  padding: auto;
+  height: 100%;
+
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-areas: ". Confirm Confirm Confirm Cancel Cancel Cancel.";
 `;
 
 const Confirm = styled.button`
+  width: 80%;
+  grid-area: Confirm;
+  display: grid;
   height: 100%;
-  width: 40%;
   background: none;
   border: none;
   outline: none;
@@ -498,6 +516,7 @@ const Confirm = styled.button`
   font-size: 1rem;
 
   transform: scale(0.95);
+  margin: 0 auto;
 
   :hover {
     border-radius: 0.7rem;
@@ -507,8 +526,10 @@ const Confirm = styled.button`
 `;
 
 const Cancel = styled.button`
+  width: 80%;
+  grid-area: Cancel;
+  display: grid;
   height: 100%;
-  width: 40%;
   background: none;
   border: none;
   outline: none;
@@ -518,6 +539,8 @@ const Cancel = styled.button`
   font-size: 1rem;
 
   transform: scale(0.95);
+
+  margin: 0 auto;
 
   :hover {
     border-radius: 0.7rem;

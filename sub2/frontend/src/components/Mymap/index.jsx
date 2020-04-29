@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import dotenv from "dotenv";
-import { Map, GoogleApiWrapper, Marker, Circle } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker, Circle, InfoWindow } from 'google-maps-react';
 import Geocode from "react-geocode";
 import { inject, observer } from "mobx-react";
 
@@ -17,7 +17,12 @@ class Mymap extends React.Component {
     state = {
         lat: 0,
         lng: 0,
-        addr : "",
+        address : "",
+        showingInfoWindow: false,
+        activeMarker: {},
+        selectedPlace: {},
+        c_name : "",
+        c_addr : "",
       };
 
       componentDidMount() {
@@ -44,11 +49,9 @@ class Mymap extends React.Component {
               sarr = sarr + arr[i] + " ";
             }
             this.setState({
-              addr : sarr
+                address: sarr,
             });
-            console.log(this.state.addr)
-            //장소만 검색할 수 있는 거
-            //this.props.storeStore.search(sarr)
+            this.props.storeStore.count_stores(this.state)
           },
           error => {
             console.log(error);
@@ -56,18 +59,43 @@ class Mymap extends React.Component {
         );
       };
 
+
       displayMarkers = (e) => {
-        return <Marker position={{
-            lat : this.state.lat,
-            lng : this.state.lng
-            }}
-            icon={{
-                url: "https://github.com/chokyungeun/TRAVEL_KE/blob/master/flag%20(3).png?raw=true"
-              }}
-        />
+        if(e.length !== 0){
+          return e.map((store, index) => {
+            return (<Marker key={index} id={store} position={{
+             lat: store.latitude,
+             lng: store.longitude
+           }}
+            onClick={ (props, marker, e) => this.onMarkerClick(props, marker, e, store) }
+           />
+            )
+          })
+        }
       }
+
+      onMarkerClick = (props, marker, e, store) =>{
+        this.setState({
+          selectedPlace: props,
+          activeMarker: marker,
+          showingInfoWindow: true,
+          c_name : store.store_name,
+          c_addr : store.address
+        });
+      }
+        
+    
+      onMapClicked = (props) => {
+        if (this.state.showingInfoWindow) {
+          this.setState({
+            showingInfoWindow: false,
+            activeMarker: null
+          })
+        }
+      };
  
     render() {
+        const suggest = this.props.storeStore.storeItems;
         const { lat, lng } = this.state;
 
         const containerStyle = {
@@ -90,6 +118,7 @@ class Mymap extends React.Component {
                         lat,
                         lng
                     }}
+                    onClick={this.onMapClicked}
                     >
                     <Circle
                       radius={800}
@@ -103,7 +132,23 @@ class Mymap extends React.Component {
                       fillColor='#FF0000'
                       fillOpacity={0.2}
                     />
-                    {this.displayMarkers()}
+                    <Marker position={{
+                        lat : this.state.lat,
+                        lng : this.state.lng
+                        }}
+                        icon={{
+                            url: "https://github.com/chokyungeun/TRAVEL_KE/blob/master/flag%20(3).png?raw=true"
+                          }}
+                    />
+                    {this.displayMarkers(suggest)}
+                    <InfoWindow
+                      marker={this.state.activeMarker}
+                      visible={this.state.showingInfoWindow}>
+                        <div>
+                          <h3>{this.state.c_name}</h3>
+                          <h5>{this.state.c_addr}</h5>
+                        </div>
+                    </InfoWindow>
                 </Map>
             </Maps>    
         )

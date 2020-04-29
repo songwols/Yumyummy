@@ -114,7 +114,6 @@ export default class StoreStore {
     return agent.Data.count_stores(info.address)
       .then((res) => {
         this.setStoreItems(res.data.results);
-        console.log(this.storeItems);
       })
       .catch((err) => console.log(err));
   }

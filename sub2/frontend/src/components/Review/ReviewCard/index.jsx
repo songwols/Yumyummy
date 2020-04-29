@@ -22,7 +22,6 @@ class ReviewCard extends React.Component {
             <ReviewerPsa>
               <img src={psa} width="80" height="80" />
             </ReviewerPsa>
-            <ReviewerName>닉네임</ReviewerName>
           </Reviewer>
         </ReviewUser>
         <ReviewerContent>
@@ -42,7 +41,6 @@ const ReviewItem = styled.div`
   grid-area: ReviewItem;
   grid-template-columns: 1fr 4fr 1fr;
   grid-template-areas: "ReviewUser ReviewContent ReviewRating";
-
 `;
 const ReviewUser = styled.div`
   grid-area: ReviewUser;

@@ -14,10 +14,11 @@ const Detail = ({ match }) => {
         <Top></Top>
       </TopLayer>
       <CFrame>
-        <DetailContent storeid={id}></DetailContent>
-        <MFrame>
+        <DetailF storeid={id}></DetailF>
+        {/* <MFrame>
           <MapContainer storeid={id}></MapContainer>
-        </MFrame>
+        </MFrame> */}
+        {/* <MFrame storeid={id}></MFrame> */}
       </CFrame>
       <ReviewCon storeid={id}></ReviewCon>
     </DLayer>
@@ -39,24 +40,30 @@ const TopLayer = styled.div`
   grid-template-areas: "Title" "Search";
 `;
 const CFrame = styled.div`
-  height: 100vh;
+  height: 80vh;
   grid-area: CFrame;
-  display: grid;
-  grid-template-columns: 70% 30%;
-  grid-template-areas: "content MFrame";
+  /* display: grid; */
+
+  /* grid-template-columns: 50% 50%;
+  grid-template-areas: "DetailContent" "MFrame";
 
   @media (max-width: 768px) {
     grid-template-columns: 100%;
-  }
+  } */
 `;
-const MFrame = styled.div`
-  grid-area: MFrame;
-  display: grid;
-  grid-template-rows: 50% 50%;
-  grid-template-areas: "Map" ".";
+export const MFrame = styled(MapContainer)`
+  width: 50%;
+  box-sizing: border-box;
+  float: right;
+
   @media (max-width: 768px) {
     display: none;
   }
+`;
+export const DetailF = styled(DetailContent)`
+  width: 50%;
+  float: left;
+  box-sizing: border-box;
 `;
 
 export default Detail;

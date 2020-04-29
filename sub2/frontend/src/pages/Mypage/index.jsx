@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Top from "../../components/Top";
 import { inject, observer } from "mobx-react";
-import MyReview from "../../components/MyReview";
 import Here from "../../components/Here";
 
 @inject("reviewStore", "userStore", "authStore")
@@ -32,12 +31,10 @@ class My extends React.Component {
           </MyProfile>
           <MyDetail>
             <DCategory>
-              <Review>리뷰()</Review>
               <Want>여기어때?()</Want>
             </DCategory>
 
             <DetailCon>
-              <MyReviewList></MyReviewList>
               <RHere></RHere>
             </DetailCon>
           </MyDetail>
@@ -191,16 +188,10 @@ const MyDetail = styled.div`
 const DCategory = styled.div`
   grid-area: DCategory;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-areas: "MyReviewList Here";
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-areas: "Here";
   border-top: 1px solid rgba(var(--b38, 219, 219, 219), 1);
   padding-top: 1rem;
-`;
-
-const Review = styled.div`
-  grid-area: Review;
-  display: grid;
-  margin: 0 auto;
 `;
 
 const Want = styled.div`
@@ -217,9 +208,6 @@ const DetailCon = styled.div`
   margin-left: -8rem;
 `;
 
-export const MyReviewList = styled(MyReview)`
-  display: none;
-`;
 export const RHere = styled(Here)`
   display: block;
 `;

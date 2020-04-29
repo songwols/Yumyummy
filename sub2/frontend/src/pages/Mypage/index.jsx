@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Top from "../../components/Top";
 import { inject, observer } from "mobx-react";
-import CardLayout from "../../components/ResultList";
+import MyReview from "../../components/MyReview";
+import Here from "../../components/Here";
 
 @inject("reviewStore", "userStore", "authStore")
 @observer
@@ -35,9 +36,10 @@ class My extends React.Component {
               <Want>여기어때?()</Want>
             </DCategory>
 
-            {/* <DetailCon>
-              <CardLayout></CardLayout>
-            </DetailCon> */}
+            <DetailCon>
+              <MyReviewList></MyReviewList>
+              <RHere></RHere>
+            </DetailCon>
           </MyDetail>
         </MyFrame>
       </MyLayer>
@@ -189,8 +191,8 @@ const MyDetail = styled.div`
 const DCategory = styled.div`
   grid-area: DCategory;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-areas: "Favorite Review Like Recent Want";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "MyReviewList Here";
   border-top: 1px solid rgba(var(--b38, 219, 219, 219), 1);
   padding-top: 1rem;
 `;
@@ -233,6 +235,13 @@ const DetailCon = styled.div`
 
   margin-top: -4rem;
   margin-left: -8rem;
+`;
+
+export const MyReviewList = styled(MyReview)`
+  display: none;
+`;
+export const RHere = styled(Here)`
+  display: block;
 `;
 
 export default My;

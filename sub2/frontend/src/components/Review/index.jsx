@@ -33,6 +33,7 @@ class ReviewCon extends React.Component {
                   src={Button}
                   width="50"
                   height="40"
+                  alt=""
                 />
               </ReviewSend>
             </ReviewWrite>
@@ -93,7 +94,7 @@ const ReviewWriteBox = styled.div`
     "ReviewWrite"
     /* "ReviewSend" */;
   /* margin-left: 30px; */
-  
+
   border-top: 1px solid #ffde96;
   padding-top: 5%;
 `;
@@ -149,20 +150,6 @@ const ReviewHeader = styled.div`
 const ReviewNum = styled.div`
   display: grid;
   grid-area: ReviewNum;
-`;
-const ReviewFilter = styled.div`
-  display: grid;
-  grid-area: ReviewFilter;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "ReviewRecent ReviewRate";
-`;
-const ReviewRecent = styled.div`
-  display: grid;
-  grid-area: ReviewRecent;
-`;
-const ReviewRate = styled.div`
-  display: grid;
-  grid-area: ReviewRate;
 `;
 
 const ReviewList = styled.div`

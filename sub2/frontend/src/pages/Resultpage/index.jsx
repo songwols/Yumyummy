@@ -7,43 +7,47 @@ import ReviewImag from "../../assets/images/Review.png";
 import Paging from "../../components/Paging";
 import MapContainer from "../../components/Map";
 
-const Result = ({match}) => {
-    const {store_name, address, menu} = match.params;
+const Result = ({ match }) => {
+  const { store_name, address, menu } = match.params;
 
-    return (
-        <RFrame>
-          <TopLayer>
-            <Top></Top>
-            <Filter>
-              <GradeReview>
-                <Grade>
-                  <img src={StarImag} width="70" height="60" />
-                  평점순
-                </Grade>
-                <Review>
-                  <img src={ReviewImag} width="70" height="60" />
-                  리뷰순
-                </Review>
-              </GradeReview>
-            </Filter>
-            {/* <Categories>
+  return (
+    <RFrame>
+      <TopLayer>
+        <Top></Top>
+        <Filter>
+          <GradeReview>
+            <Grade>
+              <img src={StarImag} width="70" height="60" alt="" />
+              평점순
+            </Grade>
+            <Review>
+              <img src={ReviewImag} width="70" height="60" alt="" />
+              리뷰순
+            </Review>
+          </GradeReview>
+        </Filter>
+        {/* <Categories>
                           <Link to="/result">한식</Link>&nbsp;
                           <Link to="/result">중식</Link>&nbsp;
                           <Link to="/result">일식</Link>&nbsp;
                           <Link to="/result">양식</Link>&nbsp;
                           <Link to="/result">카페</Link>&nbsp;
                       </Categories> */}
-          </TopLayer>
-          <LFrame>
-            <CardLayout store_name={store_name} address={address} menu={menu}></CardLayout>
-            <Paging></Paging>
-            <MFrame>
-              <MapContainer></MapContainer>
-            </MFrame>
-          </LFrame>
-        </RFrame>
-      );
-}
+      </TopLayer>
+      <LFrame>
+        <CardLayout
+          store_name={store_name}
+          address={address}
+          menu={menu}
+        ></CardLayout>
+        <Paging></Paging>
+        <MFrame>
+          <MapContainer></MapContainer>
+        </MFrame>
+      </LFrame>
+    </RFrame>
+  );
+};
 
 const RFrame = styled.div`
   height: 100%;
@@ -121,7 +125,7 @@ const LFrame = styled.div`
 
   @media (max-width: 768px) {
     grid-template-rows: 30% 70%;
-    grid-template-areas: "Map" ;
+    grid-template-areas: "Map";
     grid-template-columns: 10% 80% 10%;
     grid-template-areas: ". List .";
   }

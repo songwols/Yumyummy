@@ -170,12 +170,6 @@ const Title = styled.div`
   grid-template-areas: "Review Want";
 `;
 
-const Want = styled.div`
-  grid-area: Want;
-  margin: 0 auto;
-  padding-top: 1rem;
-`;
-
 const Content = styled.div`
   grid-area: content;
 `;

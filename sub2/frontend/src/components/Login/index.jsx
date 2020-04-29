@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { inject, observer } from "mobx-react";
 import login from "../../assets/images/Login.png";
-import GLogin from "./GLogin";
-import KLogin from "./KLogin";
 
 @observer
 @inject("authStore")
@@ -59,7 +57,7 @@ class Login extends React.Component {
             <Title>
               <LoginText>로그인</LoginText>
               <LoginImage>
-                <img src={login} width="80" height="80" />
+                <img src={login} width="80" height="80" alt="" />
               </LoginImage>
             </Title>
             <IDFrame>
@@ -334,53 +332,6 @@ const Cancel = styled.button`
     opacity: 0.8;
     transform: scale(1);
   }
-`;
-
-const Tag = styled.div`
-  grid-area: Tag;
-  text-align: center;
-  padding-top: 1.3rem;
-`;
-const Hr = styled.div`
-  padding-right: 1rem;
-  padding-left: 1rem;
-  display: flex;
-  flex-basis: 100%;
-  align-items: center;
-  color: black;
-  font-size: medium;
-  ::before,
-  ::after {
-    content: "";
-    flex-grow: 1;
-    background: black;
-    height: 0.1rem;
-  }
-`;
-const SocialLogin = styled.div`
-  margin-top: 3%;
-  grid-area: SocialLogin;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-areas: ". KFrame GFrame .";
-
-  @media (max-width: 773px) {
-    transform: scale(1.4);
-  }
-`;
-
-const KFrame = styled.div`
-  grid-area: KFrame;
-  display: grid;
-  justify-items: center;
-  text-align: center;
-`;
-
-const GFrame = styled.div`
-  grid-area: GFrame;
-  display: grid;
-  justify-items: center;
-  text-align: center;
 `;
 
 export default Login;

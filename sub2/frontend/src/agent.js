@@ -3,8 +3,6 @@ import axios from "axios";
 // const API_ROOT = "http://52.79.156.160";
 const API_ROOT = "http://localhost:8000";
 
-const responseBody = (res) => res.body;
-
 const requests = {
   get: (url, header) => axios.get(`${API_ROOT}${url}`, { headers: header }),
   post: (url, body, header) =>
@@ -41,7 +39,7 @@ const Data = {
       content: review.content,
     }),
   count_stores: (address) =>
-    requests.get(`/api/search_stores?address=${address}`),
+    requests.get(`/api/count_stores?address=${address}`),
 };
 
 const Auth = {

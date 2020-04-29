@@ -70,9 +70,7 @@ class Join extends React.Component {
       //age: this.state.age,
     };
     this.props.userStore.register(user);
-    alert(
-      this.state.username + "님! 회원가입이 완료되었습니다!"
-    );
+    alert(this.state.username + "님! 회원가입이 완료되었습니다!");
     window.location.reload();
   };
   RadioBoy = (e) => {
@@ -95,7 +93,7 @@ class Join extends React.Component {
             <Title>
               <JoinText>회원가입</JoinText>
               <JoinImage>
-                <img src={join} width="80" height="80" />
+                <img src={join} width="80" height="80" alt="" />
               </JoinImage>
             </Title>
             <IDFrame>

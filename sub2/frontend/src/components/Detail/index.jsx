@@ -31,11 +31,11 @@ class DetailContent extends React.Component {
           <Info>
             <Title>
               <FaceIcon>
-                <img src={face} width="30" height="30" />
+                <img src={face} width="30" height="30" alt="" />
               </FaceIcon>
               <RTitle>{detailpost.store_name}</RTitle>
               <ResIcon>
-                <img src={restaurant} width="30" height="25" />
+                <img src={restaurant} width="30" height="25" alt="" />
               </ResIcon>
             </Title>
             <Frame>
@@ -181,23 +181,10 @@ const DIVL = styled.div`
   padding-top: 3rem;
   grid-area: divL;
 `;
-const Graph = styled.div`
-  grid-area: graph;
-`;
+
 export const MFrame = styled(MapContainer)`
   grid-area: MFrame;
   margin-top: 5rem;
-
-  @media (min-width: 733px) {
-    padding-left: 5%;
-  }
-  @media (max-width: 733px) {
-    border-top: 1px solid #ffde96;
-    padding-top: 5%;
-  }
-`;
-const Menu = styled.div`
-  grid-area: menu;
 
   @media (min-width: 733px) {
     padding-left: 5%;
@@ -213,12 +200,6 @@ const DIV = styled.div`
   align-items: center;
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
-`;
-
-const Review = styled.div`
-  grid-area: review;
-  padding-top: 1rem;
-  border-bottom: 1px solid #ffde96;
 `;
 
 export default inject(({ storeStore }) => ({

@@ -16,11 +16,11 @@ const Best = ({ match }) => {
         <Filter>
           <GradeReview>
             <Grade>
-              <img src={StarImag} width="70" height="60" />
+              <img src={StarImag} width="70" height="60" alt="" />
               평점순
             </Grade>
             <Review>
-              <img src={ReviewImag} width="70" height="60" />
+              <img src={ReviewImag} width="70" height="60" alt="" />
               리뷰순
             </Review>
           </GradeReview>

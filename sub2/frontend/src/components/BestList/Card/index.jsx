@@ -7,10 +7,6 @@ import { inject, observer } from "mobx-react";
 @withRouter
 @observer
 class Card extends React.Component {
-  componentDidMount() {
-    // console.log(this.props.post)
-  }
-
   render() {
     const { post } = this.props;
 
@@ -64,10 +60,6 @@ const Title = styled.div`
 `;
 const Address = styled.div`
   grid-area: address;
-  font-size: large;
-`;
-const Time = styled.div`
-  grid-area: time;
   font-size: large;
 `;
 const Tel = styled.div`

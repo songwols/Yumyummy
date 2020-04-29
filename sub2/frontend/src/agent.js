@@ -41,7 +41,7 @@ const Data = {
       content: review.content,
     }),
   count_stores: (address) =>
-    requests.get(`/api/search_stores?address=${address}`),
+    requests.get(`/api/count_stores?address=${address}`),
 };
 
 const Auth = {

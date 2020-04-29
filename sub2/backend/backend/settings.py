@@ -161,6 +161,7 @@ CORS_ORIGIN_WHITELIST = (
     'http://127.0.0.1:3000',
     'http://52.79.156.160',
     'http://192.168.99.1:3000'
+    'http://i02a203.p.ssafy.io'
 )
 
 REST_USE_JWT = True
